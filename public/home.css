@@ -1,12 +1,12 @@
-/* General Styles */
+/* Global Styles */
 body, html {
     margin: 0;
     padding: 0;
     width: 100%;
     overflow-x: hidden;
-    min-height: 100vh;           
-    display: flex;               
-    flex-direction: column;      
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 img {
@@ -14,12 +14,13 @@ img {
     height: auto;
 }
 
+/* Header */
 header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 10px;
-    width: 100%; 
+    width: 100%;
     height: 100px;
     box-sizing: border-box;
     text-align: center;
@@ -76,32 +77,30 @@ nav a:hover {
     transform: scale(1.1);
 }
 
-/* Hero Section Styles */
+/* Hero Section */
 .hero-section {
     position: relative;
     width: 100%;
-    /* max-width: 900px; */
     height: 500px;
-    margin: 0px auto 0px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* border-radius: 10px; */
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .hero-background {
     position: absolute;
-    top:  0;
+    top: 0;
     left: 0;
     width: 100%;
-    height: 100%; 
+    height: 100%;
     background-image: url('/DagGurkhaLiverpool/public/content/food/hero.jpg');
     background-size: cover;
     background-position: center;
     z-index: -2;
-    transform: scale(1.1); 
+    transform: scale(1.1);
     transition: transform 0.2s ease-out, filter 0.2s ease-out;
 }
 
@@ -111,8 +110,7 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); 
-    /* border-radius: 10px; */
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: -1;
 }
 
@@ -125,14 +123,6 @@ nav a:hover {
     margin-bottom: 60px;
 }
 
-.hero-text img {
-    width: 80%;
-    max-width: 400px;
-    height: auto;
-    margin-bottom: 20px;
-}
-
-/* Hero Text Overrides */
 .hero-text h1 {
     font-size: 68px;
     margin-bottom: 10px;
@@ -142,15 +132,13 @@ nav a:hover {
 }
 
 .hero-text .tagline {
-    font-size: 28px;              
+    font-size: 28px;
     line-height: 1.4;
-    font-family: 'Lora', serif;   
+    font-family: 'Lora', serif;
     color: #f2f2f2;
     margin-bottom: 30px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
-
-
 
 .hero-text .button {
     display: inline-block;
@@ -169,6 +157,131 @@ nav a:hover {
     transform: translateY(-3px);
 }
 
+/* Our Food Section */
+.our-food-section {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #1a1a1a;
+  color: #fff;
+  position: relative;
+}
+
+.our-food-section h1 {
+  font-family: 'Lora', serif;
+  font-size: 1.4em;
+  line-height: 1.6;
+  color: #dcdcdc;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.food-description {
+  font-size: 1.2em;
+  line-height: 1.8;
+  color: #dcdcdc;
+  margin: 0 auto 50px;
+  max-width: 800px;
+}
+
+/* Carousel Wrapper (for Food Section) */
+.carousel-wrapper {
+    display: flex;
+    flex-direction: row;
+    max-width: 900px;
+    margin: 0 auto 50px;
+    overflow: hidden;
+    /* here */
+    justify-content: space-between;
+}
+
+.carousel {
+    width: 100%;
+}
+
+/* Carousel Container */
+.carousel-container {
+  overflow: hidden;
+  border-radius: 8px;
+  min-height: 250px;
+}
+
+/* Carousel Track */
+.carousel-track {
+  display: flex;
+  column-gap: 20px;
+  transition: transform 0.5s ease-in-out;
+  height: 100%;
+}
+
+/* Carousel Images (direct children of .carousel-track) */
+.carousel-track img {
+  flex: 0 0 calc((100% - 40px) / 3);
+  width: calc((100% - 40px) / 3);
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* Carousel Buttons */
+.carousel-btn {
+    position: static;      /* Remove absolute positioning */
+    transform: none;       /* Remove the translateY transform */;
+  background-color: rgba(207, 18, 18, 0.9);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px 15px;
+  z-index: 10;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  height: 70px;
+}
+
+.carousel-btn:hover {
+  background-color: rgba(160, 14, 14, 0.9);
+ 
+}
+
+/* Positioning for Reviews Carousel buttons (using .prev-btn & .next-btn) */
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
+
+/* Optionally add a little extra margin on each side */
+.left-btn {
+    margin-right: 20px;
+    margin-top: 70px;          /* Adjust as needed */
+  }
+  
+  .right-btn {
+    margin-left: 20px;
+    margin-top: 70px;            /* Adjust as needed */
+  }
+
+/* Generic Button */
+.button {
+  display: inline-block;
+  color: #fff;
+  background-color: #000;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family: 'Lora', sans-serif;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: rgb(207, 18, 18);
+  transform: translateY(-3px);
+}
 
 
 /* About Section */
@@ -200,7 +313,6 @@ nav a:hover {
     margin-bottom: 20px;
 }
 
-/* Image Cards */
 .img-section {
     display: flex;
     flex-wrap: wrap;
@@ -256,109 +368,6 @@ nav a:hover {
     opacity: 1;
 }
 
-
-/* Our Food Section */
-.our-food-section {
-    padding: 60px 20px;
-    text-align: center;
-    background-color: #1a1a1a;
-    color: #fff;
-    position: relative;
-}
-
-.our-food-section h1{
-    font-family: 'Lora', serif;
-    font-size: 1.4em;
-    line-height: 1.6;
-    color: #dcdcdc;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-}
-
-.our-food-section p{
-    font-size: 1.1em;
-    line-height: 1.8;;
-    margin-bottom: 20px;
-}
-
-.food-description {
-    font-size: 1.2em;
-    line-height: 1.8;
-    color: #dcdcdc;
-    margin: 0 auto 50px;
-    max-width: 800px;
-}
-
-/* --- Multi-Item Carousel with 3 Visible Items & Gap --- */
-.food-carousel {
-    position: relative;
-    max-width: 900px;       
-    margin: 0 auto 50px;    
-    overflow: hidden;       
-  }
-  
-  .carousel-track {
-    display: flex;
-    column-gap: 20px;       
-    transition: transform 0.5s ease-in-out;
-   
-  }
-  
-  .carousel-item {
-    flex: 0 0 calc((100% - 40px) / 3);
-    box-sizing: border-box;
-  }
-  
-  .carousel-item img {
-    width: 100%;
-    height: 250px;          
-    object-fit: cover;      
-    display: block;
-  }
-  
-  /* Carousel Navigation Buttons */
-  .carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.5);
-    color: #fff;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    z-index: 10;
-  }
-  
-  .prev-btn {
-    left: 10px;
-  }
-  
-  .next-btn {
-    right: 10px;
-  }
-  
-  .carousel-btn:hover {
-    background-color: rgba(207, 18, 18, 0.8);
-  }
-  
-  .button{
-    display: inline-block;
-    color: #fff;
-    background-color: #000;
-    text-decoration: none;
-    padding: 15px 30px;
-    border-radius: 5px;
-    font-size: 18px;
-    font-family: 'Lora', sans-serif;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-  }
-
-  .button:hover{
-    background-color: rgb(207, 18, 18);
-    transform: translateY(-3px);
-  }
-
 /* Reviews Section */
 .reviews-section {
     background-color: #111;
@@ -396,7 +405,7 @@ nav a:hover {
 }
 
 .review-item {
-    flex: 0 0 calc(26.333% - 20px);
+    flex: 0 0 calc(27% - 20px);
     background: #1a1a1a;
     padding: 30px;
     border-radius: 10px;
@@ -430,39 +439,10 @@ nav a:hover {
     margin-top: auto;
 }
 
-/* Navigation Buttons for Reviews */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    z-index: 10;
-    transition: background-color 0.3s ease;
-}
-
-.left-btn {
-    left: 10px;
-}
-
-.right-btn {
-    right: 10px;
-}
-
-.carousel-btn:hover {
-    background-color: rgba(207, 18, 18, 0.8);
-}
-
-
-
-/* Font Imports */
+/* Font Faces */
 @font-face {
     font-family: 'LekhanaRegular';
-    src: url('/DagGurkhaLiverpool/public/font-family/Lekhana\ Regular.otf') format('opentype');
+    src: url('/DagGurkhaLiverpool/public/font-family/Lekhana Regular.otf') format('opentype');
 }
 
 @font-face {
