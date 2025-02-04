@@ -1,0 +1,471 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    min-height: 100vh;           
+    display: flex;               
+    flex-direction: column;      
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    width: 100%; 
+    height: 100px;
+    box-sizing: border-box;
+    text-align: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: black;
+}
+
+nav a {
+    font-family: 'Lora', sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 27px;
+    padding: 10px;
+    margin: 10px 20px;
+    color: white;
+    display: inline-block;
+    transition: transform 0.5s ease, color 0.5s ease;
+    transform-origin: center bottom;
+}
+
+nav a:hover {
+    color: rgb(207, 18, 18);
+    transform: scale(1.1);
+}
+
+.momo-sticker {
+    margin-left: 20px;
+    margin-top: 20px;
+    transition: transform 0.5s ease;
+}
+
+.momo-sticker:hover {
+    transform: scale(1.1);
+}
+
+.media {
+    margin-left: 0px;
+    display: flex;
+    align-items: center;
+}
+
+.media a {
+    text-decoration: none;
+    margin: 5px;
+    transition: transform 0.5s ease;
+}
+
+.media a img {
+    transition: transform 0.5s ease;
+}
+
+.media a:hover img {
+    transform: scale(1.1);
+}
+
+/* Hero Section Styles */
+.hero-section {
+    position: relative;
+    width: 100%;
+    /* max-width: 900px; */
+    height: 500px;
+    margin: 0px auto 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border-radius: 10px; */
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hero-background {
+    position: absolute;
+    top:  0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    background-image: url('/DagGurkhaLiverpool/public/content/food/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+    transform: scale(1.1); 
+    transition: transform 0.2s ease-out, filter 0.2s ease-out;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); 
+    /* border-radius: 10px; */
+    z-index: -1;
+}
+
+.hero-text {
+    position: relative;
+    color: white;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px;
+    margin-bottom: 60px;
+}
+
+.hero-text img {
+    width: 80%;
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Hero Text Overrides */
+.hero-text h1 {
+    font-size: 68px;
+    margin-bottom: 10px;
+    font-family: 'LekhanaRegular', sans-serif;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-text .tagline {
+    font-size: 28px;              
+    line-height: 1.4;
+    font-family: 'Lora', serif;   
+    color: #f2f2f2;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.hero-text .button {
+    display: inline-block;
+    color: #fff;
+    background-color: #000;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: 'Lora', sans-serif;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.hero-text .button:hover {
+    background-color: rgb(207, 18, 18);
+    transform: translateY(-3px);
+}
+
+
+
+/* About Section */
+.about-section {
+    padding: 40px 20px;
+    background-color: #111;
+    color: #fff;
+}
+
+.about-text {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-text h1 {
+    font-family: 'Lora', serif;
+    font-size: 1.4em;
+    line-height: 1.6;
+    color: #dcdcdc;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.about-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Image Cards */
+.img-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.img-card {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.img-card a {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.img-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.img-card .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    color: #fff;
+    font-size: 1.2em;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.img-card:hover .overlay {
+    opacity: 1;
+}
+
+
+/* Our Food Section */
+.our-food-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #1a1a1a;
+    color: #fff;
+    position: relative;
+}
+
+.our-food-section h1{
+    font-family: 'Lora', serif;
+    font-size: 1.4em;
+    line-height: 1.6;
+    color: #dcdcdc;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.our-food-section p{
+    font-size: 1.1em;
+    line-height: 1.8;;
+    margin-bottom: 20px;
+}
+
+.food-description {
+    font-size: 1.2em;
+    line-height: 1.8;
+    color: #dcdcdc;
+    margin: 0 auto 50px;
+    max-width: 800px;
+}
+
+/* --- Multi-Item Carousel with 3 Visible Items & Gap --- */
+.food-carousel {
+    position: relative;
+    max-width: 900px;       
+    margin: 0 auto 50px;    
+    overflow: hidden;       
+  }
+  
+  .carousel-track {
+    display: flex;
+    column-gap: 20px;       
+    transition: transform 0.5s ease-in-out;
+   
+  }
+  
+  .carousel-item {
+    flex: 0 0 calc((100% - 40px) / 3);
+    box-sizing: border-box;
+  }
+  
+  .carousel-item img {
+    width: 100%;
+    height: 250px;          
+    object-fit: cover;      
+    display: block;
+  }
+  
+  /* Carousel Navigation Buttons */
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 10;
+  }
+  
+  .prev-btn {
+    left: 10px;
+  }
+  
+  .next-btn {
+    right: 10px;
+  }
+  
+  .carousel-btn:hover {
+    background-color: rgba(207, 18, 18, 0.8);
+  }
+  
+  .button{
+    display: inline-block;
+    color: #fff;
+    background-color: #000;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: 'Lora', sans-serif;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .button:hover{
+    background-color: rgb(207, 18, 18);
+    transform: translateY(-3px);
+  }
+
+/* Reviews Section */
+.reviews-section {
+    background-color: #111;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.reviews-section h1 {
+    font-family: 'LekhanaRegular', sans-serif;
+    font-size: 2.8em;
+    color: #ffffff;
+    margin-bottom: 50px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.reviews-carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1200px;
+    position: relative;
+}
+
+.reviews-carousel {
+    width: 80%;
+    overflow: hidden;
+    position: relative;
+}
+
+.reviews-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 20px;
+}
+
+.review-item {
+    flex: 0 0 calc(26.333% - 20px);
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.review-stars {
+    color: #FFD700;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.review-text {
+    font-family: 'Lora', serif;
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #dcdcdc;
+    margin-bottom: 20px;
+}
+
+.review-author {
+    font-family: 'Lora', serif;
+    font-weight: bold;
+    color: rgb(207, 18, 18);
+    font-size: 1em;
+    margin-top: auto;
+}
+
+/* Navigation Buttons for Reviews */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.left-btn {
+    left: 10px;
+}
+
+.right-btn {
+    right: 10px;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(207, 18, 18, 0.8);
+}
+
+
+
+/* Font Imports */
+@font-face {
+    font-family: 'LekhanaRegular';
+    src: url('/DagGurkhaLiverpool/public/font-family/Lekhana\ Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Lora';
+    src: url('/DagGurkhaLiverpool/public/font-family/Lora-VariableFont_wght.ttf') format('opentype');
+}
