@@ -17,51 +17,57 @@ const verticalParallax = Math.min(scrollPosition * 0.25, maxParallax);
         }
     });
 
-    // ================== Food Carousel (Our Food Section) ==================
-    const foodTrack = document.querySelector('.carousel-track');
-    if (foodTrack) {
-        const slides = Array.from(foodTrack.children);
-        // Use the button IDs from the HTML for the food carousel
-        const prevButton = document.getElementById('prevBtn');
-        const nextButton = document.getElementById('nextBtn');
+    // Food Carousel (Our Food Section)
+const foodTrack = document.querySelector('.carousel-track');
+if (foodTrack) {
+    const slides = Array.from(foodTrack.children);
+    const prevButton = document.getElementById('prevBtn');
+    const nextButton = document.getElementById('nextBtn');
 
-        let currentIndex = 0;
-        let slidesToShow = window.innerWidth < 768 ? 1 : 3;
-        let slideWidth = slides[0].getBoundingClientRect().width;
-        let gap = parseFloat(getComputedStyle(foodTrack).columnGap) || 0;
-        let step = slideWidth + gap;
-        let maxIndex = slides.length - slidesToShow;
+    let currentIndex = 0;
+    let slidesToShow = window.innerWidth < 768 ? 1 : 3;
+    let slideWidth = slides[0].getBoundingClientRect().width;
+    let gap = parseFloat(getComputedStyle(foodTrack).columnGap) || 0;
+    let step = slideWidth + gap;
+    let maxIndex = Math.max(0, slides.length - slidesToShow); // Ensure non-negative
 
-        function updateFoodCarousel() {
-            foodTrack.style.transform = `translateX(-${currentIndex * step}px)`;
-        }
-
-        nextButton.addEventListener('click', () => {
-            if (currentIndex < maxIndex) {
-                currentIndex++;
-                updateFoodCarousel();
-            }
-        });
-
-        prevButton.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateFoodCarousel();
-            }
-        });
-
-        window.addEventListener('resize', () => {
-            slidesToShow = window.innerWidth < 768 ? 1 : 3;
-            slideWidth = slides[0].getBoundingClientRect().width;
-            gap = parseFloat(getComputedStyle(foodTrack).columnGap) || 0;
-            step = slideWidth + gap;
-            maxIndex = slides.length - slidesToShow;
-            updateFoodCarousel();
-        });
-
-        updateFoodCarousel();
+    function updateFoodCarousel() {
+        foodTrack.style.transform = `translateX(-${currentIndex * step}px)`;
+        
+        // Update button states
+        prevButton.disabled = currentIndex === 0;
+        nextButton.disabled = currentIndex >= maxIndex;
     }
 
+    nextButton.addEventListener('click', () => {
+        if (currentIndex < maxIndex) {
+            currentIndex++;
+            updateFoodCarousel();
+        }
+    });
+
+    prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateFoodCarousel();
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        slidesToShow = window.innerWidth < 768 ? 1 : 3;
+        slideWidth = slides[0].getBoundingClientRect().width;
+        gap = parseFloat(getComputedStyle(foodTrack).columnGap) || 0;
+        step = slideWidth + gap;
+        maxIndex = Math.max(0, slides.length - slidesToShow);
+        
+        // Adjust currentIndex if it's beyond new maxIndex
+        currentIndex = Math.min(currentIndex, maxIndex);
+        
+        updateFoodCarousel();
+    });
+
+    updateFoodCarousel();
+}
     // ================== Reviews Carousel ==================
     const reviewsTrack = document.querySelector('.reviews-track');
     if (reviewsTrack) {
