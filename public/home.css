@@ -96,12 +96,15 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/DagGurkhaLiverpool/public/content/food/hero.jpg');
+    background-image: url('/DagGurkhaLiverpool/public/content/food/hero.jpg') ;
     background-size: cover;
     background-position: center;
+    
     z-index: -2;
     transform: scale(1.1);
-    transition: transform 0.2s ease-out, filter 0.2s ease-out;
+    /* transition: transform 0.2s ease-out, filter 0.2s ease-out; */
+    transition: none;
+    will-change: transform, filter;
 }
 
 .hero-overlay {
@@ -215,9 +218,9 @@ nav a:hover {
 
 /* Carousel Images (direct children of .carousel-track) */
 .carousel-track img {
-  flex: 0 0 calc((100% - 40px) / 3);
+  flex: 0 0 calc((100% - 45px) / 3);
   width: calc((100% - 40px) / 3);
-  height: 250px;
+  height: 260px;
   object-fit: cover;
   display: block;
 }
