@@ -416,7 +416,7 @@ transform: none;
 .review-item {
     flex: 0 0 calc(27% - 20px);
     background-color: #111;
-    padding: 8px 30px;
+    padding: 4px 30px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     text-align: center;
@@ -429,7 +429,8 @@ transform: none;
 .review-stars {
     color: #FFD700;
     font-size: 1.8em;
-    margin-bottom: 15px;
+    margin-bottom: 4px;
+    margin-top: 16px;
 }
 
 .review-text {
@@ -534,7 +535,8 @@ transform: none;
   }
   
   .info-box a:hover {
-    color: #fff;
+    color: #eee; /* A little whiter than #ccc */
+    text-decoration: none; /* Or remove this if you want an underline */
   }
 
 /* Map Section */
@@ -565,7 +567,7 @@ transform: none;
   
   .map-container iframe {
     border: none;
-    filter: brightness(0.5) contrast(1.5) grayscale(100%);
+    filter: brightness(0.8);
     position: absolute;
     top: 0;
     left: 0;
