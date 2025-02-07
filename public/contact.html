@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact Us - Da Gurkha, Liverpool</title>
+  <!-- Link to your improved CSS file -->
   <link rel="stylesheet" href="contact.css">
   <link rel="icon" href="/DagGurkhaLiverpool/public/content/fav-ico.ico" type="image/x-icon">
 </head>
@@ -11,48 +12,109 @@
 
   <!-- Header -->
   <header>
-    <a href="/contact" class="hidden-link">
-      <img class="momo-sticker" src="/DagGurkhaLiverpool/public/content/logo.svg" alt="Logo" style="width: 65px;">
-    </a>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/menu">Menu</a>
-      <a href="/contact">Contact</a>
-    </nav>
-    <div class="media">
-      <a href="https://www.facebook.com/profile.php?id=61563020801861" target="_blank">
-        <img src="/DagGurkhaLiverpool/public/content/facebook.png" alt="Facebook" width="30px">
+      <a href="/contact" class="hidden-link">
+          <img class="momo-sticker" src="/DagGurkhaLiverpool/public/content/logo.svg" alt="Logo" style="width: 65px;">
       </a>
-      <a href="https://www.instagram.com/gurkhasliverpool/" target="_blank">
-        <img src="/DagGurkhaLiverpool/public/content/instagram.png" alt="Instagram" width="30px">
-      </a>
-    </div>
+      <nav>
+          <a href="/">Home</a>
+          <a href="/menu">Menu</a>
+          <a href="/contact">Contact</a>
+      </nav>
+      <div class="media">
+          <a href="https://www.facebook.com/profile.php?id=61563020801861" target="_blank">
+              <img src="/DagGurkhaLiverpool/public/content/facebook.png" alt="Facebook" width="30px">
+          </a>
+          <a href="https://www.instagram.com/gurkhasliverpool/" target="_blank">
+              <img src="/DagGurkhaLiverpool/public/content/instagram.png" alt="Instagram" width="30px">
+          </a>
+      </div>
   </header>
 
-  <!-- Contact Form Section -->
-  <div class="contact">
-    <h1>Contact Us</h1>
-    <p>Feel free to contact us any time! We will get back to you as soon as we can.</p>
-    <form action="/contact" method="post">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <!-- Left Side: Contact Info -->
+    <div class="contact-info">
+      <h2>Get in Touch</h2>
+      <p><strong>Address:</strong> 114 South Rd, Waterloo,<br>
+        Liverpool L22 0ND</p>
+      <p><strong>Phone:</strong> <a href="tel:+44 7392 489058">+44 7392 489 058</a></p>
+      <p><strong>Email:</strong> <a href="mailto:dagurkha@gmail.com">dagurkha@gmail.com</a></p>
+      <p><strong>Opening Hours:</strong></p>
+      <p>Tuesday to Saturday: 4 pm - 10 pm</p>
+      <p>Sunday & Monday: Closed</p>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2374.649623507503!2d-2.987711484167093!3d53.40900737999209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487b212d00e23e5b%3A0x583d7fa5223afdd5!2s3%20Cheapside%2C%20Liverpool%20L2%202DY%2C%20UK!5e0!3m2!1sen!2sus!4v1697812345678!5m2!1sen!2sus" 
+          width="400" 
+          height="300" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
 
-      <label for="message">Message</label>
-      <textarea id="message" name="message" required></textarea>
+    <!-- Right Side: Contact Form -->
+    <div class="contact-form">
+      <h2>How Can We Help?</h2>
 
-      <!-- Honeypot field (hidden from users) -->
-      <div style="display: none;">
-        <label for="phone">Phone</label>
-        <input type="text" id="phone" name="phone">
+      <!-- Form Toggle Buttons -->
+      <div class="form-toggle">
+        <button type="button" class="toggle-btn active" data-form="message">Send Message</button>
+        <button type="button" class="toggle-btn" data-form="booking">Book a Table</button>
       </div>
 
-      <button type="submit">Send</button>
-      <p id="message-status" class="hidden"></p>
-    </form>
-  </div>
+      <!-- Contact Form -->
+      <form action="#" method="post" id="contactForm">
+        <!-- Common Fields -->
+        <div class="form-group">
+          <label for="name">Name <span>*</span></label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email <span>*</span></label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <!-- Booking Fields (Initially Hidden) -->
+        <div class="booking-fields" style="display: none;">
+            <div class="form-group">
+              <label for="people">Number of People <span>*</span></label>
+              <input 
+                type="number" 
+                id="people" 
+                name="people" 
+                min="1" 
+                placeholder="Enter number of people" />
+            </div>
+            <div class="form-group">
+              <label for="date">Date <span>*</span></label>
+              <input type="date" id="date" name="date">
+            </div>
+            <div class="form-group">
+              <label for="time">Time <span>*</span></label>
+              <input type="time" id="time" name="time">
+            </div>
+          </div>
+
+        <!-- Message Fields -->
+        <div class="message-fields">
+          <div class="form-group">
+            <label for="message">Message <span>*</span></label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+        </div>
+
+        <!-- Hidden Field to Track which Form is Submitted -->
+        <input type="hidden" name="form_type" value="message" />
+
+        <!-- Submit Button -->
+        <button type="submit" class="button" id="submitBtn">Send Message</button>
+      </form>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer>
@@ -60,5 +122,6 @@
   </footer>
 
   <script src="/DagGurkhaLiverpool/src/script.js"></script>
+
 </body>
 </html>
