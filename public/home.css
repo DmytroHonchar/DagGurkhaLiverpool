@@ -335,16 +335,6 @@ body, html {
     margin: 20px 15px;
 }
   
-  
-  /* Responsive adjustments for smaller screens */
-  @media (max-width: 768px) {
-    .about-block {
-      flex-direction: column;
-      text-align: center;
-    }
-  }
-  
-  
   /* ================= Reviews Section ================= */
   .reviews-section {
     background-color: #1a1a1a;
@@ -710,6 +700,10 @@ body, html {
         font-size: 1em;
     }
 
+    .our-food-section{
+        padding: 20px;
+    }
+
     .carousel-wrapper {
         overflow: hidden;
         width: 280px;
@@ -747,6 +741,30 @@ body, html {
         font-size: 1em;
         margin-top: 25px;
        }
+
+       .about-section{
+        padding: 20px ;
+       }
+
+       .about-block {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-text,
+  .about-image {
+    padding: 10px;     
+  }
+
+  .about-block.restaurant-info .about-text {
+    order: 1;
+  }
+  .about-block.restaurant-info .about-image {
+    order: 2;
+  }
+  .about-text h2 {
+    text-align: center;
+  }
   }
   
   
