@@ -547,17 +547,9 @@ transform: none;
     width: 100%;
     background-color: #111;
     padding: 60px 20px;
-    text-align: center; /* Center the title */
+    text-align: center; 
   }
   
-  .map-title {
-    color: #dcdcdc;
-    font-family: 'LekhanaRegular', sans-serif;
-    margin-bottom: 20px;
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
   
   .map-container {
     max-width: 1000px;
@@ -570,7 +562,7 @@ transform: none;
   
   .map-container iframe {
     border: none;
-    filter: brightness(0.8);
+    filter: brightness(0.9);
     position: absolute;
     top: 0;
     left: 0;
@@ -594,26 +586,27 @@ transform: none;
   }
 
   /* Footer Styles */
-footer {
-    /* background-color: #0a0a0a; */
+  footer {
     background-color: #300202;
     color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 25px 0;
-    text-align: center;
-    border-top: 1px solid rgba(207, 18, 18, 0.2);
-    margin-top: 0px;
     font-family: 'Lora', serif;
-    position: relative;
-}
-
-footer p {
-    margin: 0;
     font-size: 0.95em;
     letter-spacing: 0.5px;
+    border-top: 1px solid rgba(207, 18, 18, 0.2);
+    margin-top: 0;
+  }
+  
+  footer p {
+    width: auto;           
+    text-align: center;     
+    margin: 0;              
     color: #e0e0e0;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
+  }
 
 
 /* Font Faces */

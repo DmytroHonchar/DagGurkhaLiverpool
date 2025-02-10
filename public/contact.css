@@ -1,4 +1,3 @@
-/* Global Styles */
 body, html {
     margin: 0;
     padding: 0;
@@ -7,7 +6,7 @@ body, html {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #000; /* optional: unify background color across site */
+    background-color: #000;
   }
   
   img {
@@ -15,7 +14,15 @@ body, html {
     height: auto;
   }
   
-  /* Header */
+  h1, h2 {
+    text-align: center;
+    color: #fff;
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    margin-bottom: 16px;
+  }
+
+  
   header {
     display: flex;
     flex-direction: row;
@@ -24,9 +31,7 @@ body, html {
     width: 100%;
     height: 100px;
     box-sizing: border-box;
-    text-align: center;
     align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: #300202;
   }
   
@@ -34,24 +39,24 @@ body, html {
     font-family: 'Lora', sans-serif;
     font-weight: bold;
     text-decoration: none;
-    font-size: 27px;
+    font-size: 1.7rem;
     padding: 10px;
     margin: 10px 20px;
-    color: white;
+    color: #fff;
     display: inline-block;
-    transition: transform 0.5s ease, color 0.5s ease;
+    transition: transform 0.5s, color 0.5s;
     transform-origin: center bottom;
   }
   
   nav a:hover {
-    color: rgb(207, 18, 18);
+    color: #cf1212;
     transform: scale(1.1);
   }
   
   .momo-sticker {
     margin-left: 20px;
     margin-top: 20px;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s;
   }
   
   .momo-sticker:hover {
@@ -59,7 +64,7 @@ body, html {
   }
   
   .media {
-    margin-left: 0px;
+    margin-left: 0;
     display: flex;
     align-items: center;
   }
@@ -67,81 +72,75 @@ body, html {
   .media a {
     text-decoration: none;
     margin: 5px;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s;
   }
   
   .media a img {
-    transition: transform 0.5s ease;
+    transition: transform 0.5s;
   }
   
   .media a:hover img {
     transform: scale(1.1);
   }
   
-
-
-  /* Contact Section */
   .contact-section {
+    background: url('/DagGurkhaLiverpool/public/content/BG1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    flex: 1;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
     padding: 40px 20px;
-    background-color: #1a1a1a;
-    color: #fff;
-    flex: 1; /* ensures it grows to fill remaining vertical space */
     box-sizing: border-box;
+    color: #fff;
+    height: 900px;
   }
   
   .contact-info,
   .contact-form {
     flex: 1;
     margin: 10px;
-    text-align: justify;
   }
   
-  /* HEADINGS (Contact Info / Form) */
-  .contact-info h2,
-  .contact-form h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    font-family: 'Lora', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  .contact-info p strong {
+    color: #fff;
   }
   
-  /* Contact Info */
-  .contact-info p {
-    margin-bottom: 10px;
-    line-height: 1.6;
+.contact-info p{
+    width: 80%;
+    margin: 0 auto 15px auto;
+    text-align: left;
+    line-height: 1.7;
+    color: #ddd;
     font-family: 'Lora', serif;
-    font-size: 16px;
-  }
-  
+    font-size: 1rem;
+}
+
   .contact-info a {
-    color: rgb(207, 18, 18);
+    color: #cf1212;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s;
+    cursor: pointer;
   }
   
   .contact-info a:hover {
     color: #fff;
     text-decoration: underline;
+    cursor: pointer;
   }
   
-  /* Map Container */
   .map-container {
-    margin-top: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-    overflow: hidden;
     width: fit-content;
+    margin: 20px auto 0 auto;
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); */
+    overflow: hidden;
   }
   
-  /* Contact Form Box */
   .contact-form form {
-    background-color: #fff;
-    color: #333;
-    padding: 25px;
+    background-color: #2b2b2b;
+    color: #fff;
+    padding: 40px;
     border-radius: 8px;
     font-family: 'Lora', sans-serif;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -155,7 +154,11 @@ body, html {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 1rem;
+  }
+  
+  .contact-form label span {
+    color: #cf1212;
   }
   
   .contact-form input,
@@ -163,23 +166,18 @@ body, html {
   .contact-form textarea {
     width: 100%;
     padding: 10px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid #777;
     border-radius: 4px;
-    font-size: 15px;
+    font-size: 1rem;
     font-family: 'Lora', sans-serif;
+    background-color: #444;
+    color: #fff;
   }
   
-  /* For the required asterisk */
-  .contact-form label span {
-    color: #c00;
-  }
-  
-  /* Smooth resizing for textarea */
   .contact-form textarea {
     resize: vertical;
   }
   
-  /* Toggle Buttons Row */
   .form-toggle {
     margin-bottom: 20px;
     display: flex;
@@ -193,8 +191,8 @@ body, html {
     background: #eaeaea;
     cursor: pointer;
     border-radius: 4px;
-    transition: all 0.3s ease;
-    font-size: 16px;
+    transition: all 0.3s;
+    font-size: 1rem;
     font-family: 'Lora', sans-serif;
     flex: 1;
     max-width: 180px;
@@ -206,39 +204,38 @@ body, html {
     background: #ddd;
   }
   
-  /* Active toggle button style */
   .toggle-btn.active {
-    background: rgb(207, 18, 18);
+    background: #cf1212;
     color: #fff;
     transform: scale(1.03);
   }
   
-  /* Submit Button */
   .button {
     display: inline-block;
     padding: 12px 24px;
-    background-color: #000;
+    background-color: #300202;
     color: #fff;
     text-decoration: none;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition: background-color 0.2s, transform 0.2s;
     font-family: 'Lora', sans-serif;
-    font-size: 18px;
+    font-size: 1rem;
     margin-top: 10px;
   }
   
   .button:hover {
-    background-color: rgb(207, 18, 18);
+    background-color: #cf1212;
     transform: translateY(-3px);
   }
   
-  /* Footer */
   footer {
     background-color: #300202;
     color: #fff;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 25px 0;
     font-family: 'Lora', serif;
     font-size: 0.95em;
@@ -248,29 +245,30 @@ body, html {
   }
   
   footer p {
-    margin: 0;
+    width: auto;           
+    text-align: center;     
+    margin: 0;              
     color: #e0e0e0;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
   
-  /* Responsive Styles */
+  
+  
   @media screen and (max-width: 900px) {
     .contact-section {
       flex-direction: column;
       align-items: center;
     }
-  
-    .contact-info, .contact-form {
+    .contact-info,
+    .contact-form {
       margin: 20px 0;
       max-width: 600px;
     }
-  
     .map-container iframe {
       width: 100% !important;
     }
   }
   
-  /* Font Faces */
   @font-face {
     font-family: 'LekhanaRegular';
     src: url('/DagGurkhaLiverpool/public/font-family/Lekhana Regular.otf') format('opentype');
