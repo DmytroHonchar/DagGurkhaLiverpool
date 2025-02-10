@@ -277,20 +277,34 @@ body, html {
     transform: translateY(-3px);
   }
   
-  /* ================= About Section ================= */
-  .about-section {
+  /* New About Section Styles */
+.about-section {
     padding: 40px 20px;
     background-color: #300202;
     color: #fff;
   }
   
-  .about-text {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
+  .about-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 0px;
+    margin: 0px 40px;
   }
   
-  .about-text h1 {
+  /* Text and image blocks share equal space */
+  .about-text,
+  .about-image {
+    flex: 1;
+    padding: 50px;
+    font-size: 1.2em;
+    line-height: 1.4em;
+    text-align: justify;
+
+  }
+
+  .about-text h2{
     font-family: 'Lora', serif;
     font-size: 1.4em;
     line-height: 1.6;
@@ -299,70 +313,37 @@ body, html {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
   }
   
-  .about-text p {
-    font-size: 1.2em;
-    line-height: 1.8;
-    margin-bottom: 20px;
-  }
-  
-  .img-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 50px;
-  }
-  
-  .img-card {
-    position: relative;
-    width: 300px;
-    height: 400px;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .img-card a {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .img-card img {
-    width: 100%;
-    height: 100%;
+  /* Ensure images are responsive and well-contained */
+  .about-image img {
+    width: 350px;
+    height: 380px;
     object-fit: cover;
-  }
-  
-  .img-card .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    color: #fff;
-    font-size: 1.2em;
-    text-align: center;
-    font-weight: bold;
     border-radius: 10px;
   }
+
+  .about-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .hr-line {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #7e150d, transparent);
+    margin: 20px 15px;
+}
   
-  .img-card:hover .overlay {
-    opacity: 1;
+  
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .about-block {
+      flex-direction: column;
+      text-align: center;
+    }
   }
   
-  .overlay p {
-    font-family: Lora;
-  }
   
   /* ================= Reviews Section ================= */
   .reviews-section {
@@ -714,19 +695,58 @@ body, html {
     }
 
     .hero-section{
-        height: 60vh;
+        height: 50vh;
     }
 
     .hero-text h1{
         font-size: 3em;
     }
 
-    .hero-text p{
-        font-size: 2em;
+    .hero-text .tagline {
+        font-size: 1.3em;
     }
 
     .hero-text a{
         font-size: 1em;
     }
+
+    .carousel-wrapper {
+        overflow: hidden;
+        width: 280px;
+        margin: 0 auto;
+      }
+
+      .carousel-container {
+        width: 100%;
+        height: auto;
+      }
+
+      .carousel-track {
+        display: flex;
+        overflow-x: scroll !important;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        column-gap: 0;
+      }
+
+      .carousel-track img {
+        width: 100%;
+        height: auto;
+        flex-shrink: 0;
+        margin: 0;
+        scroll-snap-align: center;
+      }
+
+      .carousel-btn {
+        display: none;
+      }
+
+      .view-menu-btn{
+        font-size: 1em;
+        margin-top: 25px;
+       }
   }
+  
   
