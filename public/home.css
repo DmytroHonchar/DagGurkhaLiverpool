@@ -1,4 +1,4 @@
-/* Global Styles */
+/* ================= Global Styles ================= */
 body, html {
     margin: 0;
     padding: 0;
@@ -7,15 +7,15 @@ body, html {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-}
-
-img {
+  }
+  
+  img {
     max-width: 100%;
     height: auto;
-}
-
-/* Header */
-header {
+  }
+  
+  /* ================= Header ================= */
+  header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -27,9 +27,9 @@ header {
     align-items: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: #300202;
-}
-
-nav a {
+  }
+  
+  nav a {
     font-family: 'Lora', sans-serif;
     font-weight: bold;
     text-decoration: none;
@@ -40,45 +40,45 @@ nav a {
     display: inline-block;
     transition: transform 0.5s ease, color 0.5s ease;
     transform-origin: center bottom;
-}
-
-nav a:hover {
+  }
+  
+  nav a:hover {
     color: rgb(207, 18, 18);
     transform: scale(1.1);
-}
-
-.momo-sticker {
+  }
+  
+  .momo-sticker {
     margin-left: 20px;
     margin-top: 20px;
     transition: transform 0.5s ease;
-}
-
-.momo-sticker:hover {
+  }
+  
+  .momo-sticker:hover {
     transform: scale(1.1);
-}
-
-.media {
+  }
+  
+  .media {
     margin-left: 0px;
     display: flex;
     align-items: center;
-}
-
-.media a {
+  }
+  
+  .media a {
     text-decoration: none;
     margin: 5px;
     transition: transform 0.5s ease;
-}
-
-.media a img {
+  }
+  
+  .media a img {
     transition: transform 0.5s ease;
-}
-
-.media a:hover img {
+  }
+  
+  .media a:hover img {
     transform: scale(1.1);
-}
-
-/* Hero Section */
-.hero-section {
+  }
+  
+  /* ================= Hero Section ================= */
+  .hero-section {
     position: relative;
     width: 100%;
     height: 500px;
@@ -88,26 +88,25 @@ nav a:hover {
     justify-content: center;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.hero-background {
+  }
+  
+  .hero-background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/DagGurkhaLiverpool/public/content/food/hero.jpg') ;
+    background-image: url('/DagGurkhaLiverpool/public/content/food/hero.jpg');
     background-size: cover;
     background-position: center;
-    
     z-index: -2;
     transform: scale(1.1);
     /* transition: transform 0.2s ease-out, filter 0.2s ease-out; */
     transition: none;
     will-change: transform, filter;
-}
-
-.hero-overlay {
+  }
+  
+  .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -115,35 +114,35 @@ nav a:hover {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: -1;
-}
-
-.hero-text {
+  }
+  
+  .hero-text {
     position: relative;
     color: white;
     text-align: center;
     max-width: 800px;
     padding: 0 20px;
     margin-bottom: 60px;
-}
-
-.hero-text h1 {
+  }
+  
+  .hero-text h1 {
     font-size: 68px;
     margin-bottom: 10px;
     font-family: 'LekhanaRegular', sans-serif;
     color: #ffffff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.hero-text .tagline {
+  }
+  
+  .hero-text .tagline {
     font-size: 28px;
     line-height: 1.4;
     font-family: 'Lora', serif;
     color: #f2f2f2;
     margin-bottom: 30px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.hero-text .button {
+  }
+  
+  .hero-text .button {
     display: inline-block;
     color: #fff;
     background-color: #000;
@@ -153,205 +152,192 @@ nav a:hover {
     font-size: 24px;
     font-family: 'Lora', sans-serif;
     transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.hero-text .button:hover {
-    background-color: rgb(207, 18, 18);
-    transform: translateY(-3px);
-}
-
-/* Our Food Section */
-.our-food-section {
-  padding: 40px 20px;
-  text-align: center;
-  background-color: #1a1a1a ;
-  color: #fff;
-  position: relative;
-}
-
-.our-food-section h1 {
-  font-family: 'Lora', serif;
-  font-size: 1.4em;
-  line-height: 1.6;
-  color: #dcdcdc;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-}
-
-.food-description {
-  font-size: 1.2em;
-  line-height: 1.8;
-  color: #dcdcdc;
-  margin: 0 auto 50px;
-  max-width: 800px;
-}
-
-/* Carousel Wrapper (for Food Section) */
-.carousel-wrapper {
-    display: flex;
-    flex-direction: row;
-    max-width: 900px;
-    margin: 0 auto 50px;
-    overflow: hidden;
-    /* here */
-    justify-content: space-between;
-}
-
-.carousel {
-    width: 100%;
-}
-
-/* Carousel Container */
-.carousel-container {
-  overflow: hidden;
-  border-radius: 8px;
-  min-height: 250px;
-}
-
-/* Carousel Track */
-.carousel-track {
-  display: flex;
-  column-gap: 20px;
-  transition: transform 0.5s ease-in-out;
-  height: 100%;
-}
-
-/* Carousel Images (direct children of .carousel-track) */
-.carousel-track img {
-  flex: 0 0 calc((100% - 45px) / 3);
-  width: calc((100% - 40px) / 3);
-  height: 260px;
-  object-fit: cover;
-  display: block;
-}
-
-
-/* Carousel Buttons */
-.carousel-btn {
-position: static;      
-transform: none;       
-  background-color: rgba(207, 18, 18, 0.9);
-  color: #fff;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  padding: 10px 15px;
-  z-index: 10;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  height: 70px;
-}
-
-.carousel-btn:hover {
-  background-color: rgba(160, 14, 14, 0.9);
- 
-}
-
-.prev-btn{
-    margin-right: 20px;
-}
-
-.next-btn{
-    margin-left: 20px;
-}
-
-
-/* Optionally add a little extra margin on each side */
-.left-btn {
-    margin-right: 20px;
-    margin-top: 70px;          
   }
   
-  .right-btn {
-    margin-left: 20px;
-    margin-top: 70px;            
+  .hero-text .button:hover {
+    background-color: rgb(207, 18, 18);
+    transform: translateY(-3px);
   }
-
-
- 
-/* Generic Button */
-.button {
-  display: inline-block;
-  color: #fff;
-  background-color: #000;
-  text-decoration: none;
-  padding: 15px 30px;
-  border-radius: 5px;
-  font-size: 18px;
-  font-family: 'Lora', sans-serif;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.button:hover {
-  background-color: rgb(207, 18, 18);
-  transform: translateY(-3px);
-}
-
-
-/* About Section */
-.about-section {
+  
+  /* ================= Our Food Section ================= */
+  .our-food-section {
     padding: 40px 20px;
-    /* background-color: #111; */
-    /* background-color: #1b0404; */
-    background-color: #300202 ;
-    color: #fff;
-}
-
-.about-text {
-    max-width: 800px;
-    margin: 0 auto;
     text-align: center;
-}
-
-.about-text h1 {
+    background-color: #1a1a1a;
+    color: #fff;
+    position: relative;
+  }
+  
+  .our-food-section h1 {
     font-family: 'Lora', serif;
     font-size: 1.4em;
     line-height: 1.6;
     color: #dcdcdc;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-}
-
-.about-text p {
+  }
+  
+  .food-description {
+    font-size: 1.2em;
+    line-height: 1.8;
+    color: #dcdcdc;
+    margin: 0 auto 50px;
+    max-width: 800px;
+  }
+  
+  /* ---------------- Carousel (Food Section) ---------------- */
+  .carousel-wrapper {
+    display: flex;
+    flex-direction: row;
+    max-width: 900px;
+    margin: 0 auto 50px;
+    overflow: hidden;
+    justify-content: space-between;
+  }
+  
+  .carousel {
+    width: 100%;
+  }
+  
+  .carousel-container {
+    overflow: hidden;
+    border-radius: 8px;
+    min-height: 250px;
+  }
+  
+  .carousel-track {
+    display: flex;
+    column-gap: 20px;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+  }
+  
+  .carousel-track img {
+    flex: 0 0 calc((100% - 45px) / 3);
+    width: calc((100% - 40px) / 3);
+    height: 260px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* Carousel Buttons */
+  .carousel-btn {
+    position: static;
+    transform: none;
+    background-color: rgba(207, 18, 18, 0.9);
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px 15px;
+    z-index: 10;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    height: 70px;
+  }
+  
+  .carousel-btn:hover {
+    background-color: rgba(160, 14, 14, 0.9);
+  }
+  
+  .prev-btn {
+    margin-right: 20px;
+  }
+  
+  .next-btn {
+    margin-left: 20px;
+  }
+  
+  .left-btn {
+    margin-right: 20px;
+    margin-top: 70px;
+  }
+  
+  .right-btn {
+    margin-left: 20px;
+    margin-top: 70px;
+  }
+  
+  /* Generic Button */
+  .button {
+    display: inline-block;
+    color: #fff;
+    background-color: #000;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: 'Lora', sans-serif;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+  
+  .button:hover {
+    background-color: rgb(207, 18, 18);
+    transform: translateY(-3px);
+  }
+  
+  /* ================= About Section ================= */
+  .about-section {
+    padding: 40px 20px;
+    background-color: #300202;
+    color: #fff;
+  }
+  
+  .about-text {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .about-text h1 {
+    font-family: 'Lora', serif;
+    font-size: 1.4em;
+    line-height: 1.6;
+    color: #dcdcdc;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  }
+  
+  .about-text p {
     font-size: 1.2em;
     line-height: 1.8;
     margin-bottom: 20px;
-}
-
-.img-section {
+  }
+  
+  .img-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 40px;
     margin-top: 50px;
-}
-
-.img-card {
+  }
+  
+  .img-card {
     position: relative;
     width: 300px;
     height: 400px;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.img-card a {
+  }
+  
+  .img-card a {
     position: relative;
     display: block;
     width: 100%;
     height: 100%;
     text-decoration: none;
     color: inherit;
-}
-
-.img-card img {
+  }
+  
+  .img-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.img-card .overlay {
+  }
+  
+  .img-card .overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -368,55 +354,55 @@ transform: none;
     text-align: center;
     font-weight: bold;
     border-radius: 10px;
-}
-
-.img-card:hover .overlay {
+  }
+  
+  .img-card:hover .overlay {
     opacity: 1;
-}
-
-.overlay p{
+  }
+  
+  .overlay p {
     font-family: Lora;
-}
-
-/* Reviews Section */
-.reviews-section {
+  }
+  
+  /* ================= Reviews Section ================= */
+  .reviews-section {
     background-color: #1a1a1a;
     padding: 40px 20px;
     text-align: center;
-}
-
-.reviews-section h1 {
+  }
+  
+  .reviews-section h1 {
     font-family: 'Lora', serif;
     font-size: 1.4em;
     line-height: 1.6;
     color: #dcdcdc;
     margin-bottom: 40px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-}
-
-.reviews-carousel-wrapper {
+  }
+  
+  .reviews-carousel-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
     max-width: 1200px;
     position: relative;
-}
-
-.reviews-carousel {
+  }
+  
+  .reviews-carousel {
     width: 80%;
     overflow: hidden;
     position: relative;
-}
-
-.reviews-track {
+  }
+  
+  .reviews-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
     gap: 20px;
     margin-bottom: 20px;
-}
-
-.review-item {
+  }
+  
+  .review-item {
     flex: 0 0 calc(27% - 20px);
     background-color: #111;
     padding: 4px 30px;
@@ -427,43 +413,41 @@ transform: none;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.review-stars {
+  }
+  
+  .review-stars {
     color: #FFD700;
     font-size: 1.8em;
     margin-bottom: 4px;
     margin-top: 16px;
-}
-
-.review-text {
+  }
+  
+  .review-text {
     font-family: 'Lora', serif;
     font-size: 1.1em;
     line-height: 1.6;
     color: #dcdcdc;
     margin-bottom: 20px;
-}
-
-.review-author {
+  }
+  
+  .review-author {
     font-family: 'Lora', serif;
     font-weight: bold;
     color: rgb(207, 18, 18);
     font-size: 1em;
     margin-top: auto;
-}
-
-
-.info-section {
+  }
+  
+  /* ================= Info Section ================= */
+  .info-section {
     display: flex;
     flex-direction: row;
     background-color: #111;
-    /* background-color: #1b0404; */
     padding: 40px 20px 0px;
-    display: flex;
     justify-content: center;
   }
-
-  .info-container{
+  
+  .info-container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -489,16 +473,15 @@ transform: none;
   }
   
   .icon-wrapper {
-    /* margin-bottom: 0.8rem; */
     margin-top: 15px;
     margin-right: 10px;
   }
-
+  
   .icon-wrapper img {
-    width: 1.6rem;  
-    height: auto;   
-    display: block; 
-    margin-bottom: 0.8rem; 
+    width: 1.6rem;
+    height: auto;
+    display: block;
+    margin-bottom: 0.8rem;
   }
   
   .icon {
@@ -506,18 +489,16 @@ transform: none;
     font-size: 1.6rem;
   }
   
-  .icon-fix{
+  .icon-fix {
     display: flex;
     flex-direction: row;
-    
   }
-
+  
   .info-box h2 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
     color: #fff;
     font-family: 'Lora', sans-serif;
-    /* text-transform: uppercase; */
     letter-spacing: 0.5px;
   }
   
@@ -538,18 +519,17 @@ transform: none;
   }
   
   .info-box a:hover {
-    color: #eee; /* A little whiter than #ccc */
-    text-decoration: none; /* Or remove this if you want an underline */
+    color: #eee;
+    text-decoration: none;
   }
-
-/* Map Section */
-.map-section {
+  
+  /* ================= Map Section ================= */
+  .map-section {
     width: 100%;
     background-color: #111;
     padding: 60px 20px;
-    text-align: center; 
+    text-align: center;
   }
-  
   
   .map-container {
     max-width: 1000px;
@@ -570,22 +550,20 @@ transform: none;
     height: 100%;
   }
   
-
-/* Add these styles to your CSS */
-.carousel-btn:disabled {
+  /* ================= Disabled Buttons ================= */
+  .carousel-btn:disabled {
     background-color: rgba(90, 8, 8, 0.5) !important;
     cursor: not-allowed;
     opacity: 0.6;
   }
   
-  /* For reviews carousel buttons */
   .reviews-carousel-wrapper .carousel-btn:disabled {
     background-color: rgba(90, 8, 8, 0.5) !important;
     cursor: not-allowed;
     opacity: 0.6;
   }
-
-  /* Footer Styles */
+  
+  /* ================= Footer ================= */
   footer {
     background-color: #300202;
     color: #fff;
@@ -601,21 +579,154 @@ transform: none;
   }
   
   footer p {
-    width: auto;           
-    text-align: center;     
-    margin: 0;              
+    width: auto;
+    text-align: center;
+    margin: 0;
     color: #e0e0e0;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
-
-
-/* Font Faces */
-@font-face {
+  
+  /* ================= Font Faces ================= */
+  @font-face {
     font-family: 'LekhanaRegular';
     src: url('/DagGurkhaLiverpool/public/font-family/Lekhana Regular.otf') format('opentype');
-}
-
-@font-face {
+  }
+  
+  @font-face {
     font-family: 'Lora';
     src: url('/DagGurkhaLiverpool/public/font-family/Lora-VariableFont_wght.ttf') format('opentype');
-}
+  }
+  
+  /* ================= Navigation Overlay & Mobile Menu ================= */
+  
+  /* Mobile Menu Icon (hidden by default, visible on mobile) */
+  .menu-icon {
+    display: none;
+    cursor: pointer;
+  }
+  
+  /* Navigation Overlay Container */
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: rgba(48, 2, 2, 0.95);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
+    padding-top:  0px;
+  }
+  
+  /* When active, show overlay with slide-in animation */
+  .nav-overlay.active {
+    display: flex;
+    animation: slideIn 0.5s forwards;
+  }
+  
+  /* When closing, apply slide-out animation */
+  .nav-overlay.inactive {
+    animation: slideOut 0.5s forwards;
+    display: flex;
+  }
+  
+  .nav-overlay nav {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .nav-overlay nav a {
+    display: block;
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+    margin: 10px 0;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-overlay nav a:hover {
+    color: #ffb766;
+  }
+  
+  /* Close Button in Overlay */
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Prevent background scrolling when overlay is active */
+  body.no-scroll {
+    overflow: hidden;
+  }
+  
+  /* Slide-in and Slide-out animations */
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+  
+  /* Responsive Styles for Mobile */
+  @media (max-width: 768px) {
+    /* Hide the desktop nav on mobile */
+    header > nav {
+        display: none;
+    }
+
+
+    header {
+        position: static;
+        width: 100%;
+        padding: 0px 10px;
+        height: 70px;
+    }
+
+    .momo-sticker{
+        display: none;
+    }
+    /* Display the mobile menu icon */
+    .menu-icon {
+        display: block;
+        margin-left: auto;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+
+    .hero-section{
+        height: 60vh;
+    }
+
+    .hero-text h1{
+        font-size: 3em;
+    }
+
+    .hero-text p{
+        font-size: 2em;
+    }
+
+    .hero-text a{
+        font-size: 1em;
+    }
+  }
+  

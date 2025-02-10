@@ -170,5 +170,31 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       });
     }
+
+  // ================== Navigation Overlay Functionality ==================
+  const menuIcon = document.querySelector(".menu-icon");
+  const closeButton = document.querySelector(".close-btn");
+  const navOverlay = document.querySelector(".nav-overlay");
+  const bodyElement = document.body;
+
+  if (menuIcon && closeButton && navOverlay) {
+    menuIcon.addEventListener("click", toggleNav);
+    closeButton.addEventListener("click", toggleNav);
+  }
+
+  function toggleNav() {
+    if (!navOverlay.classList.contains("active")) {
+      navOverlay.classList.remove("inactive");
+      navOverlay.classList.add("active");
+      bodyElement.classList.add("no-scroll");
+    } else {
+      navOverlay.classList.remove("active");
+      navOverlay.classList.add("inactive");
+      bodyElement.classList.remove("no-scroll");
+    }
+  }
+
   });
+  
+
   
