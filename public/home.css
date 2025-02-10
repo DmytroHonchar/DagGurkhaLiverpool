@@ -775,19 +775,23 @@ body, html {
     display: flex;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;        /* For a smoother swipe feeling */
-    -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
+    scroll-behavior: smooth;       
+    -webkit-overflow-scrolling: touch; 
   }
 
   .review-item {
-    flex: 0 0 90%;         /* Each review fills the width */
+    flex: 0 0 90%;         
     margin: 0 auto;
     scroll-snap-align: center;
     padding: 10px;
   }
 
   .carousel-btn {
-    display: none;          /* Hide arrow buttons on mobile */
+    display: none;          
+  }
+
+  .more-reviews-link{
+    margin-top: 0px;
   }
   }
   
