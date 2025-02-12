@@ -499,14 +499,16 @@ body, html {
   .map-section {
     width: 100%;
     background-color: #111;
-    padding: 60px 20px;
-    text-align: center;
+    padding: 60px 0;
+    display: flex;
+    justify-content: center;
   }
   
   .map-container {
+    width: 100%;
     max-width: 1000px;
-    margin: 0 auto;
     height: 500px;
+    margin: 0 auto;
     overflow: hidden;
     position: relative;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
@@ -521,6 +523,7 @@ body, html {
     width: 100%;
     height: 100%;
   }
+  
   
   /* ================= Disabled Buttons ================= */
   .carousel-btn:disabled {
@@ -753,7 +756,7 @@ body, html {
   
     .about-text,
     .about-image {
-        padding: 10px;
+        padding: 20px;
     }
   
     .about-block.restaurant-info .about-text {
@@ -824,7 +827,6 @@ body, html {
 }
 
 
-
 .map-section {
     padding: 30px 0;
     display: flex;
@@ -838,3 +840,55 @@ body, html {
 
   }
   
+  @media (min-width: 490px) and (max-width: 768px) {
+    .about-section {
+        padding: 20px;
+      }
+      .about-block {
+        flex-direction: row;
+        text-align: left;
+      }
+      .about-text,
+      .about-image {
+        padding: 20px;
+      }
+      .about-block.restaurant-info .about-text,
+      .about-block.restaurant-info .about-image {
+        order: 0;
+      }
+      .about-text h2 {
+        text-align: left;
+      }
+  }
+  
+
+  @media (min-width: 768px) and (max-width: 1043px) {
+    .map-container {
+      width: 95%;
+      margin: 0 auto;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 946px) {
+    .info-container {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .info-box {
+      flex: 0 0 calc((100% - 20px) / 3);
+      max-width: calc((100% - 20px) / 3);
+      margin: 0;
+    }
+  }
+  
+
+  .about-block {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .hr-line {
+    max-width: 1120px;
+    margin: 20px auto;
+  }
+  }
