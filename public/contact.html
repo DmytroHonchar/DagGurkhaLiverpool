@@ -10,55 +10,72 @@
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-      <a href="/contact" class="hidden-link">
-          <img class="momo-sticker" src="/DagGurkhaLiverpool/public/content/logo.svg" alt="Logo" style="width: 65px;">
-      </a>
-      <nav>
-          <a href="/">Home</a>
-          <a href="/menu">Menu</a>
-          <a href="/contact">Contact</a>
-      </nav>
-      <div class="media">
-          <a href="https://www.facebook.com/profile.php?id=61563020801861" target="_blank">
-              <img src="/DagGurkhaLiverpool/public/content/facebook.png" alt="Facebook" width="30px">
-          </a>
-          <a href="https://www.instagram.com/gurkhasliverpool/" target="_blank">
-              <img src="/DagGurkhaLiverpool/public/content/instagram.png" alt="Instagram" width="30px">
-          </a>
-      </div>
-  </header>
+   <!-- Header -->
+   <header>
+    <a href="/contact" class="hidden-link">
+        <img class="momo-sticker" src="/DagGurkhaLiverpool/public/content/logo.svg" alt="Logo" style="width: 65px;">
+    </a>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/menu">Menu</a>
+        <a href="/contact">Contact</a>
+    </nav>
+    <div class="media">
+        <a href="https://www.facebook.com/profile.php?id=61563020801861" target="_blank">
+            <img src="/DagGurkhaLiverpool/public/content/facebook.png" alt="Facebook" width="30px">
+        </a>
+        <a href="https://www.instagram.com/gurkhasliverpool/" target="_blank">
+            <img src="/DagGurkhaLiverpool/public/content/instagram.png" alt="Instagram" width="30px">
+        </a>
+    </div>
+    <!-- Mobile Menu Icon (visible only on smaller screens) -->
+    <div class="menu-icon">
+        <img src="/DagGurkhaLiverpool/public/content/more.png" alt="Menu Icon" style="width:30px;">
+    </div>
+</header>
+
+<!-- Navigation Overlay (hidden by default) -->
+<div class="nav-overlay">
+    <span class="close-btn">&times;</span>
+    <nav>
+        <a href="/public/delivery.html" class="hidden-link">
+            <img class="cannoli-sticker" src="/DagGurkhaLiverpool/public/content/drop.ico.svg" alt="Cannoli" style="width: 75px;" >
+        </a>
+        <a href="/">Home</a>
+        <a href="/menu">Menu</a>
+        <a href="/contact">Contact</a>
+    </nav>
+</div>
 
   <!-- Contact Section -->
   <section class="contact-section">
     <!-- Left Side: Contact Info -->
     <div class="contact-info">
-      <h2>Contact Info</h2>
-      <p>
-        <strong>Address:</strong> 
-        <a href="https://www.google.com/maps/place/114+South+Rd,+Waterloo,+Liverpool+L22+0ND" target="_blank">
-          114 South Rd, Waterloo,<br>
-          Liverpool L22 0ND
-        </a>
-      </p>
-      <p><strong>Phone:</strong> <a href="tel:+44 7392 489058">+44 7392 489 058</a></p>
-      <p><strong>Email:</strong> <a href="mailto:dagurkha@gmail.com">dagurkha@gmail.com</a></p>
-      <p><strong>Opening Hours:</strong></p>
-      <p>Tuesday to Saturday: 4 pm - 10 pm</p>
-      <p>Sunday & Monday: Closed</p>
-
-      <div class="map-container">
-        <iframe 
-          src="https://www.google.com/maps?q=Da+Gurkha+Fine+Dining,+114+South+Rd,+Waterloo,+Liverpool+L22+0ND&output=embed" 
-          width="420" 
-          height="300" 
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy">
-        </iframe>
+        <div class="contact-info-text">
+          <h2>Contact Info</h2>
+          <p>
+            <strong>Address:</strong> 
+            <a href="https://www.google.com/maps/place/114+South+Rd,+Waterloo,+Liverpool+L22+0ND" target="_blank">
+              114 South Rd, Waterloo,<br>
+              Liverpool L22 0ND
+            </a>
+          </p>
+          <p><strong>Phone:</strong> <a href="tel:+44 7392 489058">+44 7392 489 058</a></p>
+          <p><strong>Email:</strong> <a href="mailto:dagurkha@gmail.com">dagurkha@gmail.com</a></p>
+          <p><strong>Opening Hours:</strong></p>
+          <p>Tuesday to Saturday: 4 pm - 10 pm</p>
+          <p>Sunday & Monday: Closed</p>
+        </div>
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps?q=Da+Gurkha+Fine+Dining,+114+South+Rd,+Waterloo,+Liverpool+L22+0ND&output=embed" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy">
+          </iframe>
+        </div>
       </div>
-    </div>
+      
 
     <!-- Right Side: Contact Form -->
     <div class="contact-form">

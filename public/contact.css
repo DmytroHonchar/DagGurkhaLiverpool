@@ -131,9 +131,15 @@ body, html {
   }
   
   .map-container {
-    width: fit-content;
+    width: 500px;     /* Makes the map larger on wide screens */
+    max-width: 90%;   /* Prevents overflow on smaller screens */
     margin: 20px auto 0 auto;
     overflow: hidden;
+  }
+  
+  .map-container iframe {
+    width: 100%;      /* Fills .map-container’s width */
+    height: 270px;    /* Increase if you want it even taller */
   }
   
   .contact-form form {
@@ -251,20 +257,154 @@ body, html {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
   
+
+  /* ===== Navigation Overlay & Mobile Menu Styles ===== */
+.menu-icon {
+    display: none; /* Hidden by default on larger screens */
+    cursor: pointer;
+  }
+  
+  .nav-overlay {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: rgba(48, 2, 2, 0.95);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-overlay.active {
+    display: flex;
+    animation: slideIn 0.5s forwards;
+  }
+  
+  .nav-overlay.inactive {
+    animation: slideOut 0.5s forwards;
+    display: flex;
+  }
+  
+  .nav-overlay nav {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .nav-overlay nav a {
+    display: block;
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+    margin: 10px 0;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-overlay nav a:hover {
+    color: #ffb766;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  body.no-scroll {
+    overflow: hidden;
+  }
+  
+  /* Keyframe animations for the overlay */
+  @keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+  
+  @keyframes slideOut {
+    from { transform: translateX(0); }
+    to { transform: translateX(100%); }
+  }
   
   
   @media screen and (max-width: 900px) {
     .contact-section {
       flex-direction: column;
       align-items: center;
+      padding: 20px;
     }
-    .contact-info,
+  
+    .contact-form,
+    .contact-info {
+      width: 95%;
+      max-width: 700px;
+      margin: 20px auto;
+    }
+  
+    /* Show the form first, info second */
     .contact-form {
-      margin: 20px 0;
-      max-width: 600px;
+      order: 1;
     }
+    .contact-info {
+      order: 2;
+      /* Center the entire block */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    /* Center only the heading, keep paragraphs left-aligned */
+    .contact-info h2 {
+      text-align: center;
+    }
+    .contact-info p {
+      width: 100%;
+      text-align: left;
+    }
+  
+    .map-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto 0 auto;
+    }
+  
     .map-container iframe {
       width: 100% !important;
+      height: 400px;
+    }
+  }
+  
+  
+
+  /* ===== Responsive Adjustments ===== */
+@media (max-width: 768px) {
+    /* Hide the inline nav and logo on small screens */
+    header > nav {
+        display: none;
+    }
+  
+    header {
+        position: static;
+        width: 100%;
+        padding: 0px 10px;
+        height: 70px;
+    }
+    
+    .momo-sticker {
+      display: none;
+    }
+    
+    /* Show the mobile menu icon */
+    .menu-icon {
+      display: block;
+      margin-left: auto;
+      transition: transform 0.3s ease;
+      cursor: pointer;
     }
   }
   
