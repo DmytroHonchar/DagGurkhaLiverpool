@@ -194,6 +194,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+
+  const tabButtons = document.querySelectorAll('.menu-tabs .tab-btn');
+  const sections = document.querySelectorAll('.menu-section');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', function () {
+      // Remove active class from all buttons
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      // Hide all sections
+      sections.forEach(sec => sec.style.display = 'none');
+
+      // Activate clicked button and display its target section
+      this.classList.add('active');
+      const targetId = this.getAttribute('data-target');
+      document.getElementById(targetId).style.display = 'block';
+    });
+  });
+  
   });
   
 
