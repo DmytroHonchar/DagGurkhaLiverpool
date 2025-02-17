@@ -6,6 +6,7 @@ body, html {
     background-color: #000;
     color: #fff;
   }
+
   a {
     color: inherit;
     text-decoration: none;
@@ -20,15 +21,18 @@ body, html {
     padding: 10px 20px;
     height: 100px;
   }
+
   header nav a {
     font-size: 27px;
     margin: 0 20px;
     transition: transform 0.5s, color 0.5s;
   }
+
   header nav a:hover {
     transform: scale(1.1);
     color: rgb(207, 18, 18);
   }
+
   .media a {
     margin: 0 5px;
   }
@@ -47,6 +51,7 @@ body, html {
     justify-content: center;
     z-index: 1000;
   }
+
   .nav-overlay.active {
     display: flex;
   }
@@ -55,10 +60,12 @@ body, html {
   .menu-page {
     padding: 20px;
   }
+
   .menu-header {
     text-align: center;
     margin-bottom: 20px;
   }
+
   .menu-header h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
@@ -69,6 +76,7 @@ body, html {
     text-align: center;
     margin-bottom: 20px;
   }
+
   .menu-tabs .tab-btn {
     background-color: #000;
     color: #fff;
@@ -79,6 +87,7 @@ body, html {
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
   }
+
   .menu-tabs .tab-btn:hover,
   .menu-tabs .tab-btn.active {
     background-color: rgb(207, 18, 18);
@@ -90,10 +99,12 @@ body, html {
     max-width: 1200px;
     margin: 0 auto;
   }
+
   .menu-section {
     display: block;
     margin-bottom: 40px;
   }
+
   .menu-section h2 {
     font-size: 2rem;
     border-bottom: 2px solid #300202;
@@ -116,6 +127,7 @@ body, html {
     gap: 20px;
     margin-bottom: 30px;
   }
+
   .menu-category h3 {
     grid-column: 1 / -1;
     font-size: 1.5rem;
@@ -128,26 +140,31 @@ body, html {
     padding: 10px;
     border-bottom: 1px solid #333;
   }
+
   .item-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
   .item-header h4 {
     margin: 0;
     font-size: 1.3rem;
     color: #cf1212;
     text-align: left;
   }
+
   .price {
     text-align: right;
     min-width: 80px;
     font-weight: bold;
   }
+
   .menu-item p {
     margin: 5px 0 0;
     text-align: left;
   }
+
   .menu-note {
     font-size: 0.9rem;
     font-style: italic;
@@ -180,3 +197,94 @@ body, html {
     }
   }
   
+  /* Main Courses Layout */
+  .main-course-category {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #333;
+  }
+  .main-course-category .dish-name {
+    font-size: 1.7rem;
+    color: #cf1212; /* Red dish name */
+    margin: 0 0 5px;
+  }
+  .main-course-category .dish-desc {
+    font-size: 1rem;
+    margin: 0 0 10px;
+    color: #ccc;
+  }
+  
+  /* Updated dish options: two-column grid with separate entries */
+  .dish-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 200px));
+    gap: 10px 100px; /* 10px row gap, 20px column gap */
+  }
+
+  .dish-options li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+  }
+
+  .option-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .option-price {
+    flex-shrink: 0;
+    margin-left: 5px;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+  
+  .side-prices{
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  /* Indian Choices Section: Updated to match overall style */
+.indian-choice {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+  }
+
+  .indian-dish {
+    font-size: 1.3rem;
+    color: #cf1212;
+    margin: 0 0 5px;
+  }
+
+  .dish-desc {
+    font-size: 1rem;
+    margin: 0 0 10px;
+    color: #ccc;
+  }
+
+  .indian-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    gap: 5px 20px;  /* 5px row gap, 20px column gap */
+    font-size: 0.95rem;
+  }
+
+  .indian-options li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .indian-options li span:first-child {
+    font-weight: bold;
+  }
