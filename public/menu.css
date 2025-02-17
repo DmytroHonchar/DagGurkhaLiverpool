@@ -477,5 +477,53 @@ body, html {
     max-width: 440px;
     height: auto;
   }
+
+  .button{
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #300202;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    font-family: 'Lora', sans-serif;
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+
+  .button:hover{
+    background-color: #cf1212;
+    transform: translateY(-3px);
+  }
   
   
+
+  .section-image {
+    display: block;
+    max-width: 150px;
+    height: auto;
+    margin: 10px auto 20px;
+    border-radius: 8px;
+    border: 2px solid #300202;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    object-fit: cover;
+  }
+  
+  @media (max-width: 768px) {
+    .section-image {
+      max-width: 120px;
+    }
+  }
+
+
+  @font-face {
+    font-family: 'LekhanaRegular';
+    src: url('/DagGurkhaLiverpool/public/font-family/Lekhana Regular.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'Lora';
+    src: url('/DagGurkhaLiverpool/public/font-family/Lora-VariableFont_wght.ttf') format('opentype');
+  }
