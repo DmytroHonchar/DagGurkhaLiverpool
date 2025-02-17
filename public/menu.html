@@ -8,33 +8,36 @@
   <link rel="icon" href="/DagGurkhaLiverpool/public/content/fav-ico.ico" type="image/x-icon" />
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <a href="/" class="hidden-link">
-      <img class="momo-sticker" src="/DagGurkhaLiverpool/public/content/logo.svg" alt="Logo" style="width: 65px;" />
-    </a>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/menu">Menu</a>
-      <a href="/contact">Contact</a>
-    </nav>
-    <div class="media">
-      <a href="https://www.facebook.com/profile.php?id=61563020801861" target="_blank">
-        <img src="/DagGurkhaLiverpool/public/content/facebook.png" alt="Facebook" width="30px" />
-      </a>
-      <a href="https://www.instagram.com/gurkhasliverpool/" target="_blank">
-        <img src="/DagGurkhaLiverpool/public/content/instagram.png" alt="Instagram" width="30px" />
-      </a>
-    </div>
-    <div class="menu-icon">
-      <img src="/DagGurkhaLiverpool/public/content/more.png" alt="Menu Icon" style="width:30px;" />
-    </div>
-  </header>
+    <header>
+        <a href="/contact" class="hidden-link">
+          <img class="momo-sticker" src="/DagGurkhaLiverpool/public/content/logo.svg" alt="Logo" style="width: 65px;">
+        </a>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/menu">Menu</a>
+          <a href="/contact">Contact</a>
+        </nav>
+        <div class="media">
+          <a href="https://www.facebook.com/profile.php?id=61563020801861" target="_blank">
+            <img src="/DagGurkhaLiverpool/public/content/facebook.png" alt="Facebook" width="30px">
+          </a>
+          <a href="https://www.instagram.com/gurkhasliverpool/" target="_blank">
+            <img src="/DagGurkhaLiverpool/public/content/instagram.png" alt="Instagram" width="30px">
+          </a>
+        </div>
+        <!-- Mobile Menu Icon (visible on mobile via CSS) -->
+        <div class="menu-icon">
+          <img src="/DagGurkhaLiverpool/public/content/more.png" alt="Menu Icon" style="width:30px;">
+        </div>
+      </header>
 
-  <!-- Navigation Overlay (Mobile) -->
+      <!-- Navigation Overlay -->
   <div class="nav-overlay">
     <span class="close-btn">&times;</span>
     <nav>
+          <a href="/public/delivery.html" class="hidden-link">
+                <img class="cannoli-sticker" src="/DagGurkhaLiverpool/public/content/drop.ico.svg" alt="Cannoli" style="width: 75px;" >
+            </a>
       <a href="/">Home</a>
       <a href="/menu">Menu</a>
       <a href="/contact">Contact</a>
@@ -44,10 +47,12 @@
   <!-- Main Content -->
   <main class="menu-page">
     <section class="menu-header">
-      <h1>Our Menu</h1>
-      <p>Experience the authentic Himalayan cuisine of Nepal. We use only the finest fresh herbs and spices and traditional methods to prepare delicious and healthy foods.</p>
-      <p><strong>FOOD ALLERGIES &amp; INTOLERANCES:</strong> Before you order your food and drinks please speak with our staff if you would like to know about our ingredients.</p>
-    </section>
+        <h1>Our Menu</h1>
+        <p>
+          Experience authentic Himalayan cuisine crafted with the finest herbs and spices. 
+        </p>
+        <p><strong>Allergy Info:</strong> Please ask our staff for details.</p>
+      </section>
 
     <!-- Tab Buttons -->
     <section class="menu-tabs">
@@ -601,7 +606,7 @@
           <h4>Chips</h4>
           <span class="price">£3.50</span>
         </div>
-        <p>Crispy golden chips served with ketchup.</p>
+        <p>Crispy golden chips.</p>
       </div>
       <div class="menu-item">
         <div class="item-header">
@@ -733,53 +738,56 @@
   
 
       <!-- KIDS MENU -->
-      <div class="menu-section" id="kids-menu" style="display: none;">
-        <h2>KIDS MENU</h2>
-        <div class="menu-category">
-          <h3>Kids Selections</h3>
-          <div class="menu-item">
-            <div class="item-header">
-              <h4>Chicken Nuggets &amp; Chips</h4>
-              <span class="price">£5.50</span>
-            </div>
-            <p>Fresh chunks of chicken in golden batter, served with chips and tomato sauce.</p>
-          </div>
-          <div class="menu-item">
-            <div class="item-header">
-              <h4>Mini Fish &amp; Chips</h4>
-              <span class="price">£6.00</span>
-            </div>
-            <p>Homemade battered white fish fillet, served with chips and your choice of tomato or tartar sauce.</p>
-          </div>
-          <div class="menu-item">
-            <div class="item-header">
-              <h4>Kids Grilled Chicken &amp; Chips</h4>
-              <span class="price">£6.00</span>
-            </div>
-            <p>Grilled chicken lightly marinated with herbs and spices, served with chips and tomato sauce.</p>
-          </div>
-          <div class="menu-item">
-            <div class="item-header">
-              <h4>Da Gurkha Kids Curry &amp; Rice</h4>
-              <span class="price">£7.00</span>
-            </div>
-            <p>Chicken pieces cooked with blended cashew nuts, cream, honey, and butter in a sweet, creamy sauce; served with plain basmati rice.</p>
-          </div>
-          <div class="menu-item">
-            <div class="item-header">
-              <h4>Plain Flat Bread</h4>
-              <span class="price">£3.00</span>
-            </div>
-          </div>
-          <div class="menu-item">
-            <div class="item-header">
-              <h4>Kids Vanilla Ice Cream</h4>
-              <span class="price">£3.00</span>
-            </div>
-          </div>
+<div class="menu-section" id="kids-menu" style="display: none;">
+    <h2>KIDS MENU</h2>
+    <div class="menu-category">
+      <h3>Kids Selections</h3>
+      <div class="menu-item">
+        <div class="item-header">
+          <h4>Chicken Nuggets &amp; Chips</h4>
+          <span class="price">£5.50</span>
         </div>
-        <p class="menu-note">Da Gurkhas believe in fresh food served at the table, not in containers. Therefore, takeaway is not available.</p>
+        <p>Fresh chunks of chicken in golden batter, served with chips and tomato sauce.</p>
       </div>
+      <div class="menu-item">
+        <div class="item-header">
+          <h4>Mini Fish &amp; Chips</h4>
+          <span class="price">£6.00</span>
+        </div>
+        <p>Homemade battered white fish fillet, served with chips and your choice of tomato or tartar sauce.</p>
+      </div>
+      <div class="menu-item">
+        <div class="item-header">
+          <h4>Kids Grilled Chicken &amp; Chips</h4>
+          <span class="price">£6.00</span>
+        </div>
+        <p>Grilled chicken lightly marinated with herbs and spices, served with chips and tomato sauce.</p>
+      </div>
+      <div class="menu-item">
+        <div class="item-header">
+          <h4>Da Gurkha Kids Curry &amp; Rice</h4>
+          <span class="price">£7.00</span>
+        </div>
+        <p>Chicken pieces cooked with blended cashew nuts, cream, honey, and butter in a sweet, creamy sauce; served with plain basmati rice.</p>
+      </div>
+      <div class="menu-item">
+        <div class="item-header">
+          <h4>Plain Flat Bread</h4>
+          <span class="price">£3.00</span>
+        </div>
+        <p>Plain flatbread served with a light spread of butter.</p>
+      </div>
+      <div class="menu-item">
+        <div class="item-header">
+          <h4>Kids Vanilla Ice Cream</h4>
+          <span class="price">£3.00</span>
+        </div>
+        <p>Vanilla ice cream served in a small cup.</p>
+      </div>
+    </div>
+    <p class="menu-note">Da Gurkhas believe in fresh food served at the table, not in containers. Therefore, takeaway is not available.</p>
+  </div>
+  
 
       <!-- VEGAN MENU -->
       <div class="menu-section" id="vegan" style="display: none;">
@@ -933,6 +941,7 @@
               <h4>Chips</h4>
               <span class="price">£3.50</span>
             </div>
+            <p>Crispy golden chips.</p>
           </div>
         </div>
         <p class="menu-note">Takeaway is not available for hygiene reasons.</p>
