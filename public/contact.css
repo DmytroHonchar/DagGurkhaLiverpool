@@ -84,7 +84,7 @@ body, html {
   }
   
   .contact-section {
-    background: url('/DagGurkhaLiverpool/public/content/BG1.jpg') no-repeat center center fixed;
+    background: url('/content/BG1.jpg') no-repeat center center fixed;
     background-size: cover;
     flex: 1;
     display: flex;
