@@ -518,12 +518,20 @@ body, html {
   }
 
 
+  /* ================= Font Faces ================= */
   @font-face {
     font-family: 'LekhanaRegular';
-    src: url('/DagGurkhaLiverpool/public/font-family/Lekhana Regular.otf') format('opentype');
+    src: url('/font-family/Lekhana\ Regular.woff2') format('woff2'),
+         url('/font-family/Lekhana\ Regular.woff') format('woff'),
+         url('/font-family/Lekhana\ Regular.otf') format('opentype');
+    font-display: swap;
   }
   
-  @font-face {
-    font-family: 'Lora';
-    src: url('/DagGurkhaLiverpool/public/font-family/Lora-VariableFont_wght.ttf') format('opentype');
-  }
+  
+@font-face {
+  font-family: 'Lora';
+  src: url('/font-family/Lora-VariableFont_wght.woff2') format('woff2'),
+       url('/font-family/Lora-VariableFont_wght.woff') format('woff'),
+       url('/font-family/Lora-VariableFont_wght.ttf') format('truetype');
+  font-display: swap;
+}

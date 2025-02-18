@@ -750,15 +750,14 @@ body, html {
     .carousel-track {
       display: flex;
       gap: 10px;
-      overflow-x: auto;  /* horizontal scroll if needed */
-      /* or set a max-width, etc. */
+      overflow-x: auto;  
     }
     
     .carousel-track img {
-      width: auto;       /* let the width scale based on image ratio */
-      height: 280px;     /* fix the height so each row is uniform */
-      object-fit: cover; /* will crop sides if images are too wide */
-      flex-shrink: 0;    /* prevents images from shrinking below their height */
+      width: auto;       
+      height: 280px;     
+      object-fit: cover; 
+      flex-shrink: 0;   
     }
     
 
