@@ -212,6 +212,42 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
   
+
+// Intersection Observer for swipe indicators
+const options = {
+  root: null,        // viewport
+  threshold: 0.2     // fire callback when 20% of the section is visible
+};
+
+// Callback to animate the arrows once the section is in view
+function onSectionIntersect(entries, observer) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Find the .swipe-indicator inside this section (if any)
+      const indicator = entry.target.querySelector('.swipe-indicator');
+      if (indicator) {
+        // Add the animate-indicator class to start fadeInOut
+        indicator.classList.add('animate-indicator');
+      }
+      // If you only want it to run once, unobserve
+      observer.unobserve(entry.target);
+    }
+  });
+}
+
+const observer = new IntersectionObserver(onSectionIntersect, options);
+
+// Observe the sections that contain swipe indicators
+const foodSection = document.querySelector('.our-food-section');
+if (foodSection) {
+  observer.observe(foodSection);
+}
+
+const reviewsSection = document.querySelector('.reviews-section');
+if (reviewsSection) {
+  observer.observe(reviewsSection);
+}
+
   });
   
 
