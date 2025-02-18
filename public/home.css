@@ -943,3 +943,51 @@ body, html {
   }
   
  
+
+  .carousel-wrapper {
+    position: relative; /* so .swipe-indicator can be absolutely positioned */
+  }
+  
+  /* The swipe indicator container */
+  .swipe-indicator {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    color: #fff;
+    font-size: 1.4rem;
+    opacity: 0;           /* start invisible */
+    pointer-events: none; /* don't block user swipes */
+    animation: fadeInOut 3s ease forwards;
+    /*  - 3s total: fade in, wait, fade out  */
+  }
+  
+  /* The arrows themselves */
+  .swipe-indicator .arrow {
+    display: inline-block;
+    animation: arrowSlide 3s infinite alternate ease-in-out;
+  }
+  
+  /* Optional text, if you add a .swipe-text span */
+  .swipe-indicator .swipe-text {
+    font-size: 1rem;
+    align-self: center;
+    animation: none; /* no sliding on text */
+  }
+  
+  /* Keyframes: Arrows slide gently left/right */
+  @keyframes arrowSlide {
+    0%   { transform: translateX(0);   }
+    100% { transform: translateX(6px); }
+  }
+  
+  /* Keyframes: fade in and out */
+  @keyframes fadeInOut {
+    0%   { opacity: 0; }
+    15%  { opacity: 1; }  /* fade in by ~0.45s */
+    85%  { opacity: 1; }  /* stay visible */
+    100% { opacity: 0; }  /* fade out near 3s */
+  }
+  
