@@ -179,12 +179,12 @@ body, html {
   
   .food-description {
     font-size: 1.2em;
-    line-height: 1.8;
+    line-height: 1.4em;
     color: #dcdcdc;
     margin: 0 auto 50px;
     max-width: 800px;
     text-align: justify;
-    padding: 0px 20px;
+    padding: 0px 10px;
 
   }
   
@@ -899,27 +899,28 @@ body, html {
     max-width: 1120px;
     margin: 0 auto;
   }
+  
   .hr-line {
     max-width: 1120px;
     margin: 20px auto;
   }
  
   @media (max-width: 768px) {
-    /* Make the outer container full width */
+
     .reviews-carousel-wrapper {
       max-width: 100% !important;
       width: 100% !important;
-      margin: 0 !important;    /* remove auto margins if needed */
+      margin: 0 !important;    
     }
   
-    /* Make the inner container full width too */
+  
     .reviews-carousel {
       width: 100% !important;
     }
   
-    /* If you still want each item bigger, adjust them here */
+    
     .review-item {
-      flex: 0 0 90%;      /* or 100%, etc. */
+      flex: 0 0 90%;      
       margin: 0 auto;
       padding: 25px;
     }
