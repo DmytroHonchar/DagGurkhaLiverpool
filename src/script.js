@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const heroBackground = document.querySelector(".hero-background");
       if (heroBackground) {
         const maxParallax = 120; // increased maximum
-        const verticalParallax = Math.min(scrollPosition * 0.25, maxParallax);
+        const verticalParallax = Math.min(scrollPosition * 0.15, maxParallax);
         const scaleAmount = 1.1 - scrollPosition * 0.0001;
         const brightness = 1 + Math.min(scrollPosition * 0.0005, 0.1);
         const contrast = 1 + Math.min(scrollPosition * 0.0003, 0.05);
