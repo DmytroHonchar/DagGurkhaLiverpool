@@ -92,7 +92,9 @@ nav a:hover {
   padding: 40px 20px;
   box-sizing: border-box;
   color: #fff;
-  height: 900px;
+  /* height: 900px; */
+  min-height: 100vh; 
+  height: auto;  
 }
 
 /* ========== Contact Info ========== */
@@ -601,4 +603,9 @@ body.no-scroll {
   -moz-appearance: textfield;
   appearance: textfield;
 }
+
+
+
+
+/*  */
 
