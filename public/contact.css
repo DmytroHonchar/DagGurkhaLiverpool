@@ -369,6 +369,39 @@ body.no-scroll {
   overflow: hidden;
 }
 
+/* Force iOS date fields to be left-aligned */
+.contact-form input[type="date"] {
+  -webkit-appearance: none; /* or "auto" if you need native pickers */
+  appearance: none;
+  text-align: left !important; 
+  line-height: 1.5;
+}
+
+/* The main container for the date text */
+.contact-form input[type="date"]::-webkit-datetime-edit {
+  text-align: left !important;
+}
+
+/* Wraps the day, month, year fields */
+.contact-form input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  text-align: left !important;
+}
+
+/* Each individual field: day, month, year */
+.contact-form input[type="date"]::-webkit-datetime-edit-day-field,
+.contact-form input[type="date"]::-webkit-datetime-edit-month-field,
+.contact-form input[type="date"]::-webkit-datetime-edit-year-field {
+  text-align: left !important;
+  color: #fff; /* ensure it matches your text color */
+}
+
+/* If there's a placeholder (e.g., empty date), align that too */
+.contact-form input[type="date"]::-webkit-input-placeholder {
+  text-align: left;
+  color: #bbb;
+}
+
+
 /* ========== Keyframes ========== */
 @keyframes slideIn {
   from { transform: translateX(100%); }
@@ -468,11 +501,6 @@ body.no-scroll {
   }
 }
 
-@media screen and (max-width: 768px) {
-  .contact-section {
-    background-attachment: scroll !important;
-  }
-}
 
 
 /* ========== Font Faces ========== */
