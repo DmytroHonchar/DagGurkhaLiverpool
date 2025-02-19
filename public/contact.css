@@ -187,6 +187,30 @@ nav a:hover {
   display: none;
 } */
 
+/* Remove rules that hide the calendar icon */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: block;  /* Show the native calendar icon */
+  cursor: pointer;
+}
+
+/* Optionally let the browser decide the appearance: */
+input[type="date"] {
+  -webkit-appearance: menulist; /* ensures normal dropdown styling */
+  -moz-appearance: menulist;
+  appearance: menulist;
+  
+  /* Basic styling that matches your dark theme: */
+  border: 1px solid #777;
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  background-color: #444;
+  color: #fff;
+  box-sizing: border-box;
+  width: 100%; /* or whatever suits your layout */
+}
+
+
 /* ========== Custom Single-Line Select ========== */
 .select-wrapper {
   position: relative;
