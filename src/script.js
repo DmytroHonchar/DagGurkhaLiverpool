@@ -248,7 +248,6 @@ if (reviewsSection) {
   observer.observe(reviewsSection);
 }
 
-  });
-  
 
+  });
   

@@ -1,3 +1,4 @@
+/* ========== Global Resets & Layout ========== */
 body, html {
   margin: 0;
   padding: 0;
@@ -14,6 +15,7 @@ img {
   height: auto;
 }
 
+/* ========== Typography & Headers ========== */
 h1, h2 {
   text-align: center;
   color: #fff;
@@ -22,6 +24,7 @@ h1, h2 {
   margin-bottom: 16px;
 }
 
+/* ========== Header & Navigation ========== */
 header {
   display: flex;
   flex-direction: row;
@@ -46,7 +49,6 @@ nav a {
   transition: transform 0.5s, color 0.5s;
   transform-origin: center bottom;
 }
-
 nav a:hover {
   color: #cf1212;
   transform: scale(1.1);
@@ -57,7 +59,6 @@ nav a:hover {
   margin-top: 20px;
   transition: transform 0.5s;
 }
-
 .momo-sticker:hover {
   transform: scale(1.1);
 }
@@ -67,21 +68,19 @@ nav a:hover {
   display: flex;
   align-items: center;
 }
-
 .media a {
   text-decoration: none;
   margin: 5px;
   transition: transform 0.5s;
 }
-
 .media a img {
   transition: transform 0.5s;
 }
-
 .media a:hover img {
   transform: scale(1.1);
 }
 
+/* ========== Hero/Background Section ========== */
 .contact-section {
   background: url('/content/BG1.jpg') no-repeat center center fixed;
   background-size: cover;
@@ -96,8 +95,8 @@ nav a:hover {
   height: 900px;
 }
 
-.contact-info,
-.contact-form {
+/* ========== Contact Info ========== */
+.contact-info, .contact-form {
   flex: 1;
   margin: 10px;
 }
@@ -105,7 +104,6 @@ nav a:hover {
 .contact-info p strong {
   color: #fff;
 }
-
 .contact-info p {
   width: 80%;
   margin: 0 auto 15px auto;
@@ -115,14 +113,12 @@ nav a:hover {
   font-family: 'Lora', serif;
   font-size: 1rem;
 }
-
 .contact-info a {
   color: #fff;
   text-decoration: none;
   transition: color 0.3s;
   cursor: pointer;
 }
-
 .contact-info a:hover {
   color: #cf1212;
   text-decoration: underline;
@@ -135,12 +131,12 @@ nav a:hover {
   margin: 20px auto 0 auto;
   overflow: hidden;
 }
-
 .map-container iframe {
   width: 100%;
   height: 270px;
 }
 
+/* ========== Contact Form ========== */
 .contact-form form {
   background-color: #2b2b2b;
   color: #fff;
@@ -149,22 +145,20 @@ nav a:hover {
   font-family: 'Lora', sans-serif;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
 .contact-form .form-group {
   margin-bottom: 15px;
 }
-
 .contact-form label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
   font-size: 1rem;
 }
-
 .contact-form label span {
   color: #cf1212;
 }
 
+/* Common input styles */
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
@@ -179,25 +173,68 @@ nav a:hover {
   box-sizing: border-box;
 }
 
+/* Remove native icons on date/time/number if you wish */
 .contact-form input[type="date"],
 .contact-form input[type="time"],
 .contact-form input[type="number"] {
   -webkit-appearance: none;
-  width: 100%;
-  box-sizing: border-box;
+  -moz-appearance: textfield; /* Hide spinners in Firefox for number type */
 }
 
+/* Specifically hide the calendar icon on date/time in Chrome/Safari */
+/* .contact-form input[type="date"]::-webkit-calendar-picker-indicator,
+.contact-form input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+} */
+
+/* ========== Custom Single-Line Select ========== */
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+.select-wrapper select {
+  -webkit-appearance: none; /* Remove default arrow in Safari/Chrome */
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #777;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: 'Lora', sans-serif;
+  background-color: #444;
+  color: #fff;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+/* Hide the default arrow on older IE/Edge */
+.select-wrapper select::-ms-expand {
+  display: none;
+}
+/* Custom arrow icon */
+.select-wrapper::after {
+  content: '▼'; /* or "\25BC" */
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #000; /* black arrow */
+  pointer-events: none;
+  font-size: 0.9rem;
+}
+
+/* ========== Form Textarea ========== */
 .contact-form textarea {
   resize: vertical;
 }
 
+/* ========== Form Toggle Buttons ========== */
 .form-toggle {
   margin-bottom: 20px;
   display: flex;
   gap: 10px;
   justify-content: center;
 }
-
 .toggle-btn {
   padding: 12px 20px;
   border: none;
@@ -211,19 +248,18 @@ nav a:hover {
   max-width: 180px;
   text-transform: uppercase;
   font-weight: bold;
-  color: #000; /* Ensure unselected text is black */
+  color: #000; /* Unselected = black text */
 }
-
 .toggle-btn:hover {
   background: #ddd;
 }
-
 .toggle-btn.active {
   background: #cf1212;
   color: #fff;
   transform: scale(1.03);
 }
 
+/* ========== Submit Button ========== */
 .button {
   display: inline-block;
   padding: 12px 24px;
@@ -238,12 +274,12 @@ nav a:hover {
   font-size: 1rem;
   margin-top: 10px;
 }
-
 .button:hover {
   background-color: #cf1212;
   transform: translateY(-3px);
 }
 
+/* ========== Footer ========== */
 footer {
   background-color: #300202;
   color: #fff;
@@ -257,7 +293,6 @@ footer {
   border-top: 1px solid rgba(207, 18, 18, 0.2);
   margin-top: 0;
 }
-
 footer p {
   width: auto;
   text-align: center;
@@ -266,12 +301,11 @@ footer p {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== Navigation Overlay & Mobile Menu Styles ===== */
+/* ========== Mobile Menu / Overlay ========== */
 .menu-icon {
   display: none; /* Hidden by default on larger screens */
   cursor: pointer;
 }
-
 .nav-overlay {
   display: none; /* Initially hidden */
   position: fixed;
@@ -285,23 +319,19 @@ footer p {
   align-items: center;
   justify-content: center;
 }
-
 .nav-overlay.active {
   display: flex;
   animation: slideIn 0.5s forwards;
 }
-
 .nav-overlay.inactive {
   animation: slideOut 0.5s forwards;
   display: flex;
 }
-
 .nav-overlay nav {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
-
 .nav-overlay nav a {
   display: block;
   color: white;
@@ -310,11 +340,9 @@ footer p {
   margin: 10px 0;
   transition: color 0.3s ease;
 }
-
 .nav-overlay nav a:hover {
   color: #ffb766;
 }
-
 .close-btn {
   position: absolute;
   top: 20px;
@@ -323,35 +351,33 @@ footer p {
   color: white;
   cursor: pointer;
 }
-
 body.no-scroll {
   overflow: hidden;
 }
 
+/* ========== Keyframes ========== */
 @keyframes slideIn {
   from { transform: translateX(100%); }
   to { transform: translateX(0); }
 }
-
 @keyframes slideOut {
   from { transform: translateX(0); }
   to { transform: translateX(100%); }
 }
 
+/* ========== Responsive Breakpoints ========== */
 @media screen and (max-width: 900px) {
   .contact-section {
     flex-direction: column;
     align-items: center;
     padding: 20px;
   }
-
   .contact-form,
   .contact-info {
     width: 95%;
     max-width: 700px;
     margin: 20px auto;
   }
-
   .contact-form {
     order: 1;
   }
@@ -361,7 +387,6 @@ body.no-scroll {
     flex-direction: column;
     align-items: center;
   }
-
   .contact-info h2 {
     text-align: center;
   }
@@ -369,13 +394,11 @@ body.no-scroll {
     width: 100%;
     text-align: left;
   }
-
   .map-container {
     width: 100%;
     max-width: 600px;
     margin: 20px auto 0 auto;
   }
-
   .map-container iframe {
     width: 100% !important;
     height: 400px;
@@ -384,20 +407,17 @@ body.no-scroll {
 
 @media (max-width: 768px) {
   header > nav {
-      display: none;
+    display: none;
   }
-
   header {
-      position: static;
-      width: 100%;
-      padding: 0px 10px;
-      height: 70px;
+    position: static;
+    width: 100%;
+    padding: 0px 10px;
+    height: 70px;
   }
-
   .momo-sticker {
     display: none;
   }
-
   .menu-icon {
     display: block;
     margin-left: auto;
@@ -435,19 +455,19 @@ body.no-scroll {
   }
 }
 
-/* ================= Font Faces ================= */
+/* ========== Font Faces ========== */
 @font-face {
-font-family: 'LekhanaRegular';
-src: url('/font-family/Lekhana\ Regular.woff2') format('woff2'),
-     url('/font-family/Lekhana\ Regular.woff') format('woff'),
-     url('/font-family/Lekhana\ Regular.otf') format('opentype');
-font-display: swap;
+  font-family: 'LekhanaRegular';
+  src: url('/font-family/Lekhana\ Regular.woff2') format('woff2'),
+       url('/font-family/Lekhana\ Regular.woff') format('woff'),
+       url('/font-family/Lekhana\ Regular.otf') format('opentype');
+  font-display: swap;
 }
 
 @font-face {
-font-family: 'Lora';
-src: url('/font-family/Lora-VariableFont_wght.woff2') format('woff2'),
-     url('/font-family/Lora-VariableFont_wght.woff') format('woff'),
-     url('/font-family/Lora-VariableFont_wght.ttf') format('truetype');
-font-display: swap;
+  font-family: 'Lora';
+  src: url('/font-family/Lora-VariableFont_wght.woff2') format('woff2'),
+       url('/font-family/Lora-VariableFont_wght.woff') format('woff'),
+       url('/font-family/Lora-VariableFont_wght.ttf') format('truetype');
+  font-display: swap;
 }
