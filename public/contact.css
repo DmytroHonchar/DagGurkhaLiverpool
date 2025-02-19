@@ -64,9 +64,9 @@ nav a:hover {
 }
 
 .media {
-  margin-left: 0;
   display: flex;
   align-items: center;
+  margin-left: 0;
 }
 .media a {
   text-decoration: none;
@@ -101,9 +101,6 @@ nav a:hover {
   margin: 10px;
 }
 
-.contact-info p strong {
-  color: #fff;
-}
 .contact-info p {
   width: 80%;
   margin: 0 auto 15px auto;
@@ -112,6 +109,9 @@ nav a:hover {
   color: #fff;
   font-family: 'Lora', serif;
   font-size: 1rem;
+}
+.contact-info p strong {
+  color: #fff;
 }
 .contact-info a {
   color: #fff;
@@ -122,9 +122,9 @@ nav a:hover {
 .contact-info a:hover {
   color: #cf1212;
   text-decoration: underline;
-  cursor: pointer;
 }
 
+/* Map */
 .map-container {
   width: 500px;
   max-width: 90%;
@@ -158,7 +158,7 @@ nav a:hover {
   color: #cf1212;
 }
 
-/* Common input styles */
+/* ====== Global Input Styling ====== */
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
@@ -171,45 +171,38 @@ nav a:hover {
   background-color: #444;
   color: #fff;
   box-sizing: border-box;
+  text-align: left !important;
+  line-height: 1.5;
+  min-height: 40px;
 }
 
-/* Remove native icons on date/time/number if you wish */
-.contact-form input[type="date"],
-.contact-form input[type="time"],
+/* ====== iOS Date Input Fixes ====== */
+/* Custom styling for date inputs to fix alignment and height issues */
+.contact-form input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 40px; /* Explicit height */
+}
+.contact-form input[type="date"]::-webkit-datetime-edit {
+  text-align: left;
+  padding-left: 0;
+}
+.contact-form input[type="date"]::-webkit-datetime-edit-year-field,
+.contact-form input[type="date"]::-webkit-datetime-edit-month-field,
+.contact-form input[type="date"]::-webkit-datetime-edit-day-field {
+  text-align: left;
+}
+.contact-form input[type="date"]::-webkit-input-placeholder {
+  text-align: left;
+  color: #bbb;
+}
+
+/* Remove spinner arrows for number inputs */
 .contact-form input[type="number"] {
   -webkit-appearance: none;
-  -moz-appearance: textfield; /* Hide spinners in Firefox for number type */
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
-
-/* Specifically hide the calendar icon on date/time in Chrome/Safari */
-/* .contact-form input[type="date"]::-webkit-calendar-picker-indicator,
-.contact-form input[type="time"]::-webkit-calendar-picker-indicator {
-  display: none;
-} */
-
-/* Remove rules that hide the calendar icon */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  display: block;  /* Show the native calendar icon */
-  cursor: pointer;
-}
-
-/* Optionally let the browser decide the appearance: */
-input[type="date"] {
-  -webkit-appearance: menulist; /* ensures normal dropdown styling */
-  -moz-appearance: menulist;
-  appearance: menulist;
-  
-  /* Basic styling that matches your dark theme: */
-  border: 1px solid #777;
-  border-radius: 4px;
-  padding: 10px 12px;
-  font-size: 1rem;
-  background-color: #444;
-  color: #fff;
-  box-sizing: border-box;
-  width: 100%; /* or whatever suits your layout */
-}
-
 
 /* ========== Custom Single-Line Select ========== */
 .select-wrapper {
@@ -217,7 +210,7 @@ input[type="date"] {
   width: 100%;
 }
 .select-wrapper select {
-  -webkit-appearance: none; /* Remove default arrow in Safari/Chrome */
+  -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   width: 100%;
@@ -231,18 +224,16 @@ input[type="date"] {
   box-sizing: border-box;
   cursor: pointer;
 }
-/* Hide the default arrow on older IE/Edge */
 .select-wrapper select::-ms-expand {
   display: none;
 }
-/* Custom arrow icon */
 .select-wrapper::after {
-  content: '▼'; /* or "\25BC" */
+  content: '▼';
   position: absolute;
   right: 15px;
   top: 50%;
   transform: translateY(-50%);
-  color: #000; /* black arrow */
+  color: #000;
   pointer-events: none;
   font-size: 0.9rem;
 }
@@ -272,7 +263,7 @@ input[type="date"] {
   max-width: 180px;
   text-transform: uppercase;
   font-weight: bold;
-  color: #000; /* Unselected = black text */
+  color: #000;
 }
 .toggle-btn:hover {
   background: #ddd;
@@ -318,7 +309,6 @@ footer {
   margin-top: 0;
 }
 footer p {
-  width: auto;
   text-align: center;
   margin: 0;
   color: #e0e0e0;
@@ -327,11 +317,11 @@ footer p {
 
 /* ========== Mobile Menu / Overlay ========== */
 .menu-icon {
-  display: none; /* Hidden by default on larger screens */
+  display: none;
   cursor: pointer;
 }
 .nav-overlay {
-  display: none; /* Initially hidden */
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -436,7 +426,7 @@ body.no-scroll {
   header {
     position: static;
     width: 100%;
-    padding: 0px 10px;
+    padding: 0 10px;
     height: 70px;
   }
   .momo-sticker {
@@ -446,7 +436,6 @@ body.no-scroll {
     display: block;
     margin-left: auto;
     transition: transform 0.3s ease;
-    cursor: pointer;
   }
 }
 
@@ -482,9 +471,9 @@ body.no-scroll {
 /* ========== Font Faces ========== */
 @font-face {
   font-family: 'LekhanaRegular';
-  src: url('/font-family/Lekhana\ Regular.woff2') format('woff2'),
-       url('/font-family/Lekhana\ Regular.woff') format('woff'),
-       url('/font-family/Lekhana\ Regular.otf') format('opentype');
+  src: url('/font-family/Lekhana%20Regular.woff2') format('woff2'),
+       url('/font-family/Lekhana%20Regular.woff') format('woff'),
+       url('/font-family/Lekhana%20Regular.otf') format('opentype');
   font-display: swap;
 }
 
@@ -495,86 +484,3 @@ body.no-scroll {
        url('/font-family/Lora-VariableFont_wght.ttf') format('truetype');
   font-display: swap;
 }
-
-
-/* Force left alignment on iOS date/time fields while keeping native pickers */
-.contact-form input[type="date"],
-.contact-form input[type="time"] {
-  -webkit-appearance: auto;
-  appearance: auto;
-  text-align: left !important;
-  background-color: #444;
-  color: #fff;
-  border: 1px solid #777;
-  border-radius: 4px;
-  padding: 10px 12px;
-  line-height: 1.5;
-  box-sizing: border-box;
-  font-family: 'Lora', sans-serif;
-  font-size: 1rem;
-}
-
-/* Make sure placeholders match, if any */
-.contact-form input[type="date"]::-webkit-input-placeholder,
-.contact-form input[type="time"]::-webkit-input-placeholder {
-  text-align: left;
-  color: #bbb;
-}
-
-/* Remove spinner arrows for number inputs */
-.contact-form input[type="number"] {
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
-  appearance: textfield;
-}
-
-/* Prevent input shrinking on iOS */
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  min-height: 40px;
-}
-
-
-/* ====== Global Input Styling ====== */
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  text-align: left !important;
-  line-height: 1.5;
-  min-height: 40px;
-  padding: 10px 12px;
-  width: 100%;
-  border: 1px solid #777;
-  border-radius: 4px;
-  background-color: #444;
-  color: #fff;
-  box-sizing: border-box;
-  font-family: 'Lora', sans-serif;
-  font-size: 1rem;
-}
-
-/* ====== iOS Date/Time Input Fixes ====== */
-.contact-form input[type="date"] {
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.contact-form input[type="date"]::-webkit-date-and-time-value {
-  text-align: left;
-  margin: 0; /* Removes iOS default margin */
-}
-
-/* Placeholder alignment */
-.contact-form input[type="date"]::placeholder {
-  text-align: left !important;
-  color: #bbb;
-}
-
-/* Number input spinner removal */
-.contact-form input[type="number"] {
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
-  appearance: textfield;
-}
-
