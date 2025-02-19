@@ -534,3 +534,47 @@ body.no-scroll {
 .contact-form textarea {
   min-height: 40px;
 }
+
+
+/* ====== Global Input Styling ====== */
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  text-align: left !important;
+  line-height: 1.5;
+  min-height: 40px;
+  padding: 10px 12px;
+  width: 100%;
+  border: 1px solid #777;
+  border-radius: 4px;
+  background-color: #444;
+  color: #fff;
+  box-sizing: border-box;
+  font-family: 'Lora', sans-serif;
+  font-size: 1rem;
+}
+
+/* ====== iOS Date/Time Input Fixes ====== */
+.contact-form input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.contact-form input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+  margin: 0; /* Removes iOS default margin */
+}
+
+/* Placeholder alignment */
+.contact-form input[type="date"]::placeholder {
+  text-align: left !important;
+  color: #bbb;
+}
+
+/* Number input spinner removal */
+.contact-form input[type="number"] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
