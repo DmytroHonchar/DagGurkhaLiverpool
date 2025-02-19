@@ -468,6 +468,13 @@ body.no-scroll {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .contact-section {
+    background-attachment: scroll !important;
+  }
+}
+
+
 /* ========== Font Faces ========== */
 @font-face {
   font-family: 'LekhanaRegular';
@@ -484,3 +491,4 @@ body.no-scroll {
        url('/font-family/Lora-VariableFont_wght.ttf') format('truetype');
   font-display: swap;
 }
+
