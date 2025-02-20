@@ -609,3 +609,7 @@ body.no-scroll {
 
 /*  */
 
+.contact-form form {
+  width: 400px;
+  height: 480px;
+}
