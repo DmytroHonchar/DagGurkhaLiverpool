@@ -17,7 +17,6 @@
   font-display: swap;
 }
 
-
 /* =============================================
    2. GLOBAL RESET & BASIC LAYOUT
 ============================================= */
@@ -44,7 +43,6 @@ h1, h2 {
   font-size: 2rem;
   margin-bottom: 16px;
 }
-
 
 /* =============================================
    3. HEADER & NAVIGATION
@@ -104,7 +102,6 @@ nav a:hover {
   transform: scale(1.1);
 }
 
-
 /* =============================================
    4. CONTACT SECTION & FORM
 ============================================= */
@@ -114,7 +111,6 @@ nav a:hover {
   justify-content: space-between;
   align-items: flex-start;
   min-height: 100vh;
-  height: auto;
   padding: 40px 20px;
   box-sizing: border-box;
   color: #fff;
@@ -165,91 +161,20 @@ nav a:hover {
 }
 
 /* Contact Form Container & Style */
+.contact-form {
+  position: relative;
+  min-height: 600px; /* Enough space to show both forms if toggled */
+}
+
 .contact-form form {
   background-color: #2b2b2b;
   color: #fff;
   width: 400px;
-  height: 480px;
   margin: 0 auto; /* centers form horizontally */
   padding: 40px;
   border-radius: 8px;
   font-family: 'Lora', sans-serif;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Form Groups & Labels */
-.contact-form .form-group {
-  margin-bottom: 15px;
-}
-.contact-form label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  font-size: 1rem;
-}
-.contact-form label span {
-  color: #cf1212;
-}
-
-/* Inputs, Textarea, Select */
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  width: 100%;
-  min-height: 40px;
-  padding: 10px 12px;
-  border: 1px solid #777;
-  border-radius: 4px;
-  background-color: #444;
-  color: #fff;
-  box-sizing: border-box;
-  font-size: 1rem;
-  font-family: 'Lora', sans-serif;
-  line-height: 1.5;
-  text-align: left !important; /* ensures left alignment */
-  appearance: none; /* removes default iOS date/time appearance */
-}
-.contact-form textarea {
-  resize: vertical;
-}
-
-/* Single-Line Select Arrow */
-.select-wrapper {
-  position: relative;
-  width: 100%;
-}
-.select-wrapper select {
-  cursor: pointer;
-}
-.select-wrapper::after {
-  content: '▼';
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  transform: translateY(-50%);
-  pointer-events: none;
-  font-size: 0.9rem;
-  color: #000;
-}
-
-/* iOS Date/Time Field Fixes */
-.contact-form input[type="date"]::-webkit-datetime-edit,
-.contact-form input[type="time"]::-webkit-datetime-edit {
-  text-align: left;
-}
-.contact-form input[type="date"]::-webkit-date-and-time-value {
-  text-align: left;
-  margin: 0;
-}
-.contact-form input[type="date"]::placeholder,
-.contact-form input[type="time"]::placeholder {
-  text-align: left;
-  color: #bbb;
-}
-/* Remove number spinners */
-.contact-form input[type="number"] {
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
 }
 
 /* Toggle Buttons (Send Message / Book Table) */
@@ -283,6 +208,63 @@ nav a:hover {
   transform: scale(1.03);
 }
 
+/* Show/Hide the two forms */
+.hidden-form {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.active-form {
+  display: block;
+  opacity: 1;
+}
+
+/* Form Groups & Labels */
+.contact-form .form-group {
+  margin-bottom: 15px;
+}
+.contact-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  min-height: 40px;
+  padding: 10px 12px;
+  border: 1px solid #777;
+  border-radius: 4px;
+  background-color: #444;
+  color: #fff;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: 'Lora', sans-serif;
+  line-height: 1.5;
+  text-align: left !important; /* ensures left alignment */
+  appearance: none; /* removes default iOS date/time appearance */
+}
+.contact-form textarea {
+  resize: vertical;
+}
+/* Single-Line Select Arrow */
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+.select-wrapper::after {
+  content: '▼';
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 0.9rem;
+  color: #000;
+}
+
 /* Submit Button */
 .button {
   display: inline-block;
@@ -302,7 +284,6 @@ nav a:hover {
   background-color: #cf1212;
   transform: translateY(-3px);
 }
-
 
 /* =============================================
    5. FOOTER
@@ -325,7 +306,6 @@ footer p {
   color: #e0e0e0;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
-
 
 /* =============================================
    6. OVERLAYS & KEYFRAMES
@@ -391,7 +371,6 @@ body.no-scroll {
   to   { transform: translateX(100%); }
 }
 
-
 /* =============================================
    7. RESPONSIVE BREAKPOINTS
 ============================================= */
@@ -450,10 +429,11 @@ body.no-scroll {
     margin-left: auto;
     transition: transform 0.3s ease;
   }
-  /* Adjust the form for tablets */
   .contact-form form {
     width: 300px;
-    height: 480px;
+  }
+  .contact-form {
+    min-height: 580px;
   }
 }
 
@@ -487,9 +467,7 @@ body.no-scroll {
 }
 
 @media screen and (max-width: 480px) {
-  /* Narrow phone view */
   .contact-form form {
     width: 236px;
-    height: 476px;
   }
 }

@@ -48,143 +48,144 @@
     </nav>
 </div>
 
-  <!-- Contact Section -->
-  <section class="contact-section">
-    <!-- Left Side: Contact Info -->
-    <div class="contact-info">
-        <div class="contact-info-text">
-          <h2>Contact Info</h2>
-          <p>
-            <strong>Address:</strong> 
-            <a href="https://www.google.com/maps/place/114+South+Rd,+Waterloo,+Liverpool+L22+0ND" target="_blank">
-              114 South Rd, Waterloo,<br>
-              Liverpool L22 0ND
-            </a>
-          </p>
-          <p><strong>Phone:</strong> <a href="tel:+44 7392 489058">+44 7392 489 058</a></p>
-          <p><strong>Email:</strong> <a href="mailto:dagurkha@gmail.com">dagurkha@gmail.com</a></p>
-          <p><strong>Opening Hours:</strong></p>
-          <p>Tuesday to Saturday: 4 pm - 10 pm</p>
-          <p>Sunday & Monday: Closed</p>
-        </div>
-        <div class="map-container">
-          <iframe 
-            src="https://www.google.com/maps?q=Da+Gurkha+Fine+Dining,+114+South+Rd,+Waterloo,+Liverpool+L22+0ND&output=embed" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="eager">
-          </iframe>
-        </div>
-      </div>
-      
-
-    <!-- Right Side: Contact Form -->
-    <div class="contact-form">
-      <h2>Get In Touch</h2>
-
-      <!-- Form Toggle Buttons -->
-      <div class="form-toggle">
-        <button type="button" class="toggle-btn active" data-form="message">Send Message</button>
-        <button type="button" class="toggle-btn" data-form="booking">Book a Table</button>
-      </div>
-
-      <!-- Contact Form -->
-      <form action="#" method="post" id="contactForm">
-        <!-- Common Fields -->
-        <div class="form-group">
-          <label for="name">Name </label>
-          <input type="text" id="name" name="name" required>
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email </label>
-          <input type="email" id="email" name="email" required>
-        </div>
-
-        <!-- Booking Fields (Initially Hidden) -->
-        <div class="booking-fields" style="display: none;">
-            <div class="form-group">
-              <label for="people">Number of People </label>
-              <input 
-                type="number" 
-                id="people" 
-                name="people" 
-                min="1" 
-            >
-            </div>
-            <div class="form-group">
-              <label for="date">Date</label>
-              <input 
-                type="date" 
-                id="date" 
-                name="date" 
-                required 
-                style="width:100%;" 
-              />
-            </div>
-            <div class="form-group">
-              <div class="form-group">
-                <label for="time">Time</label>
-                <div class="select-wrapper">
-                  <select id="time" name="time" required>
-                    <!-- 4 PM - 10 PM in 15-min increments -->
-                    <option value="16:00">16:00</option>
-                    <option value="16:15">16:15</option>
-                    <option value="16:30">16:30</option>
-                    <option value="16:45">16:45</option>
-                    <option value="17:00">17:00</option>
-                    <option value="17:15">17:15</option>
-                    <option value="17:30">17:30</option>
-                    <option value="17:45">17:45</option>
-                    <option value="18:00">18:00</option>
-                    <option value="18:15">18:15</option>
-                    <option value="18:30">18:30</option>
-                    <option value="18:45">18:45</option>
-                    <option value="19:00">19:00</option>
-                    <option value="19:15">19:15</option>
-                    <option value="19:30">19:30</option>
-                    <option value="19:45">19:45</option>
-                    <option value="20:00">20:00</option>
-                    <option value="20:15">20:15</option>
-                    <option value="20:30">20:30</option>
-                    <option value="20:45">20:45</option>
-                    <option value="21:00">21:00</option>
-                    <option value="21:15">21:15</option>
-                    <option value="21:30">21:30</option>
-                    <option value="21:45">21:45</option>
-                    <option value="22:00">22:00</option>
-                  </select>
-                </div>
-              </div>
-              
-              
-            </div>
-            
-          </div>
-
-        <!-- Message Fields -->
-        <div class="message-fields">
-          <div class="form-group">
-            <label for="message">Message </label>
-            <textarea id="message" name="message" rows="8" required></textarea>
-          </div>
-        </div>
-
-        <!-- Hidden Field to Track which Form is Submitted -->
-        <input type="hidden" name="form_type" value="message" />
-
-        <!-- Submit Button -->
-        <button type="submit" class="button" id="submitBtn">Send Message</button>
-      </form>
+<!-- Contact Section -->
+<section class="contact-section">
+  <!-- Left Side: Contact Info -->
+  <div class="contact-info">
+    <div class="contact-info-text">
+      <h2>Contact Info</h2>
+      <p>
+        <strong>Address:</strong> 
+        <a href="https://www.google.com/maps/place/114+South+Rd,+Waterloo,+Liverpool+L22+0ND" target="_blank">
+          114 South Rd, Waterloo,<br>
+          Liverpool L22 0ND
+        </a>
+      </p>
+      <p><strong>Phone:</strong> <a href="tel:+44 7392 489058">+44 7392 489 058</a></p>
+      <p><strong>Email:</strong> <a href="mailto:dagurkha@gmail.com">dagurkha@gmail.com</a></p>
+      <p><strong>Opening Hours:</strong></p>
+      <p>Tuesday to Saturday: 4 pm - 10 pm</p>
+      <p>Sunday & Monday: Closed</p>
     </div>
-  </section>
+    <div class="map-container">
+      <iframe 
+        src="https://www.google.com/maps?q=Da+Gurkha+Fine+Dining,+114+South+Rd,+Waterloo,+Liverpool+L22+0ND&output=embed" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="eager">
+      </iframe>
+    </div>
+  </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; Da Gurkha, Liverpool | All rights reserved.</p>
-  </footer>
+  <!-- Right Side: Contact Forms -->
+  <div class="contact-form">
+    <h2>Get In Touch</h2>
 
-  <script src="/src/script.js"></script>
+    <!-- Form Toggle Buttons -->
+    <div class="form-toggle">
+      <button type="button" class="toggle-btn active" data-form="message">Send Message</button>
+      <button type="button" class="toggle-btn" data-form="booking">Book a Table</button>
+    </div>
 
+    <!-- MESSAGE FORM -->
+    <form action="/contact" method="post" id="messageForm" class="active-form">
+      <!-- Hidden field for spam bots (honeypot) - optional -->
+      <input type="text" name="phone" style="display: none;" tabindex="-1" autocomplete="off">
+
+      <div class="form-group">
+        <label for="m-name">Name </label>
+        <input type="text" id="m-name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="m-email">Email </label>
+        <input type="email" id="m-email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="m-message">Message </label>
+        <textarea id="m-message" name="message" rows="8" required></textarea>
+      </div>
+      <input type="hidden" name="form_type" value="message">
+      <button type="submit" class="button">Send Message</button>
+    </form>
+
+    <!-- BOOKING FORM -->
+    <form action="/contact" method="post" id="bookingForm" class="hidden-form">
+      <!-- Hidden field for spam bots (honeypot) - optional -->
+      <input type="text" name="phone" style="display: none;" tabindex="-1" autocomplete="off">
+
+      <div class="form-group">
+        <label for="b-name">Name </label>
+        <input type="text" id="b-name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="b-email">Email </label>
+        <input type="email" id="b-email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="people">Number of People </label>
+        <input 
+          type="number" 
+          id="people" 
+          name="people" 
+          min="1" 
+          required
+        >
+      </div>
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input 
+          type="date" 
+          id="date" 
+          name="date" 
+          required
+          style="width:100%;" 
+        />
+      </div>
+      <div class="form-group">
+        <label for="time">Time</label>
+        <div class="select-wrapper">
+          <select id="time" name="time" required>
+            <!-- 4 PM - 10 PM in 15-min increments -->
+            <option value="16:00">16:00</option>
+            <option value="16:15">16:15</option>
+            <option value="16:30">16:30</option>
+            <option value="16:45">16:45</option>
+            <option value="17:00">17:00</option>
+            <option value="17:15">17:15</option>
+            <option value="17:30">17:30</option>
+            <option value="17:45">17:45</option>
+            <option value="18:00">18:00</option>
+            <option value="18:15">18:15</option>
+            <option value="18:30">18:30</option>
+            <option value="18:45">18:45</option>
+            <option value="19:00">19:00</option>
+            <option value="19:15">19:15</option>
+            <option value="19:30">19:30</option>
+            <option value="19:45">19:45</option>
+            <option value="20:00">20:00</option>
+            <option value="20:15">20:15</option>
+            <option value="20:30">20:30</option>
+            <option value="20:45">20:45</option>
+            <option value="21:00">21:00</option>
+            <option value="21:15">21:15</option>
+            <option value="21:30">21:30</option>
+            <option value="21:45">21:45</option>
+            <option value="22:00">22:00</option>
+          </select>
+        </div>
+      </div>
+      <input type="hidden" name="form_type" value="booking">
+      <button type="submit" class="button">Book Table</button>
+    </form>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; Da Gurkha, Liverpool | All rights reserved.</p>
+</footer>
+
+<script src="/src/script.js"></script>
 </body>
 </html>
