@@ -612,4 +612,21 @@ body.no-scroll {
 .contact-form form {
   width: 400px;
   height: 480px;
+  margin: 0 auto;
+}
+
+/* For tablets */
+@media screen and (max-width: 768px) {
+  .contact-form form {
+    width: 300px;
+    height: 480px;
+  }
+}
+
+/* For phones */
+@media screen and (max-width: 480px) {
+  .contact-form form {
+    width: 236px;
+    height: 476px;
+  }
 }
