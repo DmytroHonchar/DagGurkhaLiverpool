@@ -182,7 +182,7 @@ body, html {
     color: #dcdcdc;
     margin: 0 auto 50px;
     max-width: 800px;
-    text-align: justify;
+    text-align: left;
     padding: 0px 10px;
 
   }
@@ -222,8 +222,6 @@ body, html {
     display: block;
   }
 
-
-  
   /* Carousel Buttons */
   .carousel-btn {
     position: static;
@@ -304,8 +302,7 @@ body, html {
     padding: 50px;
     font-size: 1.2em;
     line-height: 1.4em;
-    text-align: justify;
-
+    text-align: left;
   }
 
   .about-text h2{
@@ -720,7 +717,7 @@ body, html {
     .our-food-section {
         padding: 20px;
     }
-  
+
     .carousel-wrapper {
         overflow: hidden;
         width: 280px;
@@ -763,8 +760,6 @@ body, html {
       flex-shrink: 0;   
     }
     
-
-
     .carousel-btn {
         display: none;
     }
@@ -905,6 +900,7 @@ body, html {
       justify-content: center;
       gap: 30px;
     }
+
     .info-box {
       flex: 0 0 calc((100% - 20px) / 3);
       max-width: calc((100% - 20px) / 3);
@@ -944,10 +940,8 @@ body, html {
     }
   }
   
- 
-
   .carousel-wrapper {
-  position: relative; /* so .swipe-indicator can be absolutely positioned */
+  position: relative; 
 }
 
 .swipe-indicator {
@@ -959,9 +953,8 @@ body, html {
   gap: 10px;
   color: #fff;
   font-size: 1.4rem;
-  opacity: 0;           /* Start invisible */
-  pointer-events: none; /* Don't block user swipes */
-  /* NO animation here by default */
+  opacity: 0;           
+  pointer-events: none; 
 }
 
 .swipe-indicator.animate-indicator {
@@ -993,3 +986,24 @@ body, html {
     display: none;
   }
 }
+
+
+.food-description {
+  text-align: left !important; 
+  -webkit-hyphens: none;       
+  -moz-hyphens: none;
+  hyphens: none;
+}
+
+.food-description p,
+.food-description * {
+  text-align: left !important; 
+}
+
+.about-text,
+  .about-image{
+    text-align: left !important; 
+  -webkit-hyphens: none;       
+  -moz-hyphens: none;
+  hyphens: none;
+  }
