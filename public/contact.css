@@ -1,13 +1,35 @@
-/* ========== Global Resets & Layout ========== */
-body, html {
+/* =============================================
+   1. FONT FACES
+============================================= */
+@font-face {
+  font-family: 'LekhanaRegular';
+  src: url('/font-family/Lekhana%20Regular.woff2') format('woff2'),
+       url('/font-family/Lekhana%20Regular.woff') format('woff'),
+       url('/font-family/Lekhana%20Regular.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('/font-family/Lora-VariableFont_wght.woff2') format('woff2'),
+       url('/font-family/Lora-VariableFont_wght.woff') format('woff'),
+       url('/font-family/Lora-VariableFont_wght.ttf') format('truetype');
+  font-display: swap;
+}
+
+
+/* =============================================
+   2. GLOBAL RESET & BASIC LAYOUT
+============================================= */
+html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: #000;
+  overflow-x: hidden;
 }
 
 img {
@@ -15,7 +37,6 @@ img {
   height: auto;
 }
 
-/* ========== Typography & Headers ========== */
 h1, h2 {
   text-align: center;
   color: #fff;
@@ -24,34 +45,20 @@ h1, h2 {
   margin-bottom: 16px;
 }
 
-/* ========== Header & Navigation ========== */
+
+/* =============================================
+   3. HEADER & NAVIGATION
+============================================= */
 header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 10px;
+  align-items: center;
   width: 100%;
   height: 100px;
-  box-sizing: border-box;
-  align-items: center;
-  background-color: #300202;
-}
-
-nav a {
-  font-family: 'Lora', sans-serif;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1.7rem;
   padding: 10px;
-  margin: 10px 20px;
-  color: #fff;
-  display: inline-block;
-  transition: transform 0.5s, color 0.5s;
-  transform-origin: center bottom;
-}
-nav a:hover {
-  color: #cf1212;
-  transform: scale(1.1);
+  box-sizing: border-box;
+  background-color: #300202;
 }
 
 .momo-sticker {
@@ -60,6 +67,23 @@ nav a:hover {
   transition: transform 0.5s;
 }
 .momo-sticker:hover {
+  transform: scale(1.1);
+}
+
+nav a {
+  font-family: 'Lora', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.7rem;
+  margin: 10px 20px;
+  color: #fff;
+  display: inline-block;
+  padding: 10px;
+  transform-origin: center bottom;
+  transition: transform 0.5s, color 0.5s;
+}
+nav a:hover {
+  color: #cf1212;
   transform: scale(1.1);
 }
 
@@ -80,37 +104,39 @@ nav a:hover {
   transform: scale(1.1);
 }
 
-/* ========== Hero/Background Section ========== */
+
+/* =============================================
+   4. CONTACT SECTION & FORM
+============================================= */
 .contact-section {
-  background: url('/content/BG1.jpg') no-repeat center center fixed;
-  background-size: cover;
-  flex: 1;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+  min-height: 100vh;
+  height: auto;
   padding: 40px 20px;
   box-sizing: border-box;
   color: #fff;
-  /* height: 900px; */
-  min-height: 100vh; 
-  height: auto;  
+  background: url('/content/BG1.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
 
-/* ========== Contact Info ========== */
-.contact-info, .contact-form {
+.contact-info, 
+.contact-form {
   flex: 1;
   margin: 10px;
 }
 
+/* Contact Info */
 .contact-info p {
   width: 80%;
   margin: 0 auto 15px auto;
-  text-align: left;
   line-height: 1.7;
-  color: #fff;
   font-family: 'Lora', serif;
   font-size: 1rem;
+  color: #fff;
+  text-align: left;
 }
 .contact-info p strong {
   color: #fff;
@@ -138,15 +164,20 @@ nav a:hover {
   height: 270px;
 }
 
-/* ========== Contact Form ========== */
+/* Contact Form Container & Style */
 .contact-form form {
   background-color: #2b2b2b;
   color: #fff;
+  width: 400px;
+  height: 480px;
+  margin: 0 auto; /* centers form horizontally */
   padding: 40px;
   border-radius: 8px;
   font-family: 'Lora', sans-serif;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+/* Form Groups & Labels */
 .contact-form .form-group {
   margin-bottom: 15px;
 }
@@ -160,92 +191,68 @@ nav a:hover {
   color: #cf1212;
 }
 
-/* ====== Global Input Styling ====== */
+/* Inputs, Textarea, Select */
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
   width: 100%;
+  min-height: 40px;
   padding: 10px 12px;
   border: 1px solid #777;
   border-radius: 4px;
-  font-size: 1rem;
-  font-family: 'Lora', sans-serif;
   background-color: #444;
   color: #fff;
   box-sizing: border-box;
-  text-align: left !important;
+  font-size: 1rem;
+  font-family: 'Lora', sans-serif;
   line-height: 1.5;
-  min-height: 40px;
+  text-align: left !important; /* ensures left alignment */
+  appearance: none; /* removes default iOS date/time appearance */
+}
+.contact-form textarea {
+  resize: vertical;
 }
 
-/* ====== iOS Date Input Fixes ====== */
-/* Custom styling for date inputs to fix alignment and height issues */
-.contact-form input[type="date"] {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 40px; /* Explicit height */
-}
-.contact-form input[type="date"]::-webkit-datetime-edit {
-  text-align: left;
-  padding-left: 0;
-}
-.contact-form input[type="date"]::-webkit-datetime-edit-year-field,
-.contact-form input[type="date"]::-webkit-datetime-edit-month-field,
-.contact-form input[type="date"]::-webkit-datetime-edit-day-field {
-  text-align: left;
-}
-.contact-form input[type="date"]::-webkit-input-placeholder {
-  text-align: left;
-  color: #bbb;
-}
-
-/* Remove spinner arrows for number inputs */
-.contact-form input[type="number"] {
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
-  appearance: textfield;
-}
-
-/* ========== Custom Single-Line Select ========== */
+/* Single-Line Select Arrow */
 .select-wrapper {
   position: relative;
   width: 100%;
 }
 .select-wrapper select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #777;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-family: 'Lora', sans-serif;
-  background-color: #444;
-  color: #fff;
-  box-sizing: border-box;
   cursor: pointer;
-}
-.select-wrapper select::-ms-expand {
-  display: none;
 }
 .select-wrapper::after {
   content: '▼';
   position: absolute;
-  right: 15px;
   top: 50%;
+  right: 15px;
   transform: translateY(-50%);
-  color: #000;
   pointer-events: none;
   font-size: 0.9rem;
+  color: #000;
 }
 
-/* ========== Form Textarea ========== */
-.contact-form textarea {
-  resize: vertical;
+/* iOS Date/Time Field Fixes */
+.contact-form input[type="date"]::-webkit-datetime-edit,
+.contact-form input[type="time"]::-webkit-datetime-edit {
+  text-align: left;
+}
+.contact-form input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+  margin: 0;
+}
+.contact-form input[type="date"]::placeholder,
+.contact-form input[type="time"]::placeholder {
+  text-align: left;
+  color: #bbb;
+}
+/* Remove number spinners */
+.contact-form input[type="number"] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
 }
 
-/* ========== Form Toggle Buttons ========== */
+/* Toggle Buttons (Send Message / Book Table) */
 .form-toggle {
   margin-bottom: 20px;
   display: flex;
@@ -253,19 +260,19 @@ nav a:hover {
   justify-content: center;
 }
 .toggle-btn {
-  padding: 12px 20px;
-  border: none;
-  background: #eaeaea;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.3s;
-  font-size: 1rem;
-  font-family: 'Lora', sans-serif;
   flex: 1;
   max-width: 180px;
-  text-transform: uppercase;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-family: 'Lora', sans-serif;
   font-weight: bold;
+  text-transform: uppercase;
+  background: #eaeaea;
   color: #000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 .toggle-btn:hover {
   background: #ddd;
@@ -276,7 +283,7 @@ nav a:hover {
   transform: scale(1.03);
 }
 
-/* ========== Submit Button ========== */
+/* Submit Button */
 .button {
   display: inline-block;
   padding: 12px 24px;
@@ -286,38 +293,44 @@ nav a:hover {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s;
   font-family: 'Lora', sans-serif;
   font-size: 1rem;
   margin-top: 10px;
+  transition: background-color 0.2s, transform 0.2s;
 }
 .button:hover {
   background-color: #cf1212;
   transform: translateY(-3px);
 }
 
-/* ========== Footer ========== */
+
+/* =============================================
+   5. FOOTER
+============================================= */
 footer {
-  background-color: #300202;
-  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 25px 0;
+  margin-top: 0;
   font-family: 'Lora', serif;
   font-size: 0.95em;
-  letter-spacing: 0.5px;
+  background-color: #300202;
+  color: #fff;
   border-top: 1px solid rgba(207, 18, 18, 0.2);
-  margin-top: 0;
 }
 footer p {
-  text-align: center;
   margin: 0;
+  text-align: center;
   color: #e0e0e0;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* ========== Mobile Menu / Overlay ========== */
+
+/* =============================================
+   6. OVERLAYS & KEYFRAMES
+============================================= */
+/* Mobile Menu / Overlay */
 .menu-icon {
   display: none;
   cursor: pointer;
@@ -325,10 +338,8 @@ footer p {
 .nav-overlay {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   z-index: 1000;
   background-color: rgba(48, 2, 2, 0.95);
   flex-direction: column;
@@ -340,8 +351,8 @@ footer p {
   animation: slideIn 0.5s forwards;
 }
 .nav-overlay.inactive {
-  animation: slideOut 0.5s forwards;
   display: flex;
+  animation: slideOut 0.5s forwards;
 }
 .nav-overlay nav {
   display: flex;
@@ -350,71 +361,40 @@ footer p {
 }
 .nav-overlay nav a {
   display: block;
-  color: white;
+  color: #fff;
   font-size: 30px;
   text-decoration: none;
   margin: 10px 0;
   transition: color 0.3s ease;
 }
 .nav-overlay nav a:hover {
-  color: #ffb766;
+  color: #cf1212;
 }
 .close-btn {
   position: absolute;
   top: 20px;
   right: 30px;
   font-size: 40px;
-  color: white;
+  color: #fff;
   cursor: pointer;
 }
 body.no-scroll {
   overflow: hidden;
 }
 
-/* Force iOS date fields to be left-aligned */
-.contact-form input[type="date"] {
-  -webkit-appearance: none; /* or "auto" if you need native pickers */
-  appearance: none;
-  text-align: left !important; 
-  line-height: 1.5;
-}
-
-/* The main container for the date text */
-.contact-form input[type="date"]::-webkit-datetime-edit {
-  text-align: left !important;
-}
-
-/* Wraps the day, month, year fields */
-.contact-form input[type="date"]::-webkit-datetime-edit-fields-wrapper {
-  text-align: left !important;
-}
-
-/* Each individual field: day, month, year */
-.contact-form input[type="date"]::-webkit-datetime-edit-day-field,
-.contact-form input[type="date"]::-webkit-datetime-edit-month-field,
-.contact-form input[type="date"]::-webkit-datetime-edit-year-field {
-  text-align: left !important;
-  color: #fff; /* ensure it matches your text color */
-}
-
-/* If there's a placeholder (e.g., empty date), align that too */
-.contact-form input[type="date"]::-webkit-input-placeholder {
-  text-align: left;
-  color: #bbb;
-}
-
-
-/* ========== Keyframes ========== */
 @keyframes slideIn {
   from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+  to   { transform: translateX(0); }
 }
 @keyframes slideOut {
   from { transform: translateX(0); }
-  to { transform: translateX(100%); }
+  to   { transform: translateX(100%); }
 }
 
-/* ========== Responsive Breakpoints ========== */
+
+/* =============================================
+   7. RESPONSIVE BREAKPOINTS
+============================================= */
 @media screen and (max-width: 900px) {
   .contact-section {
     flex-direction: column;
@@ -427,9 +407,7 @@ body.no-scroll {
     max-width: 700px;
     margin: 20px auto;
   }
-  .contact-form {
-    order: 1;
-  }
+  .contact-form { order: 1; }
   .contact-info {
     order: 2;
     display: flex;
@@ -461,8 +439,8 @@ body.no-scroll {
   header {
     position: static;
     width: 100%;
-    padding: 0 10px;
     height: 70px;
+    padding: 0 10px;
   }
   .momo-sticker {
     display: none;
@@ -471,6 +449,11 @@ body.no-scroll {
     display: block;
     margin-left: auto;
     transition: transform 0.3s ease;
+  }
+  /* Adjust the form for tablets */
+  .contact-form form {
+    width: 300px;
+    height: 480px;
   }
 }
 
@@ -492,139 +475,19 @@ body.no-scroll {
 }
 
 @media screen and (min-width: 1130px) {
+  .contact-section {
+    justify-content: center;
+  }
   .contact-info,
   .contact-form {
     max-width: 500px;
     width: 100%;
     margin: 0 20px;
   }
-  .contact-section {
-    justify-content: center;
-  }
 }
 
-
-
-/* ========== Font Faces ========== */
-@font-face {
-  font-family: 'LekhanaRegular';
-  src: url('/font-family/Lekhana%20Regular.woff2') format('woff2'),
-       url('/font-family/Lekhana%20Regular.woff') format('woff'),
-       url('/font-family/Lekhana%20Regular.otf') format('opentype');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Lora';
-  src: url('/font-family/Lora-VariableFont_wght.woff2') format('woff2'),
-       url('/font-family/Lora-VariableFont_wght.woff') format('woff'),
-       url('/font-family/Lora-VariableFont_wght.ttf') format('truetype');
-  font-display: swap;
-}
-
-
-/* Force left alignment on iOS date/time fields while keeping native pickers */
-.contact-form input[type="date"],
-.contact-form input[type="time"] {
-  -webkit-appearance: auto;
-  appearance: auto;
-  text-align: left !important;
-  background-color: #444;
-  color: #fff;
-  border: 1px solid #777;
-  border-radius: 4px;
-  padding: 10px 12px;
-  line-height: 1.5;
-  box-sizing: border-box;
-  font-family: 'Lora', sans-serif;
-  font-size: 1rem;
-}
-
-/* Make sure placeholders match, if any */
-.contact-form input[type="date"]::-webkit-input-placeholder,
-.contact-form input[type="time"]::-webkit-input-placeholder {
-  text-align: left;
-  color: #bbb;
-}
-
-/* Remove spinner arrows for number inputs */
-.contact-form input[type="number"] {
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
-  appearance: textfield;
-}
-
-/* Prevent input shrinking on iOS */
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  min-height: 40px;
-}
-
-
-/* ====== Global Input Styling ====== */
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  text-align: left !important;
-  line-height: 1.5;
-  min-height: 40px;
-  padding: 10px 12px;
-  width: 100%;
-  border: 1px solid #777;
-  border-radius: 4px;
-  background-color: #444;
-  color: #fff;
-  box-sizing: border-box;
-  font-family: 'Lora', sans-serif;
-  font-size: 1rem;
-}
-
-/* ====== iOS Date/Time Input Fixes ====== */
-.contact-form input[type="date"] {
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.contact-form input[type="date"]::-webkit-date-and-time-value {
-  text-align: left;
-  margin: 0; /* Removes iOS default margin */
-}
-
-/* Placeholder alignment */
-.contact-form input[type="date"]::placeholder {
-  text-align: left !important;
-  color: #bbb;
-}
-
-/* Number input spinner removal */
-.contact-form input[type="number"] {
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
-  appearance: textfield;
-}
-
-
-
-
-/*  */
-
-.contact-form form {
-  width: 400px;
-  height: 480px;
-  margin: 0 auto;
-}
-
-/* For tablets */
-@media screen and (max-width: 768px) {
-  .contact-form form {
-    width: 300px;
-    height: 480px;
-  }
-}
-
-/* For phones */
 @media screen and (max-width: 480px) {
+  /* Narrow phone view */
   .contact-form form {
     width: 236px;
     height: 476px;
