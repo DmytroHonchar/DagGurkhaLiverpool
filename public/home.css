@@ -147,9 +147,9 @@ body, html {
     color: #fff;
     background-color: #000;
     text-decoration: none;
-    padding: 15px 30px;
+    padding: 13px 26px;
     border-radius: 5px;
-    font-size: 24px;
+    font-size: 22px;
     font-family: 'Lora', sans-serif;
     transition: background-color 0.2s ease, transform 0.2s ease;
   }
