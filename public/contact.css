@@ -533,21 +533,6 @@ body.no-scroll {
   color: #bbb;
 }
 
-/* Remove spinner arrows for number inputs */
-.contact-form input[type="number"] {
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
-  appearance: textfield;
-}
-
-/* Prevent input shrinking on iOS */
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  min-height: 40px;
-}
-
-
 /* ====== Global Input Styling ====== */
 .contact-form input,
 .contact-form select,
@@ -583,9 +568,7 @@ body.no-scroll {
   color: #bbb;
 }
 
-/* Number input spinner removal */
-.contact-form input[type="number"] {
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
-  appearance: textfield;
+
+.contact-form input[type="date"]{
+  text-align: left !important;
 }
