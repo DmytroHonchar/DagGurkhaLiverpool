@@ -243,8 +243,8 @@ nav a:hover {
   font-size: 1rem;
   font-family: 'Lora', sans-serif;
   line-height: 1.5;
-  text-align: left !important; /* ensures left alignment */
-  appearance: none; /* removes default iOS date/time appearance */
+  text-align: left !important; 
+  appearance: none; 
 }
 .contact-form textarea {
   resize: vertical;
@@ -509,49 +509,40 @@ body.no-scroll {
 }
 
 
-/* Force iOS date inputs to left-align text */
-.contact-form input[type="date"] {
-  -webkit-appearance: none; 
-  appearance: none;
-  text-align: left !important;
-  width: 100%;            /* or your desired width */
-  padding-left: 10px;     /* ensure some left padding */
-  border: 1px solid #777; /* match your styling */
-  background-color: #444; 
-  color: #fff;
-  font-family: 'Lora', sans-serif; 
-  font-size: 1rem;
+/* Force text left-aligned and ensure consistent sizing */
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  text-align: left;
   line-height: 1.5;
+  min-height: 40px; /* optional but helpful */
 }
 
-.contact-form input[type="date"]::-webkit-clear-button,
-.contact-form input[type="date"]::-webkit-inner-spin-button {
-  display: none;
+/* Only remove spinner arrows for number inputs */
+.contact-form input[type="number"] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
-.contact-form input[type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 1; 
-  cursor: pointer;
+/* Restore normal date/time appearance on iOS */
+.contact-form input[type="date"],
+.contact-form input[type="time"] {
+  -webkit-appearance: auto;
+  -moz-appearance: auto;
+  appearance: auto;
 }
 
-/* iOS sub-elements that sometimes ignore text-align */
-.contact-form input[type="date"]::-webkit-datetime-edit,
-.contact-form input[type="date"]::-webkit-datetime-edit-fields-wrapper,
-.contact-form input[type="date"]::-webkit-datetime-edit-text,
-.contact-form input[type="date"]::-webkit-datetime-edit-year-field,
-.contact-form input[type="date"]::-webkit-datetime-edit-month-field,
-.contact-form input[type="date"]::-webkit-datetime-edit-day-field,
-.contact-form input[type="date"]::-webkit-datetime-edit-hour-field,
-.contact-form input[type="date"]::-webkit-datetime-edit-minute-field,
-.contact-form input[type="date"]::-webkit-datetime-edit-second-field,
-.contact-form input[type="date"]::-webkit-datetime-edit-ampm-field {
-  text-align: left !important;
-  text-indent: 0 !important;
-  margin: 0 !important;
-  border: none !important;
-  color: #fff !important;
-  background: none !important;
-  font-family: 'Lora', sans-serif; 
-  font-size: 1rem;
-  line-height: 1.5;
+/* Make sure placeholders also align left */
+::-webkit-input-placeholder {
+  text-align: left;
+}
+:-moz-placeholder {
+  text-align: left;
+}
+::-moz-placeholder {
+  text-align: left;
+}
+:-ms-input-placeholder {
+  text-align: left;
 }
