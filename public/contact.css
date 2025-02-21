@@ -508,6 +508,46 @@ body.no-scroll {
   }
 }
 
+
+/* Force text left-aligned and ensure consistent sizing */
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  text-align: left;
+  line-height: 1.5;
+  min-height: 40px; /* optional but helpful */
+}
+
+/* Only remove spinner arrows for number inputs */
+.contact-form input[type="number"] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Restore normal date/time appearance on iOS */
+.contact-form input[type="date"],
+.contact-form input[type="time"] {
+  -webkit-appearance: auto;
+  -moz-appearance: auto;
+  appearance: auto;
+}
+
+/* Make sure placeholders also align left */
+::-webkit-input-placeholder {
+  text-align: left;
+}
+:-moz-placeholder {
+  text-align: left;
+}
+::-moz-placeholder {
+  text-align: left;
+}
+:-ms-input-placeholder {
+  text-align: left;
+}
+
+
 /* Common styling for all form elements */
 .contact-form input,
 .contact-form select,
@@ -547,42 +587,3 @@ body.no-scroll {
   appearance: none;
 }
 
-
-
-/* Force text left-aligned and ensure consistent sizing */
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  text-align: left;
-  line-height: 1.5;
-  min-height: 40px; /* optional but helpful */
-}
-
-/* Only remove spinner arrows for number inputs */
-.contact-form input[type="number"] {
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
-  appearance: textfield;
-}
-
-/* Restore normal date/time appearance on iOS */
-.contact-form input[type="date"],
-.contact-form input[type="time"] {
-  -webkit-appearance: auto;
-  -moz-appearance: auto;
-  appearance: auto;
-}
-
-/* Make sure placeholders also align left */
-::-webkit-input-placeholder {
-  text-align: left;
-}
-:-moz-placeholder {
-  text-align: left;
-}
-::-moz-placeholder {
-  text-align: left;
-}
-:-ms-input-placeholder {
-  text-align: left;
-}
