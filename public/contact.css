@@ -508,6 +508,46 @@ body.no-scroll {
   }
 }
 
+/* Common styling for all form elements */
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  min-height: 40px;
+  border: 1px solid #777;
+  border-radius: 4px;
+  background-color: #444;
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Lora', sans-serif;
+  line-height: 1.5;
+  text-align: left !important;
+  box-sizing: border-box;
+}
+
+/* Force consistent sizing for date and time inputs */
+.contact-form input[type="date"],
+.contact-form input[type="time"] {
+  width: 100%;
+  padding: 10px 12px;
+  min-height: 40px;
+  border: 1px solid #777;
+  border-radius: 4px;
+  background-color: #444;
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Lora', sans-serif;
+  line-height: 1.5;
+  text-align: left !important;
+  box-sizing: border-box;
+
+  /* Optionally, disable the native appearance if necessary */
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+
 
 /* Force text left-aligned and ensure consistent sizing */
 .contact-form input,
