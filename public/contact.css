@@ -397,10 +397,6 @@ body.no-scroll {
   overflow: hidden;
 }
 
-/* Force left alignment for date input in iOS Safari */
-input[type="date"]::-webkit-datetime-edit {
-  text-align: left;
-}
 
 @keyframes slideIn {
   from { transform: translateX(100%); }
@@ -510,4 +506,20 @@ input[type="date"]::-webkit-datetime-edit {
   .contact-form form {
     width: 236px;
   }
+}
+
+
+input[type="date"] {
+  text-align: left;
+}
+
+/* Target the native date control parts */
+input[type="date"]::-webkit-datetime-edit,
+input[type="date"]::-webkit-datetime-edit-fields-wrapper,
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  text-align: left;
+  justify-content: flex-start;
 }
