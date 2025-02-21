@@ -1,4 +1,39 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Create a floating status message element to show submission results
+  const statusMessage = document.createElement('div');
+  statusMessage.className = 'status-message';
+  document.body.appendChild(statusMessage);
+
+  function showMessage(text, isSuccess) {
+    statusMessage.textContent = text;
+    statusMessage.className = `status-message ${isSuccess ? 'success' : 'error'} visible`;
+    setTimeout(() => {
+      statusMessage.classList.remove('visible');
+    }, 5000);
+  }
+
+  // Set minimum date for booking (date input) and check for Sundays & Mondays
+  const dateInput = document.getElementById('date');
+  if (dateInput) {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = ('0' + (today.getMonth() + 1)).slice(-2);
+    const day = ('0' + today.getDate()).slice(-2);
+    const minDate = `${year}-${month}-${day}`;
+    dateInput.setAttribute('min', minDate);
+
+    dateInput.addEventListener('change', function () {
+      const selectedDate = new Date(dateInput.value);
+      if (!isNaN(selectedDate)) {
+        const dayOfWeek = selectedDate.getDay(); // 0 = Sunday, 1 = Monday, etc.
+        if (dayOfWeek === 0 || dayOfWeek === 1) {
+          showMessage("Bookings cannot be made on Sundays or Mondays.", false);
+          dateInput.value = "";
+        }
+      }
+    });
+  }
+
   // ================== Parallax Hero Effect ==================
   window.addEventListener("scroll", function () {
     const scrollPosition = window.scrollY;
@@ -33,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateFoodCarousel() {
       foodTrack.style.transform = `translateX(-${currentIndex * step}px)`;
-      // Update button states
       prevButton.disabled = currentIndex === 0;
       nextButton.disabled = currentIndex >= maxIndex;
     }
@@ -58,8 +92,6 @@ document.addEventListener("DOMContentLoaded", function () {
       gap = parseFloat(getComputedStyle(foodTrack).columnGap) || 0;
       step = slideWidth + gap;
       maxIndex = Math.max(0, slides.length - slidesToShow);
-
-      // Adjust currentIndex if it's beyond new maxIndex
       currentIndex = Math.min(currentIndex, maxIndex);
       updateFoodCarousel();
     });
@@ -76,7 +108,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let reviewIndex = 0;
     let visibleReviews = window.innerWidth < 768 ? 1 : 3;
-    // Add 20px gap (same as defined in CSS) to the width
     let reviewItemWidth = reviewItems[0].getBoundingClientRect().width + 20;
     let maxReviewIndex = reviewItems.length - visibleReviews;
 
@@ -104,7 +135,6 @@ document.addEventListener("DOMContentLoaded", function () {
       visibleReviews = window.innerWidth < 768 ? 1 : 3;
       reviewItemWidth = reviewItems[0].getBoundingClientRect().width + 20;
       maxReviewIndex = reviewItems.length - visibleReviews;
-
       if (reviewIndex > maxReviewIndex) {
         reviewIndex = maxReviewIndex;
       }
@@ -115,7 +145,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ================== TWO-FORM Toggle (Message / Booking) ==================
-  // This replaces the older "one-form" toggle logic.
   const toggleBtns = document.querySelectorAll('.toggle-btn');
   if (toggleBtns.length > 0) {
     const messageForm = document.getElementById('messageForm');
@@ -123,26 +152,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     toggleBtns.forEach(btn => {
       btn.addEventListener('click', function() {
-        // Remove 'active' class from all toggle buttons
         toggleBtns.forEach(b => b.classList.remove('active'));
-        // Add 'active' to the clicked button
         this.classList.add('active');
 
-        // Toggle which form is visible
         if (this.dataset.form === 'booking') {
-          // Hide message form
           messageForm.classList.remove('active-form');
           messageForm.classList.add('hidden-form');
-
-          // Show booking form
           bookingForm.classList.remove('hidden-form');
           bookingForm.classList.add('active-form');
         } else {
-          // Hide booking form
           bookingForm.classList.remove('active-form');
           bookingForm.classList.add('hidden-form');
-
-          // Show message form
           messageForm.classList.remove('hidden-form');
           messageForm.classList.add('active-form');
         }
@@ -179,12 +199,8 @@ document.addEventListener("DOMContentLoaded", function () {
   if (tabButtons.length > 0 && sections.length > 0) {
     tabButtons.forEach(button => {
       button.addEventListener('click', function () {
-        // Remove active class from all buttons
         tabButtons.forEach(btn => btn.classList.remove('active'));
-        // Hide all sections
         sections.forEach(sec => sec.style.display = 'none');
-
-        // Activate clicked button and display its target section
         this.classList.add('active');
         const targetId = this.getAttribute('data-target');
         document.getElementById(targetId).style.display = 'block';
@@ -194,20 +210,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ================== Intersection Observer for Swipe Indicators ==================
   const options = {
-    root: null,  // viewport
+    root: null,
     threshold: 0.2
   };
 
   function onSectionIntersect(entries, observer) {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Find the .swipe-indicator inside this section (if any)
         const indicator = entry.target.querySelector('.swipe-indicator');
         if (indicator) {
-          // Add the animate-indicator class to start fadeInOut
           indicator.classList.add('animate-indicator');
         }
-        // If you only want it to run once, unobserve
         observer.unobserve(entry.target);
       }
     });
@@ -219,4 +232,37 @@ document.addEventListener("DOMContentLoaded", function () {
   const reviewsSection = document.querySelector('.reviews-section');
   if (reviewsSection) observer.observe(reviewsSection);
 
+  // ================== Form Submission Handling ==================
+  async function handleFormSubmit(form, e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('/contact', {
+        method: 'POST',
+        body: new URLSearchParams(formData),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        }
+      });
+
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.message);
+
+      showMessage(result.message, true);
+      form.reset();
+    } catch (error) {
+      showMessage(error.message || 'Failed to send message. Please try again.', false);
+      console.error('Form submission error:', error);
+    }
+  }
+
+  const msgForm = document.getElementById('messageForm');
+  const bkForm = document.getElementById('bookingForm');
+  if (msgForm) {
+    msgForm.addEventListener('submit', (e) => handleFormSubmit(msgForm, e));
+  }
+  if (bkForm) {
+    bkForm.addEventListener('submit', (e) => handleFormSubmit(bkForm, e));
+  }
 });
