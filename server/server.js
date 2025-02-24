@@ -184,7 +184,7 @@ app.get('/menu', (req, res) => {
 app.get('/scan', (req, res) => {
   const payload = { scanned: true };
   // Token valid for 10 minutes
-  const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '10m' });
+  const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '15m' });
   res.redirect(`/order?token=${token}`);
 });
 
