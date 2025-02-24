@@ -6,6 +6,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const validator = require('validator');
 const rateLimit = require('express-rate-limit');
+const jwt = require('jsonwebtoken'); // <-- Added for JWT
 
 // For PDF generation and printing
 const PDFDocument = require('pdfkit');
@@ -99,8 +100,7 @@ app.post('/contact', contactFormLimiter, async (req, res) => {
   // Booking form
   if (form_type === 'booking') {
     subject = 'New Table Booking Request';
-    
-    // Format the date from YYYY-MM-DD to "Day Month Year"
+    // Format date if provided
     let formattedDate = date;
     if (date) {
       const bookingDate = new Date(date);
@@ -112,13 +112,10 @@ app.post('/contact', contactFormLimiter, async (req, res) => {
         });
       }
     }
-    
     text = `Booking Request from ${name} (${email}):
 Number of People: ${people || 'N/A'}
 Date: ${formattedDate || 'N/A'}
 Time: ${time || 'N/A'}`;
-
-  // Message form
   } else {
     if (!message) {
       return res.status(400).send('Message is required');
@@ -128,7 +125,6 @@ Time: ${time || 'N/A'}`;
 ${message.trim()}`;
   }
 
-  // Set up mail options for sending to site owner
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_USER,
@@ -137,7 +133,6 @@ ${message.trim()}`;
     text: text,
   };
 
-  // Set up confirmation mail options to send back to the user
   const confirmationMailOptions = {
     from: process.env.EMAIL_USER,
     to: email,
@@ -160,9 +155,7 @@ The Da Gurkha Team`,
   };
 
   try {
-    // Send email to site owner
     await transporter.sendMail(mailOptions);
-    // Send confirmation email to user (log error if it fails but proceed)
     try {
       await transporter.sendMail(confirmationMailOptions);
     } catch (err) {
@@ -184,9 +177,28 @@ app.get('/menu', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'menu.html'));
 });
 
-// Serve the order page
+// --- New /scan Endpoint ---
+// This endpoint generates a token and redirects to /order?token=...
+app.get('/scan', (req, res) => {
+  const payload = { scanned: true };
+  // Token valid for 10 minutes
+  const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '10m' });
+  res.redirect(`/order?token=${token}`);
+});
+
+// --- Protected /order Route ---
+// Only serve the order page if a valid token is present
 app.get('/order', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'public', 'order.html'));
+  const token = req.query.token;
+  if (!token) {
+    return res.status(403).send('Access denied: no token provided.');
+  }
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(403).send('Invalid or expired token.');
+    }
+    res.sendFile(path.join(__dirname, '..', 'public', 'order.html'));
+  });
 });
 
 // --- Improved Order Number Generation Function (using DDMMYY) ---
@@ -200,8 +212,6 @@ function generateOrderNumber() {
 }
 
 // --- PDF Generation & Printing Functions ---
-
-// Function to generate a PDF order ticket using pdfkit
 function generateOrderPDF(orderData, outputPath) {
   return new Promise((resolve, reject) => {
     const doc = new PDFDocument({ margin: 50 });
@@ -231,11 +241,10 @@ function generateOrderPDF(orderData, outputPath) {
   });
 }
 
-// Function to print the generated PDF using pdf-to-printer
 async function printOrder(orderData) {
   const outputPath = path.join(__dirname, '..', 'public', `order_${orderData.orderNumber}.pdf`);
   await generateOrderPDF(orderData, outputPath);
-  // For testing on Windows, use "Microsoft Print to PDF". Change this to your actual printer name in production.
+  // For example purposes, using "Microsoft Print to PDF"
   await print(outputPath, { printer: "Microsoft Print to PDF" });
 }
 
@@ -247,10 +256,7 @@ app.post('/order', async (req, res) => {
     return res.status(400).json({ message: "No items ordered" });
   }
   
-  // Generate a new order number using our improved function
   const orderNumber = generateOrderNumber();
-  
-  // Build order text for email/printing and calculate total
   let orderText = `Order Number: ${orderNumber}\nTable: ${tableNumber}\n\nItems:\n`;
   let total = 0;
   items.forEach(item => {
@@ -261,7 +267,6 @@ app.post('/order', async (req, res) => {
 
   const orderData = { tableNumber, items, orderNumber, total };
 
-  // Set up mail options to send order details to your restaurant email or printer email
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: process.env.RESTAURANT_ORDER_EMAIL || process.env.EMAIL_USER,
@@ -270,9 +275,7 @@ app.post('/order', async (req, res) => {
   };
 
   try {
-    // Send order email
     await transporter.sendMail(mailOptions);
-    // Print the order ticket (using the PDF method)
     await printOrder(orderData);
     res.status(200).json({ message: "Order placed successfully", orderNumber });
   } catch (error) {
@@ -281,5 +284,4 @@ app.post('/order', async (req, res) => {
   }
 });
 
-// Start the server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

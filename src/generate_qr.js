@@ -1,5 +1,5 @@
 const QRCode = require('qrcode');
-const url = 'https://daggurkhaliverpool.onrender.com/order'; // Replace with your actual domain
+const url = 'https://daggurkhaliverpool.onrender.com/scan'; // Updated URL
 
 QRCode.toFile('qrcode.png', url, {
   color: {
