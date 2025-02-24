@@ -6,7 +6,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const validator = require('validator');
 const rateLimit = require('express-rate-limit');
-const jwt = require('jsonwebtoken'); // <-- Added for JWT
+const jwt = require('jsonwebtoken'); 
 
 // For PDF generation and printing
 const PDFDocument = require('pdfkit');
@@ -15,6 +15,8 @@ const { print } = require('pdf-to-printer');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+const jwtSecret = process.env.JWT_SECRET;
 
 // If you're behind a proxy (e.g., Heroku), trust it:
 app.set('trust proxy', 1);
