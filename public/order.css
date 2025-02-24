@@ -188,12 +188,15 @@
     background-color: #222;
     padding: 8px;
     border-radius: 3px;
+    display: flex;
+    flex-direction: column;
   }
   
+  /* Changed align-items to flex-start to keep header and price at the top */
   .menu-item .item-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 5px;
   }
   
@@ -205,11 +208,15 @@
   .menu-item .item-header .price {
     font-size: 1rem;
     font-weight: bold;
+    /* Ensure price doesn't shrink when dish name is long */
+    flex-shrink: 0;
   }
   
+  /* The paragraph (description) will grow to fill available space */
   .menu-item p {
     font-size: 0.9rem;
     margin-bottom: 5px;
+    flex-grow: 1;
   }
   
   /* ---------------- Quantity Controls ---------------- */
@@ -217,6 +224,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    margin-top: auto;  /* Always push controls to the bottom */
   }
   
   .quantity-controls button {
@@ -302,15 +310,15 @@
   .confirmation-section p {
     font-size: 1rem;
   }
-
+  
   .order-summary ul li .remove-btn {
     display: inline-block;
     color: #fff;
     background-color: #000;
     text-decoration: none;
-    padding: 5px 10px;         /* Smaller padding */
+    padding: 5px 10px;
     border-radius: 5px;
-    font-size: 0.8rem;         /* Smaller font size */
+    font-size: 0.8rem;
     font-family: 'Lora', sans-serif;
     transition: background-color 0.2s ease, transform 0.2s ease;
     border: none;
@@ -322,9 +330,6 @@
     background-color: rgb(207, 18, 18);
     transform: translateY(-2px);
   }
-  
-  
-
   
   /* ================= Responsive Adjustments ================= */
   @media (max-width: 768px) {
@@ -352,4 +357,4 @@
       padding: 6px 12px;
     }
   }
-
+  
