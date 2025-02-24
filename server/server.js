@@ -7,10 +7,15 @@ const helmet = require('helmet');
 const validator = require('validator');
 const rateLimit = require('express-rate-limit');
 
+// For PDF generation and printing
+const PDFDocument = require('pdfkit');
+const fs = require('fs');
+const { print } = require('pdf-to-printer');
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// If you're behind a proxy (e.g. Heroku), trust it:
+// If you're behind a proxy (e.g., Heroku), trust it:
 app.set('trust proxy', 1);
 
 // Middleware
@@ -19,7 +24,7 @@ app.use(express.json());
 app.use(cors());
 app.use(helmet());
 
-// Serve static files
+// Serve static files from the public and src directories
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use('/src', express.static(path.join(__dirname, '..', 'src')));
 
@@ -95,7 +100,7 @@ app.post('/contact', contactFormLimiter, async (req, res) => {
   if (form_type === 'booking') {
     subject = 'New Table Booking Request';
     
-    // Format the date from YYYY-MM-DD to "Day Month Year" (e.g. "22 February 2222")
+    // Format the date from YYYY-MM-DD to "Day Month Year"
     let formattedDate = date;
     if (date) {
       const bookingDate = new Date(date);
@@ -132,7 +137,7 @@ ${message.trim()}`;
     text: text,
   };
 
-  // Set up confirmation mail options to send back to the user with updated text
+  // Set up confirmation mail options to send back to the user
   const confirmationMailOptions = {
     from: process.env.EMAIL_USER,
     to: email,
@@ -157,7 +162,7 @@ The Da Gurkha Team`,
   try {
     // Send email to site owner
     await transporter.sendMail(mailOptions);
-    // Attempt to send confirmation email to user (log error if it fails but proceed)
+    // Send confirmation email to user (log error if it fails but proceed)
     try {
       await transporter.sendMail(confirmationMailOptions);
     } catch (err) {
@@ -177,6 +182,103 @@ app.get('/', (req, res) => {
 
 app.get('/menu', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'menu.html'));
+});
+
+// Serve the order page
+app.get('/order', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'order.html'));
+});
+
+// --- Improved Order Number Generation Function (using DDMMYY) ---
+function generateOrderNumber() {
+  const date = new Date();
+  const dd = ('0' + date.getDate()).slice(-2);
+  const mm = ('0' + (date.getMonth() + 1)).slice(-2);
+  const yy = String(date.getFullYear()).slice(-2);
+  const randomNum = Math.floor(1000 + Math.random() * 9000);
+  return `ORD-${dd}${mm}${yy}-${randomNum}`;
+}
+
+// --- PDF Generation & Printing Functions ---
+
+// Function to generate a PDF order ticket using pdfkit
+function generateOrderPDF(orderData, outputPath) {
+  return new Promise((resolve, reject) => {
+    const doc = new PDFDocument({ margin: 50 });
+    const stream = fs.createWriteStream(outputPath);
+    doc.pipe(stream);
+
+    // Header
+    doc.fontSize(20).text("Order Summary", { align: "center" });
+    doc.moveDown();
+
+    // Order info
+    doc.fontSize(12).text(`Order Number: ${orderData.orderNumber}`);
+    doc.text(`Table Number: ${orderData.tableNumber}`);
+    doc.moveDown();
+
+    // List ordered items
+    orderData.items.forEach(item => {
+      doc.text(`${item.name} x ${item.qty} - £${(item.price * item.qty).toFixed(2)}`);
+    });
+
+    doc.moveDown();
+    doc.text(`Total: £${orderData.total.toFixed(2)}`, { align: "right" });
+    doc.end();
+
+    stream.on('finish', () => resolve());
+    stream.on('error', err => reject(err));
+  });
+}
+
+// Function to print the generated PDF using pdf-to-printer
+async function printOrder(orderData) {
+  const outputPath = path.join(__dirname, '..', 'public', `order_${orderData.orderNumber}.pdf`);
+  await generateOrderPDF(orderData, outputPath);
+  // For testing on Windows, use "Microsoft Print to PDF". Change this to your actual printer name in production.
+  await print(outputPath, { printer: "Microsoft Print to PDF" });
+}
+
+// Handle order submissions
+app.post('/order', async (req, res) => {
+  let { tableNumber, items } = req.body;
+  if (!tableNumber) return res.status(400).json({ message: "Table number is required" });
+  if (!items || !Array.isArray(items) || items.length === 0) {
+    return res.status(400).json({ message: "No items ordered" });
+  }
+  
+  // Generate a new order number using our improved function
+  const orderNumber = generateOrderNumber();
+  
+  // Build order text for email/printing and calculate total
+  let orderText = `Order Number: ${orderNumber}\nTable: ${tableNumber}\n\nItems:\n`;
+  let total = 0;
+  items.forEach(item => {
+    total += parseFloat(item.price) * parseInt(item.qty);
+    orderText += `${item.name} x ${item.qty} - £${(parseFloat(item.price) * parseInt(item.qty)).toFixed(2)}\n`;
+  });
+  orderText += `\nTotal: £${total.toFixed(2)}`;
+
+  const orderData = { tableNumber, items, orderNumber, total };
+
+  // Set up mail options to send order details to your restaurant email or printer email
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: process.env.RESTAURANT_ORDER_EMAIL || process.env.EMAIL_USER,
+    subject: `New Order - ${orderNumber}`,
+    text: orderText,
+  };
+
+  try {
+    // Send order email
+    await transporter.sendMail(mailOptions);
+    // Print the order ticket (using the PDF method)
+    await printOrder(orderData);
+    res.status(200).json({ message: "Order placed successfully", orderNumber });
+  } catch (error) {
+    console.error("Error processing order:", error);
+    res.status(500).json({ message: "Failed to place order" });
+  }
 });
 
 // Start the server
