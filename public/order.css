@@ -1,3 +1,23 @@
+/* =============================================
+   1. FONT FACES
+============================================= */
+@font-face {
+  font-family: 'LekhanaRegular';
+  src: url('/font-family/Lekhana%20Regular.woff2') format('woff2'),
+       url('/font-family/Lekhana%20Regular.woff') format('woff'),
+       url('/font-family/Lekhana%20Regular.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('/font-family/Lora-VariableFont_wght.woff2') format('woff2'),
+       url('/font-family/Lora-VariableFont_wght.woff') format('woff'),
+       url('/font-family/Lora-VariableFont_wght.ttf') format('truetype');
+  font-display: swap;
+}
+
+
 /* ================= Global Reset & Base Styles ================= */
 * {
   margin: 0;
@@ -388,8 +408,10 @@ header .media a:hover img {
 .confirmation-actions {
   margin-top: 20px;
   display: flex;
+  flex-direction: column;
   gap: 20px;
   justify-content: center;
+  align-items: center;
 }
 
 .confirmation-actions .button {
@@ -401,6 +423,8 @@ header .media a:hover img {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  font-family: Lora;
+  max-width: 400px;
 }
 
 .confirmation-actions .button:hover {
