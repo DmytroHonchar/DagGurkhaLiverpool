@@ -1,396 +1,472 @@
 /* ================= Global Reset & Base Styles ================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  html, body {
-    width: 100%;
-    font-family: 'Lora', sans-serif;
-    background-color: #000;
-    color: #fff;
-  }
-  
-  /* ================= Header (Scaled Down) ================= */
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 15px;
-    background-color: #300202;
-    height: 80px;
-  }
-  
-  header a {
-    text-decoration: none;
-  }
-  
-  header img {
-    max-width: 100%;
-    height: auto;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  font-family: 'Lora', sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+/* ================= Header (Scaled Down) ================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+  background-color: #300202;
+  height: 80px;
+}
+
+header a {
+  text-decoration: none;
+}
+
+header img {
+  max-width: 100%;
+  height: auto;
+}
+
+header nav a {
+  color: #fff;
+  font-size: 20px;
+  margin: 0 10px;
+  transition: transform 0.4s ease, color 0.4s ease;
+}
+
+header nav a:hover {
+  color: rgb(207, 18, 18);
+  transform: scale(1.05);
+}
+
+header .media a img {
+  width: 25px;
+  transition: transform 0.4s ease;
+}
+
+header .media a:hover img {
+  transform: scale(1.05);
+}
+
+/* ================= Order Container (Boxed) ================= */
+.order-container {
+  max-width: 600px;
+  width: 90%;
+  margin: 40px auto;
+  min-height: 80vh;
+  padding: 20px;
+  background-color: #111;
+  border: 1px solid #444;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ---------------- Table Input Section ---------------- */
+.table-input-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  color: #fff;
+}
+
+.table-input-title {
+  font-family: 'Lora', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.table-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+#table-number {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-family: 'Lora', serif;
+  background-color: #111;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 20px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#table-number:focus {
+  outline: none;
+  border-color: rgb(207, 18, 18);
+  box-shadow: 0 0 6px rgba(207, 18, 18, 0.6);
+}
+
+.table-submit-btn {
+  display: inline-block;
+  color: #fff;
+  background-color: #000;
+  text-decoration: none;
+  padding: 14px 25px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: 'Lora', serif;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.table-submit-btn:hover {
+  background-color: rgb(207, 18, 18);
+  transform: translateY(-3px);
+}
+
+/* ---------------- Menu & Ordering Section ---------------- */
+.menu-section {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Order Summary */
+.order-summary {
+  order: -1;
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* ---------------- Tab Buttons ---------------- */
+.menu-tabs {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.menu-tabs .tab-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 0.9rem;
+  margin: 0 5px;
+  padding: 5px 8px;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-weight: bold;
+}
+
+.menu-tabs .tab-btn:hover {
+  color: rgb(207, 18, 18);
+}
+
+.menu-tabs .tab-btn.active {
+  color: rgb(207, 18, 18);
+  border-bottom: 2px solid rgb(207, 18, 18);
+}
+
+/* ---------------- Menu Container & Items ---------------- */
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.menu-container > .menu-section {
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 5px;
+}
+
+.menu-container h2 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+/* ---------------- Two-Column Layout for Menu Categories ---------------- */
+.menu-category {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.menu-category h3 {
+  grid-column: 1 / -1;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 3px;
+}
+
+/* ---------------- Menu Items ---------------- */
+.menu-item {
+  background-color: #222;
+  padding: 8px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item .item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.menu-item .item-header h4 {
+  font-size: 1.1rem;
+  color: #cf1212;
+}
+
+.menu-item .item-header .price {
+  font-size: 1rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.menu-item p {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  flex-grow: 1;
+}
+
+/* ---------------- Quantity Controls ---------------- */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: auto;
+}
+
+.quantity-controls button {
+  width: 25px;
+  height: 25px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.quantity-controls button:hover {
+  background-color: rgb(207, 18, 18);
+}
+
+.quantity-controls input {
+  width: 35px;
+  text-align: center;
+  padding: 3px;
+  border: 1px solid #444;
+  border-radius: 3px;
+  background-color: #333;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+/* ---------------- Order Summary ---------------- */
+.order-summary h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.order-summary ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 10px;
+  text-align: center;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.order-summary ul li {
+  font-size: 1rem;
+  margin: 3px 0;
+}
+
+.order-summary p {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.order-summary button {
+  padding: 12px 20px;
+  font-family: 'Lora', sans-serif;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.order-summary button:hover {
+  background-color: rgb(207, 18, 18);
+  transform: translateY(-2px);
+}
+
+.order-summary ul li .remove-btn {
+  display: inline-block;
+  color: #fff;
+  background-color: #000;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-family: 'Lora', sans-serif;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  border: none;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.order-summary ul li .remove-btn:hover {
+  background-color: rgb(207, 18, 18);
+  transform: translateY(-2px);
+}
+
+/* ---------------- Confirmation Section ---------------- */
+.confirmation-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.confirmation-section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.confirmation-section p {
+  font-size: 1rem;
+}
+
+/* ---------------- Order Additional Fields ---------------- */
+.order-additional {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 400px;
+  text-align: left;
+}
+
+.order-additional label {
+  margin-bottom: 5px;
+}
+
+.order-additional input[type="email"],
+.order-additional textarea {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  font-family: inherit;
+  margin-bottom: 10px;
+}
+
+/* ---------------- Confirmation Actions ---------------- */
+.confirmation-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.confirmation-actions .button {
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.confirmation-actions .button:hover {
+  background-color: rgb(207, 18, 18);
+  transform: translateY(-2px);
+}
+
+/* ================= Responsive Adjustments ================= */
+
+/* Phone */
+@media (max-width: 768px) {
   header nav a {
-    color: #fff;
-    font-size: 20px;
-    margin: 0 10px;
-    transition: transform 0.4s ease, color 0.4s ease;
-  }
-  
-  header nav a:hover {
-    color: rgb(207, 18, 18);
-    transform: scale(1.05);
-  }
-  
-  header .media a img {
-    width: 25px;
-    transition: transform 0.4s ease;
-  }
-  
-  header .media a:hover img {
-    transform: scale(1.05);
-  }
-  
-  /* ================= Order Container (Boxed) ================= */
-  .order-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 15px;
-    background-color: #111;
-    border: 1px solid #444;
-    border-radius: 5px;
-  }
-  
-  /* ---------------- Table Input Section ---------------- */
-  .table-input-section {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .table-input-section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-  }
-  
-  .table-input-section input[type="text"] {
-    width: 150px;
-    padding: 8px;
-    font-size: 1rem;
-    margin: 15px 0;
-    border: none;
-    border-radius: 5px;
-  }
-  
-  .table-input-section button {
-    padding: 8px 16px;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .table-input-section button:hover {
-    background-color: rgb(207, 18, 18);
-    transform: translateY(-2px);
-  }
-  
-  /* ---------------- Menu & Ordering Section ---------------- */
-  .menu-section {
-    margin-top: 20px;
-    /* Use flex ordering so we can reposition Order Summary */
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Place Order Summary at the top */
-  .order-summary {
-    order: -1;
-    margin-bottom: 15px;
-    background-color: #222;
-    padding: 12px;
-    border-radius: 5px;
-    text-align: center;
-  }
-  
-  /* ---------------- Tab Buttons ---------------- */
-  .menu-tabs {
-    text-align: center;
-    margin-bottom: 10px;
+    font-size: 16px;
+    margin: 0 5px;
   }
   
   .menu-tabs .tab-btn {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 0.9rem;
-    margin: 0 5px;
-    padding: 5px 8px;
-    cursor: pointer;
-    transition: color 0.3s;
-    font-weight: bold;
-  }
-  
-  .menu-tabs .tab-btn:hover {
-    color: rgb(207, 18, 18);
-  }
-  
-  .menu-tabs .tab-btn.active {
-    color: rgb(207, 18, 18);
-    border-bottom: 2px solid rgb(207, 18, 18);
-  }
-  
-  /* ---------------- Menu Container & Items ---------------- */
-  .menu-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-height: 400px;
-    overflow-y: auto;
-    padding-right: 5px; /* for scrollbar space */
-  }
-  
-  /* Each inner menu section */
-  .menu-container > .menu-section {
-    padding: 10px;
-    border: 1px solid #444;
-    border-radius: 5px;
-  }
-  
-  .menu-container h2 {
-    font-size: 1.4rem;
-    margin-bottom: 8px;
-    text-align: center;
-  }
-  
-  /* ---------------- Two-Column Layout for Menu Categories ---------------- */
-  /* Each menu-category now uses grid to show items in two columns */
-  .menu-category {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .menu-category h3 {
-    grid-column: 1 / -1;
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-    border-bottom: 1px solid #444;
-    padding-bottom: 3px;
-  }
-  
-  /* ---------------- Menu Items ---------------- */
-  .menu-item {
-    background-color: #222;
-    padding: 8px;
-    border-radius: 3px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Changed align-items to flex-start to keep header and price at the top */
-  .menu-item .item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 5px;
-  }
-  
-  .menu-item .item-header h4 {
-    font-size: 1.1rem;
-    color: #cf1212;
-  }
-  
-  .menu-item .item-header .price {
-    font-size: 1rem;
-    font-weight: bold;
-    /* Ensure price doesn't shrink when dish name is long */
-    flex-shrink: 0;
-  }
-  
-  /* The paragraph (description) will grow to fill available space */
-  .menu-item p {
-    font-size: 0.9rem;
-    margin-bottom: 5px;
-    flex-grow: 1;
-  }
-  
-  /* ---------------- Quantity Controls ---------------- */
-  .quantity-controls {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin-top: auto;  /* Always push controls to the bottom */
-  }
-  
-  .quantity-controls button {
-    width: 25px;
-    height: 25px;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .quantity-controls button:hover {
-    background-color: rgb(207, 18, 18);
+    font-size: 0.85rem;
+    margin: 3px;
+    padding: 5px 6px;
   }
   
   .quantity-controls input {
-    width: 35px;
-    text-align: center;
-    padding: 3px;
-    border: 1px solid #444;
-    border-radius: 3px;
-    background-color: #333;
-    color: #fff;
-    font-size: 0.9rem;
+    width: 30px;
   }
   
-  /* ---------------- Order Summary ---------------- */
+  .order-summary {
+    width: 100%;
+  }
+  
   .order-summary h3 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-  }
-  
-  .order-summary ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 10px;
-    text-align: left;
-    max-height: 150px;
-    overflow-y: auto;
-  }
-  
-  .order-summary ul li {
-    font-size: 1rem;
-    margin-bottom: 3px;
-    margin-top: 3px;
-  }
-  
-  .order-summary p {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 1.2rem;
   }
   
   .order-summary button {
-    padding: 8px 16px;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 0.9rem;
+    padding: 6px 12px;
   }
   
-  .order-summary button:hover {
-    background-color: rgb(207, 18, 18);
-    transform: translateY(-2px);
+  .order-additional {
+    width: 90%;
+    max-width: 300px;
   }
-  
-  /* ---------------- Confirmation Section ---------------- */
-  .confirmation-section {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .confirmation-section h2 {
-    font-size: 1.6rem;
-    margin-bottom: 10px;
-  }
-  
-  .confirmation-section p {
-    font-size: 1rem;
-  }
-  
-  .order-summary ul li .remove-btn {
-    display: inline-block;
-    color: #fff;
-    background-color: #000;
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.8rem;
-    font-family: 'Lora', sans-serif;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-    border: none;
-    cursor: pointer;
-    margin-left: 8px;
-  }
-  
-  .order-summary ul li .remove-btn:hover {
-    background-color: rgb(207, 18, 18);
-    transform: translateY(-2px);
-  }
-  
-  /* ================= Responsive Adjustments ================= */
-  @media (max-width: 768px) {
-    header nav a {
-      font-size: 16px;
-      margin: 0 5px;
-    }
-    .menu-tabs .tab-btn {
-      font-size: 0.9rem;
-      margin: 3px;
-      padding: 5px 8px;
-    }
-    .quantity-controls input {
-      width: 30px;
-    }
-    .order-summary {
-      position: static;
-      width: 100%;
-    }
-    .order-summary h3 {
-      font-size: 1.2rem;
-    }
-    .order-summary button {
-      font-size: 0.9rem;
-      padding: 6px 12px;
-    }
-  }
-  
+}
 
-  /* ---------------- Order Additional Fields ---------------- */
-.order-additional {
-    margin: 10px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    text-align: left;
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .order-container {
+    max-width: 700px;
   }
   
-  .order-additional label {
+  .table-input-title {
+    font-size: 1.8rem;
+  }
+  
+  .table-submit-btn {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+  
+  .menu-tabs .tab-btn {
     font-size: 1rem;
+    padding: 6px 10px;
   }
   
-  .order-additional textarea {
-    width: 100%;
-    height: 80px;
-    resize: vertical;
-    padding: 5px;
-    border: 1px solid #444;
-    border-radius: 5px;
-    background-color: #333;
-    color: #fff;
-    font-family: inherit;
+  .order-summary h3 {
+    font-size: 1.3rem;
   }
-  
-  .order-additional input[type="email"] {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #444;
-    border-radius: 5px;
-    background-color: #333;
-    color: #fff;
-    font-family: inherit;
-  }
-  
+}

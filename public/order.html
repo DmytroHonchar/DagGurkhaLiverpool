@@ -11,11 +11,14 @@
   
   <main class="order-container">
     <!-- Section 1: Table Number Input -->
-    <section class="table-input-section">
-      <h2>Enter Your Table Number</h2>
-      <input type="text" id="table-number" placeholder="Table number" required>
-      <button id="table-submit">Continue</button>
-    </section>
+    <!-- Updated Table Number Input Section -->
+<section class="table-input-section">
+  <h2 class="table-input-title">Enter Your Table Number</h2>
+  <div class="table-input-group">
+    <input type="text" id="table-number" placeholder="Table number" required>
+    <button id="table-submit" class="table-submit-btn">Continue</button>
+  </div>
+</section>
     <!-- Section 2: Menu and Ordering -->
     <section class="menu-section" style="display:none;">
       <!-- Tab Buttons -->
@@ -1294,10 +1297,10 @@
          <p>Total: £<span id="order-total">0.00</span></p>
          <!-- New additional fields -->
          <div class="order-additional">
-            <label for="order-comments">Additional Comments:</label>
-            <textarea id="order-comments" placeholder="E.g. no pepper"></textarea>
             <label for="customer-email">Your Email:</label>
-            <input type="email" id="customer-email" placeholder="you@example.com">
+            <input type="email" id="customer-email">
+            <label for="order-comments">Additional Comments:</label>
+            <textarea id="order-comments" placeholder="Any special requests? No onions, extra spicy, sauce on the side"></textarea>
           </div>
          <button id="place-order">Place Order</button>
       </div>
@@ -1306,6 +1309,11 @@
     <section class="confirmation-section" style="display:none;">
        <h2>Thank you!</h2>
        <p>Your order has been placed. Your order number is: <span id="order-number"></span></p>
+
+       <div class="confirmation-actions">
+        <button id="new-order-btn" class="button">Place Another Order</button>
+        <button id="exit-btn" class="button">Exit</button>
+      </div>
     </section>
   </main>
   <script src="/src/order.js"></script>

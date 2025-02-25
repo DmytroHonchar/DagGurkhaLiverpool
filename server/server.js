@@ -8,10 +8,6 @@ const validator = require('validator');
 const rateLimit = require('express-rate-limit');
 const jwt = require('jsonwebtoken');
 
-// const PDFDocument = require('pdfkit'); // PDF generation removed
-// const fs = require('fs');             // Used for PDF generation
-// const { print } = require('pdf-to-printer'); // PDF printing removed
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -51,8 +47,8 @@ app.use(
 const transporter = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
-    user: process.env.EMAIL_USER, // your Gmail address
-    pass: process.env.EMAIL_PASS, // your Gmail or App Password
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
@@ -151,9 +147,7 @@ The Da Gurkha Team`,
   };
 
   try {
-    // Send email to owner
     await transporter.sendMail(mailOptions);
-    // Send confirmation to user
     try {
       await transporter.sendMail(confirmationMailOptions);
     } catch (err) {
@@ -196,22 +190,18 @@ app.get('/order', (req, res) => {
   });
 });
 
-// Generate a unique order number
+// Generate a 4-digit random order number
 function generateOrderNumber() {
-  const date = new Date();
-  const dd = ('0' + date.getDate()).slice(-2);
-  const mm = ('0' + (date.getMonth() + 1)).slice(-2);
-  const yy = String(date.getFullYear()).slice(-2);
-  const randomNum = Math.floor(1000 + Math.random() * 9000);
-  return `ORD-${dd}${mm}${yy}-${randomNum}`;
+  return Math.floor(1000 + Math.random() * 9000).toString();
 }
 
 // Handle order submission
 app.post('/order', async (req, res) => {
-  // Expect tableNumber, items, orderComment, customerEmail in the body
   let { tableNumber, items, orderComment, customerEmail } = req.body;
 
-  if (!tableNumber) return res.status(400).json({ message: "Table number is required" });
+  if (!tableNumber) {
+    return res.status(400).json({ message: "Table number is required" });
+  }
   if (!items || !Array.isArray(items) || items.length === 0) {
     return res.status(400).json({ message: "No items ordered" });
   }
@@ -220,19 +210,16 @@ app.post('/order', async (req, res) => {
   let orderText = `Order Number: ${orderNumber}\nTable: ${tableNumber}\n\nItems:\n`;
   let total = 0;
 
-  // Build the item list
   items.forEach(item => {
     total += parseFloat(item.price) * parseInt(item.qty);
     orderText += `${item.name} x ${item.qty} - £${(item.price * item.qty).toFixed(2)}\n`;
   });
   orderText += `\nTotal: £${total.toFixed(2)}`;
 
-  // Add optional comment
   if (orderComment) {
     orderText += `\nComments: ${orderComment.trim()}`;
   }
 
-  // Prepare mail options for owner
   const ownerMailOptions = {
     from: process.env.EMAIL_USER,
     to: process.env.RESTAURANT_ORDER_EMAIL || process.env.EMAIL_USER,
@@ -240,7 +227,6 @@ app.post('/order', async (req, res) => {
     text: orderText,
   };
 
-  // Optional mail to customer if valid
   const validEmail = customerEmail && validator.isEmail(customerEmail.trim());
   let customerMailOptions;
   if (validEmail) {
@@ -253,10 +239,7 @@ app.post('/order', async (req, res) => {
   }
 
   try {
-    // Send to owner
     await transporter.sendMail(ownerMailOptions);
-
-    // Send confirmation to customer
     if (customerMailOptions) {
       try {
         await transporter.sendMail(customerMailOptions);
@@ -264,8 +247,6 @@ app.post('/order', async (req, res) => {
         console.error("Error sending confirmation email to customer:", err);
       }
     }
-
-    // Return success JSON
     return res.status(200).json({ message: "Order placed successfully", orderNumber });
   } catch (error) {
     console.error("Error processing order:", error);
