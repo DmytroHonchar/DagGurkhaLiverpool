@@ -458,8 +458,8 @@ header .media a:hover img {
   }
   
   .order-summary button {
-    font-size: 0.9rem;
-    padding: 6px 12px;
+    font-size: 1rem;
+    padding: 10px 16px;
   }
   
   .order-additional {
@@ -501,4 +501,10 @@ header .media a:hover img {
   .order-summary h3 {
     font-size: 1.3rem;
   }
+}
+
+
+.menu-note{
+  margin-top: 6px;
+  text-align: center;
 }
