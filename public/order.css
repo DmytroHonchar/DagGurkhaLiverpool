@@ -74,7 +74,7 @@ header .media a:hover img {
 
 /* ================= Order Container (Boxed) ================= */
 .order-container {
-  max-width: 600px;
+  max-width: 800px;
   width: 90%;
   margin: 40px auto;
   min-height: 80vh;
