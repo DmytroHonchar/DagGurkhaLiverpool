@@ -5,7 +5,6 @@
        url('/font-family/Lekhana%20Regular.otf') format('opentype');
   font-display: swap;
 }
-
 @font-face {
   font-family: 'Lora';
   src: url('/font-family/Lora-VariableFont_wght.woff2') format('woff2'),
@@ -13,20 +12,17 @@
        url('/font-family/Lora-VariableFont_wght.ttf') format('truetype');
   font-display: swap;
 }
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 html, body {
   width: 100%;
   font-family: 'Lora', sans-serif;
   background-color: #000;
   color: #fff;
 }
-
 header {
   display: flex;
   justify-content: space-between;
@@ -35,43 +31,36 @@ header {
   background-color: #300202;
   height: 80px;
 }
-
 header a {
   text-decoration: none;
 }
-
 header img {
   max-width: 100%;
   height: auto;
 }
-
 header nav a {
   color: #fff;
   font-size: 20px;
   margin: 0 10px;
   transition: transform 0.4s ease, color 0.4s ease;
 }
-
 header nav a:hover {
   color: rgb(207, 18, 18);
   transform: scale(1.05);
 }
-
 header .media a img {
   width: 25px;
   transition: transform 0.4s ease;
 }
-
 header .media a:hover img {
   transform: scale(1.05);
 }
-
 .order-container {
-  max-width: 800px;
-  width: 90%;
+  max-width: 1000px;
+  width: 95%;
   margin: 40px auto;
   min-height: 80vh;
-  padding: 20px;
+  padding: 40px;
   background-color: #111;
   border: 1px solid #444;
   border-radius: 5px;
@@ -79,7 +68,6 @@ header .media a:hover img {
   flex-direction: column;
   justify-content: center;
 }
-
 .table-input-section {
   display: flex;
   flex-direction: column;
@@ -89,14 +77,12 @@ header .media a:hover img {
   padding: 60px 20px;
   color: #fff;
 }
-
 .table-input-title {
   font-family: 'LekhanaRegular', sans-serif;
   font-size: 2rem;
   margin-bottom: 1.5rem;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
-
 .table-input-group {
   display: flex;
   flex-direction: column;
@@ -105,7 +91,6 @@ header .media a:hover img {
   max-width: 320px;
   margin: 0 auto;
 }
-
 #table-number {
   width: 100%;
   padding: 12px 20px;
@@ -117,13 +102,11 @@ header .media a:hover img {
   border-radius: 20px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-
 #table-number:focus {
   outline: none;
   border-color: rgb(207, 18, 18);
   box-shadow: 0 0 6px rgba(207,18,18,0.6);
 }
-
 .table-submit-btn {
   display: inline-block;
   color: #fff;
@@ -138,18 +121,15 @@ header .media a:hover img {
   cursor: pointer;
   font-weight: 600;
 }
-
 .table-submit-btn:hover {
   background-color: rgb(207, 18, 18);
   transform: translateY(-3px);
 }
-
 .menu-section {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
 }
-
 .order-summary {
   order: -1;
   margin-bottom: 15px;
@@ -157,12 +137,10 @@ header .media a:hover img {
   border-radius: 5px;
   text-align: center;
 }
-
 .menu-tabs {
   text-align: center;
   margin-bottom: 10px;
 }
-
 .menu-tabs .tab-btn {
   background: none;
   border: none;
@@ -174,44 +152,37 @@ header .media a:hover img {
   transition: color 0.3s;
   font-weight: bold;
 }
-
 .menu-tabs .tab-btn:hover {
   color: rgb(207, 18, 18);
 }
-
 .menu-tabs .tab-btn.active {
   color: rgb(207, 18, 18);
   border-bottom: 2px solid rgb(207, 18, 18);
 }
-
 .menu-container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
   max-height: 500px;
   overflow-y: auto;
   padding-right: 5px;
 }
-
 .menu-container > .menu-section {
   padding: 10px;
   border: 1px solid #444;
   border-radius: 5px;
 }
-
 .menu-container h2 {
   font-size: 1.4rem;
   margin-bottom: 8px;
   text-align: center;
 }
-
 .menu-category {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 15px;
   margin-bottom: 10px;
 }
-
 .menu-category h3 {
   grid-column: 1 / -1;
   font-size: 1.2rem;
@@ -219,7 +190,6 @@ header .media a:hover img {
   border-bottom: 1px solid #444;
   padding-bottom: 3px;
 }
-
 .menu-item {
   background-color: #222;
   padding: 8px;
@@ -227,38 +197,32 @@ header .media a:hover img {
   display: flex;
   flex-direction: column;
 }
-
 .menu-item .item-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 5px;
 }
-
 .menu-item .item-header h4 {
   font-size: 1.1rem;
   color: #cf1212;
 }
-
 .menu-item .item-header .price {
   font-size: 1rem;
   font-weight: bold;
   flex-shrink: 0;
 }
-
 .menu-item p {
   font-size: 0.9rem;
   margin-bottom: 5px;
   flex-grow: 1;
 }
-
 .quantity-controls {
   display: flex;
   align-items: center;
   gap: 5px;
   margin-top: auto;
 }
-
 .quantity-controls button {
   width: 25px;
   height: 25px;
@@ -269,11 +233,9 @@ header .media a:hover img {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 .quantity-controls button:hover {
   background-color: rgb(207, 18, 18);
 }
-
 .quantity-controls input {
   width: 35px;
   text-align: center;
@@ -284,12 +246,10 @@ header .media a:hover img {
   color: #fff;
   font-size: 0.9rem;
 }
-
 .order-summary h3 {
   font-size: 1.4rem;
   margin-bottom: 10px;
 }
-
 .order-summary ul {
   list-style: none;
   padding: 0;
@@ -298,18 +258,15 @@ header .media a:hover img {
   max-height: 150px;
   overflow-y: auto;
 }
-
 .order-summary ul li {
   font-size: 1rem;
   margin: 3px 0;
 }
-
 .order-summary p {
   font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 10px;
 }
-
 .order-summary button {
   padding: 12px 20px;
   font-family: 'Lora', sans-serif;
@@ -322,12 +279,10 @@ header .media a:hover img {
   transition: background-color 0.3s ease, transform 0.3s ease;
   margin-top: 10px;
 }
-
 .order-summary button:hover {
   background-color: rgb(207, 18, 18);
   transform: translateY(-2px);
 }
-
 .order-summary ul li .remove-btn {
   display: inline-block;
   color: #fff;
@@ -342,26 +297,21 @@ header .media a:hover img {
   cursor: pointer;
   margin-left: 8px;
 }
-
 .order-summary ul li .remove-btn:hover {
   background-color: rgb(207, 18, 18);
   transform: translateY(-2px);
 }
-
 .confirmation-section {
   text-align: center;
   margin-top: 20px;
 }
-
 .confirmation-section h2 {
   font-size: 1.6rem;
   margin-bottom: 10px;
 }
-
 .confirmation-section p {
   font-size: 1rem;
 }
-
 .order-additional {
   margin: 0 auto;
   display: flex;
@@ -370,11 +320,9 @@ header .media a:hover img {
   max-width: 400px;
   text-align: left;
 }
-
 .order-additional label {
   margin-bottom: 5px;
 }
-
 .order-additional input[type="email"],
 .order-additional textarea {
   width: 100%;
@@ -386,7 +334,6 @@ header .media a:hover img {
   font-family: inherit;
   margin-bottom: 10px;
 }
-
 .confirmation-actions {
   margin-top: 20px;
   display: flex;
@@ -395,7 +342,6 @@ header .media a:hover img {
   justify-content: center;
   align-items: center;
 }
-
 .confirmation-actions .button {
   padding: 12px 20px;
   font-size: 1.1rem;
@@ -408,18 +354,15 @@ header .media a:hover img {
   font-family: 'Lora', sans-serif;
   max-width: 400px;
 }
-
 .confirmation-actions .button:hover {
   background-color: rgb(207, 18, 18);
   transform: translateY(-2px);
 }
-
 .menu-note {
   margin-top: 10px;
   text-align: center;
   font-size: 18px;
 }
-
 h1 {
   font-size: 70px;
   margin-bottom: 10px;
@@ -427,8 +370,6 @@ h1 {
   color: #ffffff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
-
-/* Phone */
 @media (max-width: 768px) {
   html, body {
     font-size: 1.2em;
@@ -437,11 +378,11 @@ h1 {
     font-size: 18px;
     margin: 0 5px;
   }
-  h1{
+  h1 {
     font-size: 50px;
     margin-bottom: 20px;
   }
-  .table-input-section h2{
+  .table-input-section h2 {
     font-size: 30px;
   }
   .table-input-title {
@@ -486,9 +427,16 @@ h1 {
   .menu-item p {
     font-size: 1rem;
   }
+  .order-container {
+    max-width: 100%;
+    width: 100%;
+    margin: 20px auto;
+    padding: 10px;
+  }
+  h1 {
+    font-size: 40px;
+  }
 }
-
-/* Tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
   .order-container {
     max-width: 700px;
