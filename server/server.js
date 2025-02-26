@@ -160,11 +160,12 @@ The Da Gurkha Team`,
   }
 });
 
-// Serve other pages
+// Serve home page
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'home.html'));
 });
 
+// Serve menu page
 app.get('/menu', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'menu.html'));
 });
@@ -177,14 +178,58 @@ app.get('/scan', (req, res) => {
   res.redirect(`/order?token=${token}`);
 });
 
+// Updated /order route with improved error page (text only)
 app.get('/order', (req, res) => {
   const token = req.query.token;
+  
+  // Helper function to render a styled error page with text only
+  function renderErrorPage(message) {
+    return `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="UTF-8">
+        <title>Session Error</title>
+        <style>
+          body { 
+            background-color: #111; 
+            color: #fff; 
+            display: flex; 
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            font-family: 'Lora', sans-serif; 
+            margin: 0;
+          }
+          .message-container {
+            text-align: center;
+            padding: 20px;
+          }
+          .message {
+            background-color: #e74c3c;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            font-size: 1.2em;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="message-container">
+          <div class="message">${message}</div>
+        </div>
+      </body>
+      </html>
+    `;
+  }
+
   if (!token) {
-    return res.status(403).send('Access denied: no token provided.');
+    return res.status(403).send(renderErrorPage('For security purposes, please exit this page and scan the QR code again.'));
   }
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
-      return res.status(403).send('Invalid or expired token.');
+      return res.status(403).send(renderErrorPage('For security purposes, your session has expired. Please exit this page and scan the QR code again.'));
     }
     res.sendFile(path.join(__dirname, '..', 'public', 'order.html'));
   });

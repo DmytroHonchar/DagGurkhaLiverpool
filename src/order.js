@@ -1,4 +1,16 @@
 document.addEventListener("DOMContentLoaded", function() {
+  // Define a common showMessage function for styled notifications.
+  function showMessage(text, isSuccess) {
+    const statusMessage = document.createElement('div');
+    statusMessage.textContent = text;
+    statusMessage.className = 'status-message ' + (isSuccess ? 'success' : 'error') + ' visible';
+    document.body.appendChild(statusMessage);
+    setTimeout(() => {
+      statusMessage.classList.remove('visible');
+      statusMessage.remove();
+    }, 5000);
+  }
+
   const tableSection = document.querySelector('.table-input-section');
   const orderMenuSection = document.querySelector('main.order-container > section.menu-section');
   const confirmationSection = document.querySelector('.confirmation-section');
@@ -19,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
   tableSubmitBtn.addEventListener('click', function() {
     tableNumber = tableInput.value.trim();
     if (!tableNumber) {
-      alert("Please enter a table number");
+      showMessage("Please enter a table number", false);
       return;
     }
     tableSection.style.display = "none";
@@ -110,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // 5) Place Order
   placeOrderBtn.addEventListener('click', function() {
     if (Object.keys(order).length === 0) {
-      alert("Please select at least one item");
+      showMessage("Please select at least one item", false);
       return;
     }
 
@@ -135,12 +147,12 @@ document.addEventListener("DOMContentLoaded", function() {
         confirmationSection.style.display = "block";
         document.getElementById('order-number').textContent = data.orderNumber;
       } else {
-        alert("Order failed: " + data.message);
+        showMessage("Order failed: " + data.message, false);
       }
     })
     .catch(err => {
       console.error("Error placing order:", err);
-      alert("Error placing order");
+      showMessage("Error placing order", false);
     });
   });
 
