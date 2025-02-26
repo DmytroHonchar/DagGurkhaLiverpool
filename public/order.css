@@ -1,6 +1,3 @@
-/* =============================================
-   1. FONT FACES
-============================================= */
 @font-face {
   font-family: 'LekhanaRegular';
   src: url('/font-family/Lekhana%20Regular.woff2') format('woff2'),
@@ -17,7 +14,6 @@
   font-display: swap;
 }
 
-/* ================= Global Reset & Base Styles ================= */
 * {
   margin: 0;
   padding: 0;
@@ -31,7 +27,6 @@ html, body {
   color: #fff;
 }
 
-/* ================= Header ================= */
 header {
   display: flex;
   justify-content: space-between;
@@ -71,7 +66,6 @@ header .media a:hover img {
   transform: scale(1.05);
 }
 
-/* ================= Order Container ================= */
 .order-container {
   max-width: 800px;
   width: 90%;
@@ -86,7 +80,6 @@ header .media a:hover img {
   justify-content: center;
 }
 
-/* ---------------- Table Input Section ---------------- */
 .table-input-section {
   display: flex;
   flex-direction: column;
@@ -98,7 +91,7 @@ header .media a:hover img {
 }
 
 .table-input-title {
-  font-family: 'Lora', sans-serif;
+  font-family: 'LekhanaRegular', sans-serif;
   font-size: 2rem;
   margin-bottom: 1.5rem;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
@@ -151,14 +144,12 @@ header .media a:hover img {
   transform: translateY(-3px);
 }
 
-/* ---------------- Menu & Ordering Section ---------------- */
 .menu-section {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
 }
 
-/* Order Summary */
 .order-summary {
   order: -1;
   margin-bottom: 15px;
@@ -167,7 +158,6 @@ header .media a:hover img {
   text-align: center;
 }
 
-/* ---------------- Tab Buttons ---------------- */
 .menu-tabs {
   text-align: center;
   margin-bottom: 10px;
@@ -194,12 +184,11 @@ header .media a:hover img {
   border-bottom: 2px solid rgb(207, 18, 18);
 }
 
-/* ---------------- Menu Container & Items ---------------- */
 .menu-container {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  max-height: 400px;
+  max-height: 500px;
   overflow-y: auto;
   padding-right: 5px;
 }
@@ -216,7 +205,6 @@ header .media a:hover img {
   text-align: center;
 }
 
-/* Two-Column Layout for Menu Categories */
 .menu-category {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -232,7 +220,6 @@ header .media a:hover img {
   padding-bottom: 3px;
 }
 
-/* ---------------- Menu Items ---------------- */
 .menu-item {
   background-color: #222;
   padding: 8px;
@@ -265,7 +252,6 @@ header .media a:hover img {
   flex-grow: 1;
 }
 
-/* ---------------- Quantity Controls ---------------- */
 .quantity-controls {
   display: flex;
   align-items: center;
@@ -291,7 +277,7 @@ header .media a:hover img {
 .quantity-controls input {
   width: 35px;
   text-align: center;
-  padding: 3px;
+  padding: 10px 5px;
   border: 1px solid #444;
   border-radius: 3px;
   background-color: #333;
@@ -299,7 +285,6 @@ header .media a:hover img {
   font-size: 0.9rem;
 }
 
-/* ---------------- Order Summary ---------------- */
 .order-summary h3 {
   font-size: 1.4rem;
   margin-bottom: 10px;
@@ -335,6 +320,7 @@ header .media a:hover img {
   font-size: 1.1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 10px;
 }
 
 .order-summary button:hover {
@@ -362,7 +348,6 @@ header .media a:hover img {
   transform: translateY(-2px);
 }
 
-/* ---------------- Confirmation Section ---------------- */
 .confirmation-section {
   text-align: center;
   margin-top: 20px;
@@ -377,7 +362,6 @@ header .media a:hover img {
   font-size: 1rem;
 }
 
-/* ---------------- Order Additional Fields ---------------- */
 .order-additional {
   margin: 0 auto;
   display: flex;
@@ -403,7 +387,6 @@ header .media a:hover img {
   margin-bottom: 10px;
 }
 
-/* ---------------- Confirmation Actions ---------------- */
 .confirmation-actions {
   margin-top: 20px;
   display: flex;
@@ -431,50 +414,77 @@ header .media a:hover img {
   transform: translateY(-2px);
 }
 
-/* ================= Responsive Adjustments ================= */
+.menu-note {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+h1 {
+  font-size: 70px;
+  margin-bottom: 10px;
+  font-family: 'LekhanaRegular', sans-serif;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 /* Phone */
 @media (max-width: 768px) {
+  html, body {
+    font-size: 1.2em;
+  }
   header nav a {
-    font-size: 16px;
+    font-size: 18px;
     margin: 0 5px;
   }
-  
+  h1{
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+  .table-input-section h2{
+    font-size: 30px;
+  }
+  .table-input-title {
+    font-size: 2.5rem;
+  }
   .menu-tabs .tab-btn {
-    font-size: 0.85rem;
-    margin: 3px;
-    padding: 5px 6px;
+    font-size: 1rem;
+    margin: 5px;
+    padding: 8px 10px;
   }
-  
   .quantity-controls input {
-    width: 30px;
+    width: 40px;
+    font-size: 1rem;
   }
-  
   .order-summary {
     width: 100%;
   }
-  
   .order-summary h3 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
-  
   .order-summary button {
-    font-size: 1rem;
-    padding: 10px 16px;
+    font-size: 1.2rem;
+    padding: 12px 20px;
   }
-  
   .order-additional {
     width: 90%;
-    max-width: 300px;
+    max-width: 350px;
+    font-size: 1.1rem;
   }
-  
-  /* Use single column layout for menu categories */
   .menu-category {
     grid-template-columns: 1fr;
   }
-  
-  /* Adjust menu-item padding to prevent border overlap */
   .menu-item {
-    padding: 6px;
+    padding: 8px;
+  }
+  .menu-item .item-header h4 {
+    font-size: 1.3rem;
+  }
+  .menu-item .item-header .price {
+    font-size: 1.2rem;
+  }
+  .menu-item p {
+    font-size: 1rem;
   }
 }
 
@@ -483,28 +493,18 @@ header .media a:hover img {
   .order-container {
     max-width: 700px;
   }
-  
   .table-input-title {
     font-size: 1.8rem;
   }
-  
   .table-submit-btn {
     padding: 12px 20px;
     font-size: 0.95rem;
   }
-  
   .menu-tabs .tab-btn {
     font-size: 1rem;
     padding: 6px 10px;
   }
-  
   .order-summary h3 {
     font-size: 1.3rem;
   }
-}
-
-
-.menu-note{
-  margin-top: 6px;
-  text-align: center;
 }
