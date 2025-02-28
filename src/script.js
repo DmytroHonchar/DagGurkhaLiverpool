@@ -1,51 +1,61 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-// Helper: Returns a promise that resolves when an image loads
-function loadImage(url) {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = resolve;
-    img.onerror = reject;
-    img.src = url;
-  });
-}
-
-// Helper: Extracts the background image URL from a given element selector
-function getBackgroundImageUrls(selector) {
-  const element = document.querySelector(selector);
-  if (!element) return [];
-  const bgImage = getComputedStyle(element).backgroundImage;
-  const urlMatch = bgImage.match(/url\(["']?(.*?)["']?\)/);
-  return urlMatch ? [urlMatch[1]] : [];
-}
-
-// Remove the loader overlay with a fade-out effect
-function removeLoader() {
-  const loader = document.getElementById("loadingOverlay");
-  if (loader) {
-    loader.style.transition = "opacity 0.5s ease";
-    loader.style.opacity = "0";
+  // Helper: Display a status message using your CSS classes
+  function showMessage(message, isSuccess) {
+    const messageDiv = document.querySelector('.status-message');
+    if (!messageDiv) return;
+    messageDiv.textContent = message;
+    messageDiv.className = 'status-message visible ' + (isSuccess ? 'success' : 'error');
     setTimeout(() => {
-      loader.style.display = "none";
-    }, 500);
+      messageDiv.classList.remove('visible');
+    }, 5000);
   }
-}
 
-// Wait for both the window and critical background images to load
-window.addEventListener("load", function () {
-  const bgUrls = [].concat(
-    getBackgroundImageUrls(".hero-background"),  // adjust selectors as needed
-    getBackgroundImageUrls(".contact-section")
-  );
-
-  Promise.all(bgUrls.map(url => loadImage(url)))
-    .then(removeLoader)
-    .catch((err) => {
-      console.error("Error loading a background image:", err);
-      removeLoader();
+  // Helper: Returns a promise that resolves when an image loads
+  function loadImage(url) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = resolve;
+      img.onerror = reject;
+      img.src = url;
     });
-});
+  }
 
+  // Helper: Extracts the background image URL from a given element selector
+  function getBackgroundImageUrls(selector) {
+    const element = document.querySelector(selector);
+    if (!element) return [];
+    const bgImage = getComputedStyle(element).backgroundImage;
+    const urlMatch = bgImage.match(/url\(["']?(.*?)["']?\)/);
+    return urlMatch ? [urlMatch[1]] : [];
+  }
+
+  // Remove the loader overlay with a fade-out effect
+  function removeLoader() {
+    const loader = document.getElementById("loadingOverlay");
+    if (loader) {
+      loader.style.transition = "opacity 0.5s ease";
+      loader.style.opacity = "0";
+      setTimeout(() => {
+        loader.style.display = "none";
+      }, 500);
+    }
+  }
+
+  // Wait for both the window and critical background images to load
+  window.addEventListener("load", function () {
+    const bgUrls = [].concat(
+      getBackgroundImageUrls(".hero-background"),  // adjust selectors as needed
+      getBackgroundImageUrls(".contact-section")
+    );
+
+    Promise.all(bgUrls.map(url => loadImage(url)))
+      .then(removeLoader)
+      .catch((err) => {
+        console.error("Error loading a background image:", err);
+        removeLoader();
+      });
+  });
 
   // ================== Parallax Hero Effect ==================
   window.addEventListener("scroll", function () {
@@ -249,6 +259,19 @@ window.addEventListener("load", function () {
   async function handleFormSubmit(form, e) {
     e.preventDefault();
     const formData = new FormData(form);
+
+    // Extra client-side check for booking form to disallow Sundays (0) and Mondays (1)
+    if (formData.get('form_type') === 'booking') {
+      const dateValue = formData.get('date');
+      if (dateValue) {
+        const bookingDate = new Date(dateValue);
+        const day = bookingDate.getDay(); // 0 = Sunday, 1 = Monday
+        if (day === 0 || day === 1) {
+          showMessage("Bookings are not accepted on Sundays and Mondays.", false);
+          return;
+        }
+      }
+    }
 
     try {
       const response = await fetch('/contact', {
