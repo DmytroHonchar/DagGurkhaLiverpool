@@ -1,4 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+  // Page loader
+  const loader = document.getElementById("loadingOverlay");
+  if (loader) {
+    loader.style.transition = "opacity 0.5s ease";
+    loader.style.opacity = "0";
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 500);
+  }
   // Create a floating status message element to show submission results
   const statusMessage = document.createElement('div');
   statusMessage.className = 'status-message';
