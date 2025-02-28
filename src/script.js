@@ -1,6 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   // Page loader
+  // Helper: Returns a promise that resolves when an image loads
+function loadImage(url) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = resolve;
+    img.onerror = reject;
+    img.src = url;
+  });
+}
+
+// Helper: Extracts the background image URL from a given element selector
+function getBackgroundImageUrls(selector) {
+  const element = document.querySelector(selector);
+  if (!element) return [];
+  const bgImage = getComputedStyle(element).backgroundImage;
+  // Extract URL from the form: url("...") or url('...')
+  const urlMatch = bgImage.match(/url\(["']?(.*?)["']?\)/);
+  return urlMatch ? [urlMatch[1]] : [];
+}
+
+// Remove the loader overlay with a fade-out effect
+function removeLoader() {
   const loader = document.getElementById("loadingOverlay");
   if (loader) {
     loader.style.transition = "opacity 0.5s ease";
@@ -9,18 +31,27 @@ document.addEventListener("DOMContentLoaded", function () {
       loader.style.display = "none";
     }, 500);
   }
-  // Create a floating status message element to show submission results
-  const statusMessage = document.createElement('div');
-  statusMessage.className = 'status-message';
-  document.body.appendChild(statusMessage);
+}
 
-  function showMessage(text, isSuccess) {
-    statusMessage.textContent = text;
-    statusMessage.className = `status-message ${isSuccess ? 'success' : 'error'} visible`;
-    setTimeout(() => {
-      statusMessage.classList.remove('visible');
-    }, 5000);
-  }
+// Wait for both the window and critical background images to load
+window.addEventListener("load", function () {
+  // Collect critical background image URLs (adjust selectors as needed)
+  const bgUrls = [].concat(
+    getBackgroundImageUrls(".hero-background"),  // e.g., in home.html
+    getBackgroundImageUrls(".contact-section")     // e.g., contact page background
+  );
+
+  // Wait for all background images to load
+  Promise.all(bgUrls.map(url => loadImage(url)))
+    .then(() => {
+      removeLoader();
+    })
+    .catch((err) => {
+      console.error("Error loading a background image:", err);
+      // Even if an image fails, remove the loader to avoid an endless overlay
+      removeLoader();
+    });
+});
 
   // Set minimum date for booking (date input) and check for Sundays & Mondays
   const dateInput = document.getElementById('date');

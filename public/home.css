@@ -54,7 +54,7 @@ body, html {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #300202;  /* Matches header dark tone */
+  background: #300202;  /* Dark tone matching your header */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,10 +62,10 @@ body, html {
   z-index: 9999;
 }
 
-/* Spinner matching your accent color */
+/* Spinner styled with your red accent */
 .spinner {
   border: 12px solid rgba(255, 255, 255, 0.3);
-  border-top: 12px solid #cf1212; /* Use your red accent */
+  border-top: 12px solid #cf1212;  /* Accent red */
   border-radius: 50%;
   width: 80px;
   height: 80px;
