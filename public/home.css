@@ -482,7 +482,7 @@ body, html {
     text-align: left;
     color: #fff;
     flex: 1;
-    min-width: 200px;
+    min-width: 240px;
     max-width: 240px;
     height: 80px;
     margin: 0 auto;
@@ -929,9 +929,6 @@ body, html {
       .about-block.restaurant-info .about-text,
       .about-block.restaurant-info .about-image {
         order: 0;
-      }
-      .about-text h2 {
-        /* text-align: left; */
       }
   }
   
