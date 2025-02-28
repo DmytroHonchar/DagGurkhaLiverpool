@@ -47,14 +47,14 @@ body, html {
     transform: scale(1.1);
   }
 
-  /* Loader overlay covering the entire viewport */
+  /* Loader overlay covering the entire viewport with a solid black background */
 #loadingOverlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #300202;  /* Dark tone matching your header */
+  background: #000; /* Solid black background */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,28 +62,32 @@ body, html {
   z-index: 9999;
 }
 
-/* Spinner styled with your red accent */
+/* Red spinner with a steady animation */
 .spinner {
-  border: 12px solid rgba(255, 255, 255, 0.3);
-  border-top: 12px solid #cf1212;  /* Accent red */
+  border: 12px solid rgba(255, 255, 255, 0.2);  /* light, semi-transparent border */
+  border-top: 12px solid #cf1212;  /* red accent */
   border-radius: 50%;
   width: 80px;
   height: 80px;
   animation: spin 1s linear infinite;
 }
 
+/* Keyframes for the spinner rotation */
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* Loader text styling */
+/* Loading text styling - kept steady with no transform animations */
 .loading-text {
   margin-top: 20px;
   font-family: 'Lora', serif;
   font-size: 1.2rem;
   color: #fff;
+  /* No animations to avoid jumping or zooming */
+  transform: none;
 }
+
 
   
   .momo-sticker {

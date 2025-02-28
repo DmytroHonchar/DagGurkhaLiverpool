@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  // Page loader
-  // Helper: Returns a promise that resolves when an image loads
+// Helper: Returns a promise that resolves when an image loads
 function loadImage(url) {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -16,7 +15,6 @@ function getBackgroundImageUrls(selector) {
   const element = document.querySelector(selector);
   if (!element) return [];
   const bgImage = getComputedStyle(element).backgroundImage;
-  // Extract URL from the form: url("...") or url('...')
   const urlMatch = bgImage.match(/url\(["']?(.*?)["']?\)/);
   return urlMatch ? [urlMatch[1]] : [];
 }
@@ -35,45 +33,19 @@ function removeLoader() {
 
 // Wait for both the window and critical background images to load
 window.addEventListener("load", function () {
-  // Collect critical background image URLs (adjust selectors as needed)
   const bgUrls = [].concat(
-    getBackgroundImageUrls(".hero-background"),  // e.g., in home.html
-    getBackgroundImageUrls(".contact-section")     // e.g., contact page background
+    getBackgroundImageUrls(".hero-background"),  // adjust selectors as needed
+    getBackgroundImageUrls(".contact-section")
   );
 
-  // Wait for all background images to load
   Promise.all(bgUrls.map(url => loadImage(url)))
-    .then(() => {
-      removeLoader();
-    })
+    .then(removeLoader)
     .catch((err) => {
       console.error("Error loading a background image:", err);
-      // Even if an image fails, remove the loader to avoid an endless overlay
       removeLoader();
     });
 });
 
-  // Set minimum date for booking (date input) and check for Sundays & Mondays
-  const dateInput = document.getElementById('date');
-  if (dateInput) {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = ('0' + (today.getMonth() + 1)).slice(-2);
-    const day = ('0' + today.getDate()).slice(-2);
-    const minDate = `${year}-${month}-${day}`;
-    dateInput.setAttribute('min', minDate);
-
-    dateInput.addEventListener('change', function () {
-      const selectedDate = new Date(dateInput.value);
-      if (!isNaN(selectedDate)) {
-        const dayOfWeek = selectedDate.getDay(); // 0 = Sunday, 1 = Monday, etc.
-        if (dayOfWeek === 0 || dayOfWeek === 1) {
-          showMessage("Bookings cannot be made on Sundays or Mondays.", false);
-          dateInput.value = "";
-        }
-      }
-    });
-  }
 
   // ================== Parallax Hero Effect ==================
   window.addEventListener("scroll", function () {
