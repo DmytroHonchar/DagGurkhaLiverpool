@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="contact.css">
     <link rel="icon" href="/content/fav-ico.ico" type="image/x-icon">
   
-  
     <!-- SEO Meta Tags -->
     <meta name="description" content="Get in touch with Da Gurkha Fine Dining in Liverpool for inquiries, bookings, or feedback. Visit us at 114 South Rd, Waterloo, Liverpool or call +44 7392 489 058.">
     <meta name="keywords" content="Da Gurkha, contact, Liverpool, Nepalese cuisine, fine dining, reservations, restaurant, inquiries, bookings">
@@ -50,8 +49,6 @@
     <div class="spinner"></div>
   </div>
   
-  
-
    <!-- Header -->
    <header>
     <a href="/contact" class="hidden-link">
@@ -130,8 +127,9 @@
 
     <!-- MESSAGE FORM -->
     <form action="/contact" method="post" id="messageForm" class="active-form">
-      <!-- Hidden field for spam bots (honeypot) - optional -->
-      <input type="text" name="phone" style="display: none;" tabindex="-1" autocomplete="off">
+      <!-- Honeypot fields for spam bot prevention (renamed to avoid autofill) -->
+      <input type="text" name="hp_field1" class="hp-field" tabindex="-1" autocomplete="off">
+      <input type="text" name="hp_field2" class="hp-field" tabindex="-1" autocomplete="off">
 
       <div class="form-group">
         <label for="m-name">Name </label>
@@ -151,8 +149,9 @@
 
     <!-- BOOKING FORM -->
     <form action="/contact" method="post" id="bookingForm" class="hidden-form">
-      <!-- Hidden field for spam bots (honeypot) - optional -->
-      <input type="text" name="phone" style="display: none;" tabindex="-1" autocomplete="off">
+      <!-- Honeypot fields for spam bot prevention (renamed to avoid autofill) -->
+      <input type="text" name="hp_field1" class="hp-field" tabindex="-1" autocomplete="off">
+      <input type="text" name="hp_field2" class="hp-field" tabindex="-1" autocomplete="off">
 
       <div class="form-group">
         <label for="b-name">Name </label>
@@ -218,8 +217,8 @@
       <input type="hidden" name="form_type" value="booking">
       <button type="submit" class="button">Book Table</button>
     </form>
-<!-- Add this inside .contact-form div -->
-<div class="status-message"></div>
+    <!-- Status message container -->
+    <div class="status-message"></div>
   </div>
 </section>
 

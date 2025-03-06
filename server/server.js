@@ -68,55 +68,90 @@ app.get('/contact', (req, res) => {
 
 // Handle contact form submission
 app.post('/contact', contactFormLimiter, async (req, res) => {
-  let { name, email, message, phone, form_type, people, date, time } = req.body;
+  // Extract honeypot fields along with other fields
+  let { name, email, message, hp_field1, hp_field2, form_type, people, date, time } = req.body;
 
-  // Honeypot check
-  if (phone) {
-    return res.status(400).send('Bot detected. Submission rejected.');
+  // Honeypot check: if either field is filled, block submission
+  if (hp_field1 || hp_field2) {
+    return res.status(400).json({ success: false, message: 'Bot detected. Submission rejected.' });
   }
 
-  // Basic validation
+  // Basic validation: Check required fields
   if (!name || !email) {
-    return res.status(400).send('Name and email are required');
+    return res.status(400).json({ success: false, message: 'Name and email are required' });
   }
 
-  // Sanitize
+  // Sanitize and validate email
   name = validator.escape(name.trim());
   email = validator.normalizeEmail(email.trim());
-
   if (!validator.isEmail(email)) {
-    return res.status(400).send('Invalid email address');
+    return res.status(400).json({ success: false, message: 'Invalid email address' });
   }
 
-  // Build subject & message
   let subject, text;
+
   if (form_type === 'booking') {
-    subject = 'New Table Booking Request';
-    let formattedDate = date;
-    if (date) {
-      const bookingDate = new Date(date);
-      if (!isNaN(bookingDate)) {
-        formattedDate = bookingDate.toLocaleDateString('en-GB', {
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric'
-        });
-      }
+    // --------- Strict Server-Side Validation for Booking Form ---------
+
+    // Validate "Number of People": must be an integer between 1 and 20
+    if (!people || !validator.isInt(String(people), { min: 1, max: 20 })) {
+      return res.status(400).json({ success: false, message: 'Invalid number of people' });
     }
+
+    // Validate "Date": must be provided, be a valid date, and not be in the past
+    if (!date || !validator.isDate(date)) {
+      return res.status(400).json({ success: false, message: 'Invalid or missing date' });
+    }
+    const bookingDate = new Date(date);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Set to start of day for accurate comparison
+    if (bookingDate < today) {
+      return res.status(400).json({ success: false, message: 'Cannot book a past date' });
+    }
+    // Disallow bookings on Sunday (0) or Monday (1)
+    const day = bookingDate.getDay();
+    if (day === 0 || day === 1) {
+      return res.status(400).json({ success: false, message: 'No bookings on Sundays or Mondays' });
+    }
+
+    // Validate "Time": must be provided and one of the allowed options
+    if (!time) {
+      return res.status(400).json({ success: false, message: 'Time is required' });
+    }
+    const allowedTimes = [
+      "16:00", "16:15", "16:30", "16:45",
+      "17:00", "17:15", "17:30", "17:45",
+      "18:00", "18:15", "18:30", "18:45",
+      "19:00", "19:15", "19:30", "19:45",
+      "20:00", "20:15", "20:30", "20:45",
+      "21:00", "21:15", "21:30", "21:45",
+      "22:00"
+    ];
+    if (!allowedTimes.includes(time)) {
+      return res.status(400).json({ success: false, message: 'Invalid time selected' });
+    }
+
+    subject = 'New Table Booking Request';
+    let formattedDate = bookingDate.toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
     text = `Booking Request from ${name} (${email}):
-Number of People: ${people || 'N/A'}
-Date: ${formattedDate || 'N/A'}
-Time: ${time || 'N/A'}`;
+Number of People: ${people}
+Date: ${formattedDate}
+Time: ${time}`;
   } else {
-    // Standard message form
+    // Standard message form: Ensure message is provided
     if (!message) {
-      return res.status(400).send('Message is required');
+      return res.status(400).json({ success: false, message: 'Message is required' });
     }
     subject = 'New Contact Form Submission';
     text = `Message from ${name} (${email}):
 ${message.trim()}`;
   }
 
+  // Set up email options for the restaurant and a confirmation for the sender
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_USER,
@@ -182,7 +217,6 @@ app.get('/scan', (req, res) => {
 app.get('/order', (req, res) => {
   const token = req.query.token;
   
-  // Helper function to render a styled error page with text only
   function renderErrorPage(message) {
     return `
       <!DOCTYPE html>
