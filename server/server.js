@@ -7,11 +7,12 @@ const helmet = require('helmet');
 const validator = require('validator');
 const rateLimit = require('express-rate-limit');
 const jwt = require('jsonwebtoken');
+const fetch = require('node-fetch');  // using node-fetch v2 for CommonJS
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// If you're behind a proxy (e.g., Heroku), trust it:
+// Trust proxy if behind one
 app.set('trust proxy', 1);
 
 // Middleware
@@ -20,21 +21,28 @@ app.use(express.json());
 app.use(cors());
 app.use(helmet());
 
-// Serve static files from the public and src directories
+// Serve static files from public and src directories
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use('/src', express.static(path.join(__dirname, '..', 'src')));
 
-// Optional Helmet CSP configuration
+// Helmet Content Security Policy configuration
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'", 'https://www.google.com', 'https://maps.googleapis.com'],
-      scriptSrc: ["'self'", 'https://maps.googleapis.com'],
+      scriptSrc: [
+        "'self'",
+        "'unsafe-inline'",
+        'https://maps.googleapis.com',
+        'https://www.google.com/recaptcha/',
+        'https://www.gstatic.com/recaptcha/'
+      ],
       frameSrc: [
         "'self'",
         'https://www.google.com',
         'https://maps.googleapis.com',
-        'https://www.google.com/maps/embed/'
+        'https://www.google.com/maps/embed/',
+        'https://www.google.com/recaptcha/'
       ],
       imgSrc: ["'self'", 'https://maps.gstatic.com', 'https://maps.googleapis.com'],
       styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com', 'https://maps.googleapis.com'],
@@ -52,7 +60,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Rate limit for contact form: 5 requests per 15 minutes
+// Rate limit for contact form submissions
 const contactFormLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 5,
@@ -68,15 +76,37 @@ app.get('/contact', (req, res) => {
 
 // Handle contact form submission
 app.post('/contact', contactFormLimiter, async (req, res) => {
-  // Extract honeypot fields along with other fields
+  // === reCAPTCHA Verification ===
+  const recaptchaToken = req.body['g-recaptcha-response'];
+  if (!recaptchaToken) {
+    return res.status(400).json({ success: false, message: 'We need to confirm you are not a bot. Please complete the reCAPTCHA challenge.' });
+  }
+
+  try {
+    // Use the exact secret key from your admin console:
+    const secretKey = '6LfvMvIqAAAAAJjeUMAh4TUWtJsbJHQugNy5ftPT';
+    const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${recaptchaToken}&remoteip=${req.ip}`;
+    const captchaResponse = await fetch(verificationUrl, { method: 'POST' });
+    const captchaResult = await captchaResponse.json();
+
+    if (!captchaResult.success) {
+      return res.status(400).json({ success: false, message: 'Captcha verification failed.' });
+    }
+  } catch (error) {
+    console.error('reCAPTCHA verification error:', error);
+    return res.status(500).json({ success: false, message: 'Captcha verification error.' });
+  }
+  // ==============================
+
+  // Extract fields
   let { name, email, message, hp_field1, hp_field2, form_type, people, date, time } = req.body;
 
-  // Honeypot check: if either field is filled, block submission
+  // Honeypot check
   if (hp_field1 || hp_field2) {
     return res.status(400).json({ success: false, message: 'Bot detected. Submission rejected.' });
   }
 
-  // Basic validation: Check required fields
+  // Basic validation
   if (!name || !email) {
     return res.status(400).json({ success: false, message: 'Name and email are required' });
   }
@@ -91,30 +121,23 @@ app.post('/contact', contactFormLimiter, async (req, res) => {
   let subject, text;
 
   if (form_type === 'booking') {
-    // --------- Strict Server-Side Validation for Booking Form ---------
-
-    // Validate "Number of People": must be an integer between 1 and 20
+    // Validate booking details
     if (!people || !validator.isInt(String(people), { min: 1, max: 20 })) {
       return res.status(400).json({ success: false, message: 'Invalid number of people' });
     }
-
-    // Validate "Date": must be provided, be a valid date, and not be in the past
     if (!date || !validator.isDate(date)) {
       return res.status(400).json({ success: false, message: 'Invalid or missing date' });
     }
     const bookingDate = new Date(date);
     const today = new Date();
-    today.setHours(0, 0, 0, 0); // Set to start of day for accurate comparison
+    today.setHours(0, 0, 0, 0);
     if (bookingDate < today) {
       return res.status(400).json({ success: false, message: 'Cannot book a past date' });
     }
-    // Disallow bookings on Sunday (0) or Monday (1)
     const day = bookingDate.getDay();
     if (day === 0 || day === 1) {
       return res.status(400).json({ success: false, message: 'No bookings on Sundays or Mondays' });
     }
-
-    // Validate "Time": must be provided and one of the allowed options
     if (!time) {
       return res.status(400).json({ success: false, message: 'Time is required' });
     }
@@ -142,7 +165,6 @@ Number of People: ${people}
 Date: ${formattedDate}
 Time: ${time}`;
   } else {
-    // Standard message form: Ensure message is provided
     if (!message) {
       return res.status(400).json({ success: false, message: 'Message is required' });
     }
@@ -151,7 +173,7 @@ Time: ${time}`;
 ${message.trim()}`;
   }
 
-  // Set up email options for the restaurant and a confirmation for the sender
+  // Set up email options
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_USER,
@@ -208,12 +230,11 @@ app.get('/menu', (req, res) => {
 // Token-based protection for /order
 app.get('/scan', (req, res) => {
   const payload = { scanned: true };
-  // Token valid for 15 minutes
   const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '15m' });
   res.redirect(`/order?token=${token}`);
 });
 
-// Updated /order route with improved error page (text only)
+// Updated /order route with improved error page
 app.get('/order', (req, res) => {
   const token = req.query.token;
   
