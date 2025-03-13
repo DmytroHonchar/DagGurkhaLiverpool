@@ -625,3 +625,12 @@ body.no-scroll {
 .contact-form input[type="date"]{
   text-align: left !important;
 }
+
+@media screen and (max-width: 480px) {
+  .g-recaptcha {
+    transform: scale(0.78);
+    -webkit-transform: scale(0.78);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+  }
+}
