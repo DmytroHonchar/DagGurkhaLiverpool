@@ -634,3 +634,11 @@ body.no-scroll {
     -webkit-transform-origin: 0 0;
   }
 }
+
+
+@media screen and (max-width: 480px) {
+  .button {
+    margin-top: -5px; 
+    margin-bottom: 1px;/* Adjust this value as needed */
+  }
+}
