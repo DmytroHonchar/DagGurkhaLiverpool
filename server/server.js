@@ -83,7 +83,6 @@ app.post('/contact', contactFormLimiter, async (req, res) => {
   }
 
   try {
-    // Use the exact secret key from your admin console:
     const secretKey = '6LfvMvIqAAAAAJjeUMAh4TUWtJsbJHQugNy5ftPT';
     const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${recaptchaToken}&remoteip=${req.ip}`;
     const captchaResponse = await fetch(verificationUrl, { method: 'POST' });
@@ -99,7 +98,7 @@ app.post('/contact', contactFormLimiter, async (req, res) => {
   // ==============================
 
   // Extract fields
-  let { name, email, message, hp_field1, hp_field2, form_type, people, date, time } = req.body;
+  let { name, email, phone, message, hp_field1, hp_field2, form_type, people, date, time } = req.body;
 
   // Honeypot check
   if (hp_field1 || hp_field2) {
@@ -116,6 +115,16 @@ app.post('/contact', contactFormLimiter, async (req, res) => {
   email = validator.normalizeEmail(email.trim());
   if (!validator.isEmail(email)) {
     return res.status(400).json({ success: false, message: 'Invalid email address' });
+  }
+
+  // Validate phone
+  if (!phone) {
+    return res.status(400).json({ success: false, message: 'Phone number is required' });
+  }
+  phone = validator.escape(phone.trim());
+  const phonePattern = /^[0-9+\s\-()]{7,}$/;
+  if (!phonePattern.test(phone)) {
+    return res.status(400).json({ success: false, message: 'Invalid phone number format' });
   }
 
   let subject, text;
@@ -160,7 +169,8 @@ app.post('/contact', contactFormLimiter, async (req, res) => {
       month: 'long',
       year: 'numeric'
     });
-    text = `Booking Request from ${name} (${email}):
+    text = `Booking Request from ${name} (${email})
+Phone: ${phone}
 Number of People: ${people}
 Date: ${formattedDate}
 Time: ${time}`;
@@ -169,11 +179,12 @@ Time: ${time}`;
       return res.status(400).json({ success: false, message: 'Message is required' });
     }
     subject = 'New Contact Form Submission';
-    text = `Message from ${name} (${email}):
-${message.trim()}`;
+    text = `Message from ${name} (${email})
+    Phone: ${phone}
+    ${message.trim()}`;
   }
 
-  // Set up email options
+  // Set up email options (unchanged text)
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_USER,
