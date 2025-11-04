@@ -117,19 +117,19 @@ app.post('/contact', contactFormLimiter, async (req, res) => {
     return res.status(400).json({ success: false, message: 'Invalid email address' });
   }
 
-  // Validate phone
-  if (!phone) {
-    return res.status(400).json({ success: false, message: 'Phone number is required' });
-  }
-  phone = validator.escape(phone.trim());
-  const phonePattern = /^[0-9+\s\-()]{7,}$/;
-  if (!phonePattern.test(phone)) {
-    return res.status(400).json({ success: false, message: 'Invalid phone number format' });
-  }
-
   let subject, text;
 
   if (form_type === 'booking') {
+    // Validate phone
+    if (!phone) {
+      return res.status(400).json({ success: false, message: 'Phone number is required' });
+    }
+    phone = validator.escape(phone.trim());
+    const phonePattern = /^[0-9+\s\-()]{7,}$/;
+    if (!phonePattern.test(phone)) {
+      return res.status(400).json({ success: false, message: 'Invalid phone number format' });
+    }
+
     // Validate booking details
     if (!people || !validator.isInt(String(people), { min: 1, max: 20 })) {
       return res.status(400).json({ success: false, message: 'Invalid number of people' });
@@ -137,19 +137,23 @@ app.post('/contact', contactFormLimiter, async (req, res) => {
     if (!date || !validator.isDate(date)) {
       return res.status(400).json({ success: false, message: 'Invalid or missing date' });
     }
+
     const bookingDate = new Date(date);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     if (bookingDate < today) {
       return res.status(400).json({ success: false, message: 'Cannot book a past date' });
     }
+
     const day = bookingDate.getDay();
     if (day === 0 || day === 1) {
       return res.status(400).json({ success: false, message: 'No bookings on Sundays or Mondays' });
     }
+
     if (!time) {
       return res.status(400).json({ success: false, message: 'Time is required' });
     }
+
     const allowedTimes = [
       "16:00", "16:15", "16:30", "16:45",
       "17:00", "17:15", "17:30", "17:45",
@@ -169,28 +173,29 @@ app.post('/contact', contactFormLimiter, async (req, res) => {
       month: 'long',
       year: 'numeric'
     });
+
     text = `Booking Request from ${name} (${email})
 Phone: ${phone}
 Number of People: ${people}
 Date: ${formattedDate}
 Time: ${time}`;
-  } else {
+  } 
+  else {
     if (!message) {
       return res.status(400).json({ success: false, message: 'Message is required' });
     }
     subject = 'New Contact Form Submission';
-    text = `Message from ${name} (${email})
-    Phone: ${phone}
-    ${message.trim()}`;
+    text = `Message from ${name} (${email}):
+${message.trim()}`;
   }
 
-  // Set up email options (unchanged text)
+  // Send emails (unchanged)
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_USER,
     replyTo: email,
-    subject: subject,
-    text: text,
+    subject,
+    text,
   };
 
   const confirmationMailOptions = {
