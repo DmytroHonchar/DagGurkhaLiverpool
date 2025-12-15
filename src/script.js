@@ -301,4 +301,21 @@ document.addEventListener("DOMContentLoaded", function () {
   if (bkForm) {
     bkForm.addEventListener('submit', (e) => handleFormSubmit(bkForm, e));
   }
+
+  // ================== Handle #booking hash to open booking form ==================
+  if (window.location.hash === '#booking') {
+    const bookingToggle = document.querySelector('.toggle-btn[data-form="booking"]');
+    
+    if (bookingToggle) {
+      bookingToggle.click();
+      
+      setTimeout(() => {
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+          contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }
+  
 });

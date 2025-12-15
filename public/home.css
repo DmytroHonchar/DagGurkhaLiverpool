@@ -202,6 +202,44 @@ body, html {
     transform: translateY(-3px);
   }
   
+
+/* Hero buttons container */
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Secondary button styling */
+.button-secondary {
+  background-color: rgb(207, 18, 18);
+}
+
+.button-secondary:hover {
+  background-color: rgb(160, 14, 14);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .hero-buttons {
+    flex-direction: column-reverse;
+    gap: 15px;
+    width: 100%;
+  }
+  
+  .hero-buttons .button {
+    width: 36%;
+    max-width: 280px;
+    text-align: center;
+  }
+  
+  .hero-text .button {
+    font-size: 1.1em;
+    padding: 12px 24px;
+  }
+}
+
   /* ================= Our Food Section ================= */
   .our-food-section {
     padding: 40px 20px;
