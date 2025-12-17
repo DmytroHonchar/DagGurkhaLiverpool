@@ -7,7 +7,7 @@ const helmet = require('helmet');
 const validator = require('validator');
 const rateLimit = require('express-rate-limit');
 const jwt = require('jsonwebtoken');
-const fetch = require('node-fetch');  // using node-fetch v2 for CommonJS
+const fetch = require('node-fetch');  
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -146,8 +146,8 @@ app.post('/contact', contactFormLimiter, async (req, res) => {
     }
 
     const day = bookingDate.getDay();
-    if (day === 0 || day === 1) {
-      return res.status(400).json({ success: false, message: 'No bookings on Sundays or Mondays' });
+    if (day === 1) {
+      return res.status(400).json({ success: false, message: 'No bookings on Mondays' });
     }
 
     if (!time) {
@@ -210,10 +210,10 @@ Feel free to visit us at:
 Waterloo, Liverpool L22 0ND.
 
 Our hours:
-Tuesday to Saturday: 4 PM - 10 PM
-Sunday & Monday: Closed.
+Tuesday to Sunday: 4 PM - 10 PM
+Monday: Closed.
 
-If you have any further questions, please call us at +44 7392 489058 or reply to this email.
+If you have any further questions, please call us at 0151 949 0312 or reply to this email.
 
 Best regards,
 The Da Gurkha Team`,

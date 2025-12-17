@@ -266,8 +266,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if (dateValue) {
         const bookingDate = new Date(dateValue);
         const day = bookingDate.getDay(); // 0 = Sunday, 1 = Monday
-        if (day === 0 || day === 1) {
-          showMessage("Bookings are not accepted on Sundays and Mondays.", false);
+        
+        // Only block Monday (1). Removed 'day === 0' (Sunday)
+        if (day === 1) {
+          showMessage("Bookings are not accepted on Mondays.", false);
           return;
         }
       }
@@ -317,5 +319,5 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 100);
     }
   }
-  
+
 });
